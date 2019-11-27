@@ -1,8 +1,9 @@
 package com.company;
 
-public class Map {
+public class Ship {
 
-    public Map() {
+    public Ship(){
         
     }
+
 }

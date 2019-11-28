@@ -8,7 +8,19 @@ public abstract class Player {
         this.name = name;
     }
 
+    //Method to shoot on the gameboard
     public void shoot(){
 
     }
+
+    // Method to get specific coordinates
+    public void getShotCoordinates(){
+
+    }
+
+    // Method for player to place ship
+    public void placeShips(){
+
+    }
+
 }

@@ -11,7 +11,7 @@ public class Menu {
     }
 
     //Switch case to present MENU; Gives user three options.
-    public Menu Choices() {
+    public void Choices() {
 
         System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3.");
         int userChoice = scanner.nextInt();
@@ -28,7 +28,6 @@ public class Menu {
                 System.out.println("Quit Sea Wars");
                 break;
         }
-        return Choices();
     }
 }
 
@@ -40,5 +39,5 @@ public class Menu {
 // ---
 // Copy/Paste below into Main to see if it works.
 // Menu menu = new Menu();
-//  menu.Menu();
+//  menu.Choices();
 // ---

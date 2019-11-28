@@ -4,14 +4,18 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    //switch case menu
-    public void Menu(){
-        int switchChoice = 0;
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    //Switch case to present MENU; Gives user three options.
+    public Menu Choices() {
+
         System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3.");
         int userChoice = scanner.nextInt();
-        switch (switchChoice){
+        switch (userChoice) {
             case 1:
                 System.out.println("Player VS Player (PVP)");
                 break;
@@ -24,14 +28,12 @@ public class Menu {
                 System.out.println("Quit Sea Wars");
                 break;
         }
-        System.out.println(switchChoice);
+        return Choices();
     }
-
-    // constructor
-    public Menu() {
-    }
-
 }
+
+ // Constructor removed, not needed?
+
 //Play against human / number of players
 //Play against computer / AI
 //Quit game

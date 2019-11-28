@@ -1,24 +1,30 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Menu {
 
+    Scanner scanner = new Scanner(System.in);
+
     //switch case menu
-    public static void Menu(){
-        int caseNum = 0;
+    public void Menu(){
+        int switchChoice = 0;
         System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3.");
-        switch (caseNum){
+        int userChoice = scanner.nextInt();
+        switch (switchChoice){
             case 1:
-                System.out.println("This is CASE 1");
+                System.out.println("Player VS Player (PVP)");
                 break;
 
             case 2:
-                System.out.println("This is CASE 2");
+                System.out.println("Player VS Computer (AI)");
                 break;
 
             case 3:
-                System.out.println("This is CASE 3");
+                System.out.println("Quit Sea Wars");
                 break;
         }
+        System.out.println(switchChoice);
     }
 
     // constructor

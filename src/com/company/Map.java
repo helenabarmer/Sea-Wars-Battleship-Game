@@ -10,13 +10,15 @@ public class Map {
     Scanner input = new Scanner(System.in);
 
     // Colours for background
-    public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
     //Colours for text
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
+
+    // Reset colour
+    public static final String ANSI_RESET = "\u001B[0m";
 
     // Maximum size for the map, columns and rows
     private int maxColumnMap = 11;
@@ -95,6 +97,7 @@ public class Map {
         x = input.nextInt();
         System.out.println("Please add the Y coordinate for your ship " + ship + ":");
         y = input.nextInt();
+
 
         //map[x][y] = ship;
 

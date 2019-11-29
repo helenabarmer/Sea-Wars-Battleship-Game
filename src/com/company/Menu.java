@@ -17,15 +17,15 @@ public class Menu {
         int userChoice = scanner.nextInt();
         switch (userChoice) {
             case 1:
-                System.out.println("Player VS Player (PVP)");
+                System.out.println("Player VS Player (PVP)");//The v is small in PvP
                 break;
 
             case 2:
-                System.out.println("Player VS Computer (AI)");
+                System.out.println("Player VS Computer (PvE)");//They usually they call it PvE
                 break;
 
             case 3:
-                System.out.println("Quit Sea Wars");
+                System.out.println("Quit Sea Wars");//You don't need to say the title of the game on the quit button, that is just stupid desing
                 break;
         }
     }

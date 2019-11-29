@@ -21,7 +21,7 @@ public class Menu {
                 break;
 
             case 2:
-                System.out.println("Player VS Computer (AI)");//They usually they call it PvE
+                System.out.println("Player VS Computer (PvE)");//They usually they call it PvE
                 break;
 
             case 3:

@@ -17,7 +17,6 @@ public class Human extends Player {
     }
 
     public void placeShips() {
-
         // Adding ship sizes
         int submarine = 3;
         int destroyer = 2;
@@ -27,8 +26,6 @@ public class Human extends Player {
 
         // Array of the ships
         int[] shipSizes = {submarine, destroyer, cruiser, battleship, carrier};
-
-
 
         // Printing the empty map to see the coordinates
         playerOneMap.printEmptyMap(map);
@@ -45,7 +42,7 @@ public class Human extends Player {
                     coordinates = userInputCoordinates("submarine");
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1]);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], submarine);
 
                     // Add battleship to ships ArrayList
                     Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
@@ -70,7 +67,7 @@ public class Human extends Player {
                     coordinates = userInputCoordinates("battleship");
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1]);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], battleship);
 
                     // Add battleship to ships ArrayList
                     BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
@@ -88,12 +85,8 @@ public class Human extends Player {
                     System.out.println("Invalid");
                     break;
 
-
             }
-            // Print player map with x- and y coordinates
-            //playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1]);
         }
-
         // Add map to ArrayList
         maps.add(playerOneMap);
     }

@@ -6,6 +6,7 @@ public class Ship {
     private Position[] positions;
 
     public Ship(){
+
         
     }
 

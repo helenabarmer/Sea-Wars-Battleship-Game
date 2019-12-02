@@ -3,29 +3,28 @@ package com.company;
 public class Ship {
     private int size;
     private int hits;
-private String type;
+    private String type;
     private boolean isDestroyed = false;
     private boolean vertical;
     private int posX, posY; //position in the map
     private Position[] positions;
 
-
-    public Ship(String type, int size, int posX, int posY, boolean vertical){
+    public Ship(String type, int size, int posX, int posY, boolean vertical) {
         positions = new Position[size];
         this.size = size;
         this.type = type;
         this.posX = posX;
-         this.posY =posY;
-         this.vertical = vertical;
+        this.posY = posY;
+        this.vertical = vertical;
     }
 
-public void setPositions(Position[] positions) {
-this.positions = positions;
-}
+    public void setPositions(Position[] positions) {
+        this.positions = positions;
+    }
 
-public Position[] getPositions() {
-return this.positions;
-}
+    public Position[] getPositions() {
+        return this.positions;
+    }
 
     public int getSize() {
         return this.size;
@@ -49,6 +48,6 @@ return this.positions;
 
     public String getType() {
         return this.type;
-    }
 
+    }
 }

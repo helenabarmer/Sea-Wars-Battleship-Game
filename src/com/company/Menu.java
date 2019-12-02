@@ -13,11 +13,14 @@ public class Menu {
     //Switch case to present MENU; Gives user three options.
     public void Choices() {
 
-        System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3.");
+        System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
+        System.out.println("1. Player VS Player (PvP)");
+        System.out.println("2. Player VS Computer (PvE)");
+        System.out.println("3. Quit Sea Wars");
         int userChoice = scanner.nextInt();
         switch (userChoice) {
             case 1:
-                System.out.println("Player VS Player (PVP)");//The v is small in PvP
+                System.out.println("Player VS Player (PvP)");
                 break;
 
             case 2:
@@ -25,7 +28,7 @@ public class Menu {
                 break;
 
             case 3:
-                System.out.println("Quit Sea Wars");//You don't need to say the title of the game on the quit button, that is just stupid desing
+                System.out.println("Quit Sea Wars");
                 break;
         }
     }
@@ -37,7 +40,7 @@ public class Menu {
 //Play against computer / AI
 //Quit game
 // ---
-// Copy/Paste below into Main to see if it works.
+// Copy/Paste below into Main to run method.
 // Menu menu = new Menu();
 //  menu.Choices();
 // ---

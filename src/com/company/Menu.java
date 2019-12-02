@@ -1,36 +1,46 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Menu {
 
-    //switch case menu
-    public static void Menu(){
-        int caseNum = 0;
-        System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3.");
-        switch (caseNum){
+    private Scanner scanner = new Scanner(System.in);
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    //Switch case to present MENU; Gives user three options.
+    public void Choices() {
+
+        System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
+        System.out.println("1. Player VS Player (PvP)");
+        System.out.println("2. Player VS Computer (PvE)");
+        System.out.println("3. Quit Sea Wars");
+        int userChoice = scanner.nextInt();
+        switch (userChoice) {
             case 1:
-                System.out.println("This is CASE 1");
+                System.out.println("Player VS Player (PvP)");
                 break;
 
             case 2:
-                System.out.println("This is CASE 2");
+                System.out.println("Player VS Computer (PvE)");
                 break;
 
             case 3:
-                System.out.println("This is CASE 3");
+                System.out.println("Quit Sea Wars");
                 break;
         }
     }
-
-    // constructor
-    public Menu() {
-    }
-
 }
+
+ // Constructor removed, not needed?
+
 //Play against human / number of players
 //Play against computer / AI
 //Quit game
 // ---
-// Copy/Paste below into Main to see if it works.
+// Copy/Paste below into Main to run method.
 // Menu menu = new Menu();
-//  menu.Menu();
+//  menu.Choices();
 // ---

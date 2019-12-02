@@ -21,10 +21,13 @@ public class Menu {
         switch (userChoice) {
             case 1:
                 System.out.println("Player VS Player (PvP)");
+                Human player1 = new Human();
+                Human player2 = new Human();
                 break;
 
             case 2:
                 System.out.println("Player VS Computer (PvE)");
+                Human player1 = new Human();
                 break;
 
             case 3:

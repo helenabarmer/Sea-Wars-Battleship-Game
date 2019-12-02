@@ -58,6 +58,6 @@ public class Ship {
         return "Ship: " + type + "\n" +
                 "Size: " + size + "\n" +
                 "X-position: " + posX + "\n" +
-                "Y-position: " + posY;
+                "Y-position: " + posY + "\n";
     }
 }

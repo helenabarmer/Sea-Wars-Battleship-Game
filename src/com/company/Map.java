@@ -91,6 +91,7 @@ public class Map {
 
 
     public void addCoordinateToMap(int xInput, int yInput){
+
         // Add coordinates from user input
         for (int y = yInput; y<= yInput; y++) {
             for (int x = xInput; x <= xInput; x++) {
@@ -105,7 +106,53 @@ public class Map {
                 }
             }
         }
-    }
+/*
+        switch (size){
+            case 3:
+                System.out.println("Test!");
+                // Add coordinates from user input
+                for (int y = yInput; y<= yInput; y++) {
+                    for (int x = xInput; x <= xInput; x++) {
+                        map[x][y] = "X" ;
+                        y++;
+                        for(int y1 = yInput; y1<= yInput; y1++){
+                            map[x][y] = "X";
+                            y++;
+                            for(int y2 = yInput; y2<= yInput; y2++){
+                                map[x][y] = "X";
+                            }
+                        }
+                    }
+                }
+                break;
+
+            case 2:
+                System.out.println("Destroyer");
+                break;
+
+            case 4:
+                System.out.println("Cruiser");
+                String c = "Cruiser";
+                //testAddCoordinates(c);
+                break;
+
+            case 5:
+                System.out.println("Battleship");
+                break;
+
+            case 32:
+                System.out.println("Carrier");
+                break;
+
+            default:
+                System.out.println("Invalid");
+                break;
+
+        }*/
+
+        }
+
+
 
 
     public void printPlayerMapShips(String[][] oceanMap, int x, int y) {
@@ -115,9 +162,8 @@ public class Map {
             System.out.print(ANSI_BLUE + "_____" + ANSI_RESET);
         }
 
-        // Adding coordinates from user input
-        addCoordinateToMap(x, y);
-
+            // Adding coordinates from user input
+            addCoordinateToMap(x, y);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();

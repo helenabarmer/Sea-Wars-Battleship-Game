@@ -20,10 +20,7 @@ public abstract class Player {
 
     }
 
-    // Method for player to place ship
-    public void placeShips(){
 
-    }
 
 
 }

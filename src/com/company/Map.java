@@ -84,17 +84,12 @@ public class Map {
         }
     }
 
-    public void printPlayerMap(String[][] oceanMap, int x, int y){
-    }
 
-    public void addCoordinateToMap(int x, int y){
+
+    public void addCoordinateToMap(int xInput, int yInput, int size){
         //addCoordinateToMap(x, y);
-        int xInput =8;
-        int yInput = 1;
-
-        // Initialize 2D matrix map
-        for (y = yInput; y<= yInput; y++) {
-            for (x = xInput; x <= xInput; x++) {
+        for (int y = yInput; y<= yInput; y++) {
+            for (int x = xInput; x <= xInput; x++) {
                 map[x][y] = " X " ;
                 y++;
                 for(int y1 = yInput; y1<= yInput; y1++){
@@ -107,28 +102,6 @@ public class Map {
             }
         }
     }
-
-
-    // Add ship to map, under construction not done
-    // Should not be void, should return the ship
-    public void addShip(){
-        int x;
-        int y;
-        int length;
-        String ship;
-
-        ship = "D";
-
-        System.out.println("Please add the X coordinate for your ship " + ship + ":");
-        x = input.nextInt();
-        System.out.println("Please add the Y coordinate for your ship " + ship + ":");
-        y = input.nextInt();
-
-
-        //map[x][y] = ship;
-
-    }
-
 
 }
 

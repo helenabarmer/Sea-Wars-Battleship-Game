@@ -10,6 +10,9 @@ public class Menu {
         return scanner;
     }
 
+    // Get "battle" to start the battle through the BattleShipProgram
+    BattleShipProgram battle = new BattleShipProgram();
+
     //Switch case to present MENU; Gives user three options.
     public void Choices() {
 
@@ -18,16 +21,27 @@ public class Menu {
         System.out.println("2. Player VS Computer (PvE)");
         System.out.println("3. Quit Sea Wars");
         int userChoice = scanner.nextInt();
+
         switch (userChoice) {
             case 1:
                 System.out.println("Player VS Player (PvP)");
                 Human player1 = new Human();
+                Map player1Map = new Map();
+
                 Human player2 = new Human();
+                Map player2Map = new Map();
+                do battle {
+
+                }
                 break;
 
             case 2:
                 System.out.println("Player VS Computer (PvE)");
                 Human human = new Human();
+                Map humanMap = new Map();
+
+                Computer computer = new Computer();
+                Map computerMap = new Map();
                 break;
 
             case 3:

@@ -27,7 +27,7 @@ public class Menu {
 
             case 2:
                 System.out.println("Player VS Computer (PvE)");
-                Human player1 = new Human();
+                Human human = new Human();
                 break;
 
             case 3:

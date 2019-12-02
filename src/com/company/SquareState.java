@@ -1,6 +1,8 @@
 package com.company;
 
 public enum SquareState {
+
+
 /*
     String[] ships = {"S","D","C","B","c1","c2"};
 =======

@@ -4,7 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BattleShipProgram battleShipProgram = new BattleShipProgram();
+        //BattleShipProgram battleShipProgram = new BattleShipProgram();
+        Map map = new Map();
+
 
     }
 }

@@ -3,7 +3,7 @@ package com.company;
 public class Ship {
     private int size;
     private int hits;
-    private String type;
+private String typeOfShip;
     private boolean isDestroyed = false;
     private boolean vertical;
     private int posX, posY; //position in the map
@@ -12,7 +12,7 @@ public class Ship {
     public Ship(String type, int size, int posX, int posY, boolean vertical) {
         positions = new Position[size];
         this.size = size;
-        this.type = type;
+        this.typeOfShip = type;
         this.posX = posX;
         this.posY = posY;
         this.vertical = vertical;
@@ -46,8 +46,9 @@ public class Ship {
         return this.isDestroyed;
     }
 
-    public String getType() {
-        return this.type;
+    public String getTypeOfShip() {
+        return this.typeOfShip;
+    }
 
     }
 }

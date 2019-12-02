@@ -26,16 +26,17 @@ public class Map {
     // Map template with grid size from variables (could be user input later on)
     String[][] map = new String [maxColumnMap][maxRowMap];
     ArrayList <Ship> ships = new ArrayList<>();
+    //String userMap[][][] = new String[][][];
 
     
     // Constructor, prints map when object is made
     public Map() {
-        printMap(map);
+        printEmptyMap(map);
     }
 
 
     // Printing map with empty squares [ ]
-    public void printMap(String[][] oceanMap) {
+    public void printEmptyMap(String[][] oceanMap) {
 
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK + "      OCEAN MAP      " + ANSI_RESET);
@@ -49,6 +50,7 @@ public class Map {
                 map[x][y] = " " ;
             }
         }
+
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();
 
@@ -78,6 +80,30 @@ public class Map {
         // Adding X-coordinates
         for(int k = 1; k<map.length; k++){
             System.out.print(ANSI_RED +" " + k + " | "+ ANSI_RESET);
+        }
+    }
+
+    public void printPlayerMap(String[][] oceanMap, int x, int y){
+    }
+
+    public void addCoordinateToMap(int x, int y){
+        //addCoordinateToMap(x, y);
+        int xInput =8;
+        int yInput = 1;
+
+        // Initialize 2D matrix map
+        for (y = yInput; y<= yInput; y++) {
+            for (x = xInput; x <= xInput; x++) {
+                map[x][y] = " X " ;
+                y++;
+                for(int y1 = yInput; y1<= yInput; y1++){
+                    map[x][y] = " X ";
+                    y++;
+                    for(int y2 = yInput; y2<= yInput; y2++){
+                        map[x][y] = " X ";
+                    }
+                }
+            }
         }
     }
 

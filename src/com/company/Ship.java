@@ -10,8 +10,45 @@ private String type;
     private Position[] positions;
 
 
-    public Ship(){
-        
+    public Ship(String type, int size, int posX, int posY, boolean vertical){
+        positions = new Position[size];
+        this.size = size;
+        this.type = type;
+        this.posX = posX;
+         this.posY =posY;
+         this.vertical = vertical;
+    }
+
+public void setPositions(Position[] positions) {
+this.positions = positions;
+}
+
+public Position[] getPositions() {
+return this.positions;
+}
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public int getPosX() {
+        return this.posX;
+    }
+
+    public int getPosY() {
+        return this.posY;
+    }
+
+    public boolean getOrientation() {
+        return this.vertical;
+    }
+
+    public boolean getDestroyed() {
+        return this.isDestroyed;
+    }
+
+    public String getType() {
+        return this.type;
     }
 
 }

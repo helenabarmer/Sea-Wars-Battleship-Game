@@ -88,53 +88,65 @@ public class Map {
 
 
     public void addCoordinateToMap(int xInput, int yInput, int size) {
-        
-                // Submarine
-                if (size == 3) {
-                    // Add coordinates from user input
-                    for (int y = yInput; y <= yInput; y++) {
-                        for (int x = xInput; x <= xInput; x++) {
-                            map[x][y] = "S";
-                            y++;
-                            for (int y1 = yInput; y1 <= yInput; y1++) {
-                                map[x][y] = "S";
-                                y++;
-                                for (int y2 = yInput; y2 <= yInput; y2++) {
-                                    map[x][y] = "S";
-                                }
-                            }
-                        }
-                    }
-
-                }
-
-                // Battleship
-                if (size == 5) {
-                    // Add coordinates from user input
+        // Submarine
+        if (size == 3) {
+            // Add coordinates from user input
+            for (int y = yInput; y <= yInput; y++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y] = "S";
+                    y++;
                     for (int y1 = yInput; y1 <= yInput; y1++) {
-                        for (int x = xInput; x <= xInput; x++) {
-                            map[x][y1] = "B";
-                            y1++;
-                            for (int y2 = yInput; y2 <= yInput; y2++) {
-                                map[x][y1] = "B";
-                                y1++;
-                                for (int y3 = yInput; y3 <= yInput; y3++) {
-                                    map[x][y1] = "B";
-                                    y1++;
-                                }
-                                for (int y4 = yInput; y4 <= yInput; y4++) {
-                                    map[x][y1] = "B";
-                                    y1++;
-                                }
-                                for (int y5 = yInput; y5 <= yInput; y5++) {
-                                    map[x][y1] = "B";
-                                }
-                            }
+                        map[x][y] = "S";
+                        y++;
+                        for (int y2 = yInput; y2 <= yInput; y2++) {
+                            map[x][y] = "S";
                         }
                     }
                 }
             }
 
+        }
+
+        // Destroyer
+        if (size == 2) {
+            // Add coordinates from user input
+            for (int y = yInput; y <= yInput; y++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y] = "D";
+                    y++;
+                    for (int y1 = yInput; y1 <= yInput; y1++) {
+                        map[x][y] = "D";
+                    }
+                }
+            }
+        }
+
+        // Battleship
+        if (size == 5) {
+            // Add coordinates from user input
+            for (int y1 = yInput; y1 <= yInput; y1++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y1] = "B";
+                    y1++;
+                    for (int y2 = yInput; y2 <= yInput; y2++) {
+                        map[x][y1] = "B";
+                        y1++;
+                        for (int y3 = yInput; y3 <= yInput; y3++) {
+                            map[x][y1] = "B";
+                            y1++;
+                        }
+                        for (int y4 = yInput; y4 <= yInput; y4++) {
+                            map[x][y1] = "B";
+                            y1++;
+                        }
+                        for (int y5 = yInput; y5 <= yInput; y5++) {
+                            map[x][y1] = "B";
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
             public void printPlayerMapShips (String[][]oceanMap,int x, int y, int size){

@@ -54,6 +54,18 @@ public class Human extends Player {
 
                 case 2:
                     System.out.println("Destroyer");
+                    // Reference to method for adding coordinates
+                    coordinates = userInputCoordinates("destroyer");
+
+                    // Print map with added coordinates
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], destroyer);
+
+                    // Add battleship to ships ArrayList
+                    Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
+                    ships.add(dest);
+
+                    // Printing information about the added ship
+                    loopAndPrintShips(dest);
                     break;
 
                 case 4:

@@ -37,6 +37,8 @@ public class Human extends Player {
 
             // Adding ships through switch case, referencing the length of the ships
             switch (shipSizes[i]) {
+
+                // It's yellow and we all live there
                 case 3:
                     // Reference to method for adding coordinates
                     coordinates = userInputCoordinates("submarine");
@@ -44,7 +46,7 @@ public class Human extends Player {
                     // Print map with added coordinates
                     playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], submarine);
 
-                    // Add battleship to ships ArrayList
+                    // Add submarine to ships ArrayList
                     Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
                     ships.add(sub);
 
@@ -60,7 +62,7 @@ public class Human extends Player {
                     // Print map with added coordinates
                     playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], destroyer);
 
-                    // Add battleship to ships ArrayList
+                    // Add destroyer to ships ArrayList
                     Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
                     ships.add(dest);
 
@@ -70,8 +72,18 @@ public class Human extends Player {
 
                 case 4:
                     System.out.println("Cruiser");
-                    String c = "Cruiser";
-                    //testAddCoordinates(c);
+                    // Reference to method for adding coordinates
+                    coordinates = userInputCoordinates("cruiser");
+
+                    // Print map with added coordinates
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], cruiser);
+
+                    // Add cruiser to ships ArrayList
+                    Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
+                    ships.add(crus);
+
+                    // Printing information about the added ship
+                    loopAndPrintShips(crus);
                     break;
 
                 case 5:

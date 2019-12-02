@@ -121,6 +121,29 @@ public class Map {
             }
         }
 
+        // Cruiser
+        if (size == 4) {
+            // Add coordinates from user input
+            for (int y1 = yInput; y1 <= yInput; y1++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y1] = "C";
+                    y1++;
+                    for (int y2 = yInput; y2 <= yInput; y2++) {
+                        map[x][y1] = "C";
+                        y1++;
+                        for (int y3 = yInput; y3 <= yInput; y3++) {
+                            map[x][y1] = "C";
+                            y1++;
+                        }
+                        for (int y4 = yInput; y4 <= yInput; y4++) {
+                            map[x][y1] = "C";
+                        }
+                    }
+                }
+            }
+        }
+
+
         // Battleship
         if (size == 5) {
             // Add coordinates from user input

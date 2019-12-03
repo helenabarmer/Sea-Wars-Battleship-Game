@@ -25,11 +25,10 @@ public class Menu {
         switch (userChoice) {
             case 1:
                 System.out.println("Player VS Player (PvP)");
+                System.out.println("Player 1, please place your ships (6) as shown below");
                 Human player1 = new Human();
-                Map player1Map = new Map();
-
+                System.out.println("Player 2, please place your ships (6) as shown below");
                 Human player2 = new Human();
-                Map player2Map = new Map();
                 //do battle {
 
                 //}
@@ -37,7 +36,7 @@ public class Menu {
 
             case 2:
                 System.out.println("Player VS Computer (PvE)");
-                Human human = new Human();
+                //Human human = new Human();
                 Map humanMap = new Map();
 
                 Computer computer = new Computer();

@@ -11,7 +11,7 @@ public class Menu {
     }
 
     // Get "battle" to start the battle through the BattleShipProgram
-    BattleShipProgram battle = new BattleShipProgram();
+    // BattleShipProgram battle = new BattleShipProgram();
 
     //Switch case to present MENU; Gives user three options.
     public void Choices() {
@@ -21,28 +21,36 @@ public class Menu {
         System.out.println("2. Player VS Computer (PvE)");
         System.out.println("3. Quit Sea Wars");
         int userChoice = scanner.nextInt();
+        String playerName = scanner.nextLine();
 
         switch (userChoice) {
             case 1:
                 System.out.println("Player VS Player (PvP)");
                 System.out.println("Player 1, please place your ships (6) as shown below");
-                Human player1 = new Human();
+                Human player1 = new Human(playerName);
                 System.out.println("Player 2, please place your ships (6) as shown below");
-                Human player2 = new Human();
+                Human player2 = new Human(playerName);
                 //do battle {
 
-                //}
+                // }
+                // while {
+                // }
                 break;
 
             case 2:
                 System.out.println("Player VS Computer (PvE)");
-                //Human human = new Human();
+                Human human = new Human(playerName);
                 Map humanMap = new Map();
 
+                // Name of Computer will include automatically via Computer-Class
                 Computer computer = new Computer();
                 Map computerMap = new Map();
                 break;
+                //do battle {
 
+                // }
+                // while {
+                // }
             case 3:
                 System.out.println("Quit Sea Wars");
                 break;

@@ -6,8 +6,16 @@ public class Main {
 
         //BattleShipProgram battleShipProgram = new BattleShipProgram();
         //Map map = new Map();
-        Human human = new Human();
-        human.placeShips();
+        Human player1 = new Human("Player 1");
+        System.out.println("Welcome " + player1.getName());
+        player1.placeShips();
+        player1.loopAndPrintShips();
+
+        Human player2 = new Human("Player 2");
+        System.out.println("Welcome " + player2.getName());
+        player2.placeShips();
+        player2.loopAndPrintShips();
+
 
 
     }

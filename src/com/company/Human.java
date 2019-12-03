@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Human extends Player {
+
     Scanner input = new Scanner(System.in);
     ArrayList<Ship> ships = new ArrayList<>();
     ArrayList<Map> maps = new ArrayList<>();
@@ -12,109 +13,154 @@ public class Human extends Player {
     // Size of map, 10 x 10 grid
     String[][] map = new String[10][10];
 
-    public Human() {
-        super("");
+    public Human(String name) {
+        super(name);
     }
 
     public void placeShips() {
         // Adding ship sizes
-        int submarine = 3;
-        int destroyer = 2;
-        int cruiser = 4;
-        int battleship = 5;
-        int carrier = 6; // Actual size is 3x2, for simplicity adding 6 for now, will be displayed as 3
+        int submarineSize = 3;
+        int destroyerSize = 2;
+        int cruiserSize = 4;
+        int battleshipSize = 5;
+        int carrier1Size = 3;
+        int carrier2Size = 3;
 
-        // Array of the ships
-        int[] shipSizes = {submarine, destroyer, cruiser, battleship, carrier};
+        String typeSubmarine = "submarine";
+        String typeDestroyer = "destroyer";
+        String typeCruiser = "cruiser";
+        String typeBattleship = "battleship";
+        String typeCarrier1 = "carrier1";
+        String typeCarrier2 = "carrier2";
+
+        // Array of ship sizes
+       // int[] shipSizes = {submarineSize, destroyerSize, cruiserSize, battleshipSize, carrier1Size, carrier2Size};
+
+        // Array of ship names
+        String[] shipNames = {typeSubmarine, typeDestroyer, typeCruiser, typeBattleship, typeCarrier1, typeCarrier2};
+
 
         // Printing the empty map to see the coordinates
         playerOneMap.printEmptyMap(map);
 
-        for (int i = 0; i < shipSizes.length; i++) {
-
+        for (int i = 0; i < shipNames.length; i++) {
             // Coordinates to be added for the different ships in switch case
             int[] coordinates;
 
             // Adding ships through switch case, referencing the length of the ships
-            switch (shipSizes[i]) {
+            switch (shipNames[i]) {
 
                 // It's yellow and we all live there
-                case 3:
-                    // Reference to method for adding coordinates
-                    coordinates = userInputCoordinates("submarine", submarine);
+                case "submarine":
+                    // Method for adding coordinates
+                    coordinates = userInputCoordinates(typeSubmarine, submarineSize);
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], submarine);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], submarineSize, typeSubmarine);
 
                     // Add submarine to ships ArrayList
                     Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
                     ships.add(sub);
 
+                    //Printing information about the added ship
+                    System.out.println(sub.toString());
+
                     // Printing information about the added ship
-                    loopAndPrintShips(sub);
+                    //loopAndPrintShips(sub);
                     break;
 
-                case 2:
-                    System.out.println("Destroyer");
-                    // Reference to method for adding coordinates
-                    coordinates = userInputCoordinates("destroyer", destroyer);
+                case "destroyer":
+                    // Method for adding coordinates
+                    coordinates = userInputCoordinates(typeDestroyer, destroyerSize);
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], destroyer);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], destroyerSize, typeDestroyer);
 
                     // Add destroyer to ships ArrayList
                     Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
                     ships.add(dest);
 
+                    //Printing information about the added ship
+                    System.out.println(dest.toString());
+
                     // Printing information about the added ship
-                    loopAndPrintShips(dest);
+                    //loopAndPrintShips(dest);
                     break;
 
-                case 4:
-                    System.out.println("Cruiser");
-                    // Reference to method for adding coordinates
-                    coordinates = userInputCoordinates("cruiser", cruiser);
+                case "cruiser":
+                    // Method for adding coordinates
+                    coordinates = userInputCoordinates(typeCruiser, cruiserSize);
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], cruiser);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], cruiserSize, typeCruiser);
 
                     // Add cruiser to ships ArrayList
                     Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
                     ships.add(crus);
 
+                    //Printing information about the added ship
+                    System.out.println(crus.toString());
+
                     // Printing information about the added ship
-                    loopAndPrintShips(crus);
+                    //loopAndPrintShips(crus);
                     break;
 
-                case 5:
-                    // Reference to method for adding coordinates
-                    coordinates = userInputCoordinates("battleship", battleship);
+                case "battleship":
+                    // Method for adding coordinates
+                    coordinates = userInputCoordinates(typeBattleship, battleshipSize);
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], battleship);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], battleshipSize, typeBattleship);
 
                     // Add battleship to ships ArrayList
                     BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
                     ships.add(battleShip);
 
+                    //Printing information about the added ship
+                    System.out.println(battleShip.toString());
+
                     // Printing information about the added ship
-                    loopAndPrintShips(battleShip);
+                    //loopAndPrintShips(battleShip);
                     break;
 
-                case 6:
-                    System.out.println("Carrier");
-                    // Reference to method for adding coordinates
-                    coordinates = userInputCoordinates("carrier", carrier);
+                case "carrier1":
+                    // Method for adding coordinates
+                    coordinates = userInputCoordinates(typeCarrier1, carrier1Size);
 
                     // Print map with added coordinates
-                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], carrier);
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], carrier1Size, typeCarrier1);
 
                     // Add carrier ships ArrayList
-                    Carrier carr = new Carrier(coordinates[0], coordinates[1], true);
-                    ships.add(carr);
+                    Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
+                    //String shipType = carr.getType();
+                    ships.add(carrier);
+
+                    //Printing information about the added ship
+                    System.out.println(carrier.toString());
 
                     // Printing information about the added ship
-                    loopAndPrintShips(carr);
+                    //loopAndPrintShips(carrier);
+
+
+                    break;
+
+                case "carrier2":
+                    // Method for adding coordinates
+                    coordinates = userInputCoordinates(typeCarrier1, carrier1Size);
+
+                    // Print map with added coordinates
+                    playerOneMap.printPlayerMapShips(map, coordinates[0], coordinates[1], carrier2Size, typeCarrier2);
+
+                    // Add carrier ships ArrayList
+                    Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
+                    //String shipType = carr.getType();
+                    ships.add(carrier2);
+
+                    //Printing information about the added ship
+                    System.out.println(carrier2.toString());
+
+                    // Printing information about the added ship
+                    //loopAndPrintShips(carrier);
                     break;
 
                 default:
@@ -122,6 +168,7 @@ public class Human extends Player {
                     break;
 
             }
+
         }
         // Add map to ArrayList
         maps.add(playerOneMap);
@@ -138,8 +185,8 @@ public class Human extends Player {
             return new int [] {xInput, yInput};
         }
 
-        // Looping through ArrayList of ships and printing them
-        public void loopAndPrintShips (Ship ship){
+        // Looping through ArrayList of ships and printing information about them
+        public void loopAndPrintShips (){
             for (Ship myShip : ships) {
                 System.out.println(myShip.toString());
             }

@@ -12,7 +12,7 @@ public abstract class Player {
 
     //Method to shoot on the gameboard
     public void shoot(){
-
+//tjena johan 
     }
 
     // Method to get specific coordinates

@@ -1,12 +1,15 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Map {
     // User input
     Scanner input = new Scanner(System.in);
+
+    // ArrayList Position
+    ArrayList<Position> positions = new ArrayList<>();
+    Position position;
 
     // Colours for background
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
@@ -112,6 +115,9 @@ public class Map {
 
     // Test method
     public void addCoordinateToMap(int xInput, int yInput, int size, String shipType){
+        //position = new Position(xInput, yInput);
+        //if(position.x  && position.y )
+
         for(int i = 0; i<size; i++){
             for(int y = yInput; y<=yInput; y++){
                 y += i;

@@ -10,25 +10,29 @@ public abstract class Player {
         playerMap = new Map();
     }
 
-    //Method to shoot on the gameboard
+    //Method to shoot on the map
     public void shoot(){
 
         if(){
-            if(=={X} || =={*}){
-            }
-        else{
+            if (map[x][y]=="S"||map[x][y]==""){
 
+            }
+            else if(map[x][y]=="X" ||map[x][y] =="*"){
+
+            }
+            else{
+                map[x][y] = "*";
             }
         }
         else {
-            if(=={}){
-
+            if(map[x][y]==""){
+            map[x][y] = "X";
             }
-        else if(=={X} || =={*}){
+        else if(map[x][y]=="X" || map[x][y]=="*"){
 
             }
         else{
-
+                map[x][y] = "*";
             }
         }
 

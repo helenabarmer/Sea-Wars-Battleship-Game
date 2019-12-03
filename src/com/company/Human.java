@@ -166,9 +166,7 @@ public class Human extends Player {
                 default:
                     System.out.println("Invalid");
                     break;
-
             }
-
         }
         // Add map to ArrayList
         maps.add(playerOneMap);

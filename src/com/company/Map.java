@@ -35,11 +35,14 @@ public class Map {
     public static final String ANSI_RESET = "\u001B[0m";
 
     // Maximum size for the map, columns and rows
-    private int maxColumnMap = 11;
-    private int maxRowMap = 11;
+    //private int maxColumnMap = 11;
+    //private int maxRowMap = 11;
+
+    //Constant size for the map
+    public final static int MAP_SIZE = 10;
 
     // Map template with grid size from variables (could be user input later on)
-    String[][] map = new String [maxColumnMap][maxRowMap];
+    String[][] map = new String [MAP_SIZE][MAP_SIZE];
     ArrayList <Ship> ships = new ArrayList<>();
     //String userMap[][][] = new String[][][];
 

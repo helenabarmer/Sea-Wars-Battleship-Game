@@ -1,9 +1,11 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Ship {
     private int size;
     private int hits;
-private String typeOfShip;
+    private String typeOfShip;
     private boolean isDestroyed = false;
     private boolean vertical;
     private int posX, posY; //position in the map
@@ -50,5 +52,13 @@ private String typeOfShip;
         return this.typeOfShip;
     }
 
+
+    // Printing to Human Class method placeShips()
+    public String toString() {
+        return "Ship: " + typeOfShip + "\n" +
+                "Size: " + size + "\n" +
+                "X-position: " + posX + "\n" +
+                "Y-position: " + posY + "\n";
     }
 }
+

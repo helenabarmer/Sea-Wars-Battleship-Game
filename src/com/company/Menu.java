@@ -30,9 +30,9 @@ public class Menu {
 
                 Human player2 = new Human();
                 Map player2Map = new Map();
-                do battle {
+                //do battle {
 
-                }
+                //}
                 break;
 
             case 2:

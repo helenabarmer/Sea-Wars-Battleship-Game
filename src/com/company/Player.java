@@ -12,7 +12,7 @@ public abstract class Player {
 
     //Method to shoot on the map
     public void shoot(){
-
+/*
         if(){
             if (map[x][y]=="S"||map[x][y]==""){
 
@@ -35,7 +35,7 @@ public abstract class Player {
                 map[x][y] = "*";
             }
         }
-
+*/
     }
 
     // Method to get specific coordinates

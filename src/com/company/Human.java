@@ -34,7 +34,7 @@ public class Human extends Player {
         String typeCarrier2 = "carrier2";
 
         // Array of ship sizes
-        int[] shipSizes = {submarineSize, destroyerSize, cruiserSize, battleshipSize, carrier1Size, carrier2Size};
+       // int[] shipSizes = {submarineSize, destroyerSize, cruiserSize, battleshipSize, carrier1Size, carrier2Size};
 
         // Array of ship names
         String[] shipNames = {typeSubmarine, typeDestroyer, typeCruiser, typeBattleship, typeCarrier1, typeCarrier2};
@@ -140,6 +140,8 @@ public class Human extends Player {
 
                     // Printing information about the added ship
                     //loopAndPrintShips(carrier);
+
+
                     break;
 
                 case "carrier2":

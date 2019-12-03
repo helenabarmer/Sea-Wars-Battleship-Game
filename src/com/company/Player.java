@@ -10,7 +10,7 @@ public abstract class Player {
         playerMap = new Map();
     }
 
-    //Method to shoot on the gameboard
+    //Method to shoot on the map
     public void shoot(){
 
         if(){

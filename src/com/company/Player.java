@@ -14,21 +14,25 @@ public abstract class Player {
     public void shoot(){
 
         if(){
-            if(=={X} || =={*}){
-            }
-        else{
+            if (=="S"||==""){
 
+            }
+            else if(=="X" || =="*"){
+                
+            }
+            else{
+                map[x][y] = "*";
             }
         }
         else {
-            if(=={}){
-
+            if(==""){
+            map[x][y] = "X";
             }
-        else if(=={X} || =={*}){
+        else if(=="X" || =="*"){
 
             }
         else{
-
+                map[x][y] = "*";
             }
         }
 

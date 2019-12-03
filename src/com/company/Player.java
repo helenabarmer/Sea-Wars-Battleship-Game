@@ -17,7 +17,10 @@ public abstract class Player {
 
     // Method to get specific coordinates
     public void getShotCoordinates(){
+    }
 
+    public String getName(){
+        return this.name;
     }
 
 

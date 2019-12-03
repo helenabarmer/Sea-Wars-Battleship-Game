@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Ship {
     private int size;
     private int hits;
@@ -49,5 +51,13 @@ public class Ship {
     public String getType() {
         return this.type;
 
+    }
+
+    // Printing to Human Class method placeShips()
+    public String toString() {
+        return "Ship: " + type + "\n" +
+                "Size: " + size + "\n" +
+                "X-position: " + posX + "\n" +
+                "Y-position: " + posY + "\n";
     }
 }

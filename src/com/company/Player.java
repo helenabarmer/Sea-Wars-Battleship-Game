@@ -13,9 +13,9 @@ public abstract class Player {
     //Method to shoot on the map
     public void shoot(){
 
-        if(){
+        if(/*Submarine ability on?*/){
             if (map[x][y]=="S"||map[x][y]==""){
-
+//Does it hit a empty space or one with the sub, no changes
             }
             else if(map[x][y]=="X" ||map[x][y] =="*"){
 

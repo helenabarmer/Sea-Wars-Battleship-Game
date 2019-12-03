@@ -1,8 +1,7 @@
 package com.company;
 
-import com.sun.xml.internal.ws.addressing.WsaActionUtil;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Map {
@@ -11,11 +10,23 @@ public class Map {
 
     // Colours for background
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m";
+    public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
+    public static final String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";
+    public static final String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m";
+    public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";
+    public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";
 
     //Colours for text
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String WHITE_BOLD = "\033[1;37m";
+    public static final String BLUE_BOLD = "\033[1;34m";
+    public static final String BLACK_BOLD = "\033[1;30m";
+
+    // Underline
+    public static final String BLACK_UNDERLINED = "\033[4;30m";
 
     // Reset colour
     public static final String ANSI_RESET = "\u001B[0m";
@@ -27,19 +38,22 @@ public class Map {
     // Map template with grid size from variables (could be user input later on)
     String[][] map = new String [maxColumnMap][maxRowMap];
     ArrayList <Ship> ships = new ArrayList<>();
+    //String userMap[][][] = new String[][][];
 
     
     // Constructor, prints map when object is made
     public Map() {
-        printMap(map);
+        //printEmptyMap(map);
     }
 
 
     // Printing map with empty squares [ ]
-    public void printMap(String[][] oceanMap) {
+    public void printEmptyMap(String[][] oceanMap) {
 
         // Prints the text and the line underneath the text
-        System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK + "      OCEAN MAP      " + ANSI_RESET);
+        System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
+                "                      OCEAN MAP                      " + ANSI_RESET);
+
         for(int line=1; line<map.length;line++){
             System.out.print(ANSI_BLUE + "_____" + ANSI_RESET);
         }
@@ -50,6 +64,7 @@ public class Map {
                 map[x][y] = " " ;
             }
         }
+
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();
 
@@ -63,7 +78,7 @@ public class Map {
             System.out.print(ANSI_BLUE + square + ANSI_RESET);
 
             // Print Y-coordinates on the side (column)
-            System.out.println(ANSI_RED +"|" + column + "|" + ANSI_RESET);
+            System.out.println(ANSI_RED +"|" + column +"Y" + "|" + ANSI_RESET);
         }
 
         // Add line to separate the ocean map from the coordinates below
@@ -78,31 +93,184 @@ public class Map {
 
         // Adding X-coordinates
         for(int k = 1; k<map.length; k++){
-            System.out.print(ANSI_RED +" " + k + " | "+ ANSI_RESET);
+            System.out.print(ANSI_RED + "" + k + "X" + " | "+ ANSI_RESET);
+        }
+
+        System.out.println("\n" + "\n" +
+                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE " + ANSI_RESET + " " +
+                        BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER " + ANSI_RESET + " " +
+                        GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER " + ANSI_RESET + " " +
+                        PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP " + ANSI_RESET + " " +
+                        CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER " + ANSI_RESET
+        );
+        // Adding new line after the map prints
+        System.out.println("\n");
+    }
+
+
+
+    public void addCoordinateToMap(int xInput, int yInput, int size) {
+        // Submarine
+        if (size == 3) {
+            // Add coordinates from user input
+            for (int y = yInput; y <= yInput; y++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                    y++;
+                    for (int y1 = yInput; y1 <= yInput; y1++) {
+                                map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                        y++;
+                        for (int y2 = yInput; y2 <= yInput; y2++) {
+                            map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Destroyer
+        if (size == 2) {
+            // Add coordinates from user input
+            for (int y = yInput; y <= yInput; y++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                    y++;
+                    for (int y1 = yInput; y1 <= yInput; y1++) {
+                        map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                    }
+                }
+            }
+        }
+
+        // Cruiser
+        if (size == 4) {
+            // Add coordinates from user input
+            for (int y1 = yInput; y1 <= yInput; y1++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                    y1++;
+                    for (int y2 = yInput; y2 <= yInput; y2++) {
+                        map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                        y1++;
+                        for (int y3 = yInput; y3 <= yInput; y3++) {
+                            map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                            y1++;
+                        }
+                        for (int y4 = yInput; y4 <= yInput; y4++) {
+                            map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // Battleship
+        if (size == 5) {
+            // Add coordinates from user input
+            for (int y1 = yInput; y1 <= yInput; y1++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                    y1++;
+                    for (int y2 = yInput; y2 <= yInput; y2++) {
+                        map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                        y1++;
+                        for (int y3 = yInput; y3 <= yInput; y3++) {
+                            map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                            y1++;
+                        }
+                        for (int y4 = yInput; y4 <= yInput; y4++) {
+                            map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                            y1++;
+                        }
+                        for (int y5 = yInput; y5 <= yInput; y5++) {
+                            map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Carrier 3x2
+        if (size == 6) {
+            // Add coordinates from user input
+            for (int y = yInput; y <= yInput; y++) {
+                for (int x = xInput; x <= xInput; x++) {
+                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                    y++;
+                    for (int y1 = yInput; y1 <= yInput; y1++) {
+                        for(int x1 = xInput; x1 <= xInput; x1++){
+                            map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                            y++;
+                            for (int y2 = yInput; y2 <= yInput; y2++) {
+                                for(int x2 = xInput; x2 <= xInput; x2++){
+                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                }
+                        }
+                        }
+                    }
+                }
+            }
         }
     }
 
+            public void printPlayerMapShips (String[][]oceanMap,int x, int y, int size){
+                // Prints the text and the line underneath the text
+                System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
+                        "                      OCEAN MAP                      " + ANSI_RESET);
 
-    // Add ship to map, under construction not done
-    // Should not be void, should return the ship
-    public void addShip(){
-        int x;
-        int y;
-        int length;
-        String ship;
+                for (int line = 1; line <= map.length; line++) {
+                    System.out.print(ANSI_BLUE + "_____" + ANSI_RESET);
+                }
 
-        ship = "D";
+                // Adding coordinates from user input
+                addCoordinateToMap(x, y, size);
 
-        System.out.println("Please add the X coordinate for your ship " + ship + ":");
-        x = input.nextInt();
-        System.out.println("Please add the Y coordinate for your ship " + ship + ":");
-        y = input.nextInt();
+                // New line to structure the [ ] with the coordinates on the side
+                System.out.println();
+
+                // Initialises the empty squares as the game board [ ]
+                for (int column = 1; column < map.length; column++) {
+                    String square = "";
+                    for (int row = 1; row < map.length; row++) {
+                        square += " [" + map[row][column] + "] ";
+                    }
+                    // Print the [ ]
+                    System.out.print(ANSI_BLUE + square + ANSI_RESET);
+
+                    // Print Y-coordinates on the side (column)
+                    System.out.println(ANSI_RED +"|" + column +"Y" + "|" + ANSI_RESET);
+                }
+
+                // Add line to separate the ocean map from the coordinates below
+                for (int line = 1; line <= map.length; line++) {
+                    System.out.print(ANSI_BLUE + "_____" + ANSI_RESET);
+                }
+                // Add new line to structure coordinates correctly below
+                System.out.println();
+
+                // Add this to center the coordinates with the [ ] in the map
+                System.out.print(" ");
+
+                // Adding X-coordinates
+                for(int k = 1; k<map.length; k++){
+                    System.out.print(ANSI_RED + "" + k + "X" + " | "+ ANSI_RESET);
+                }
+
+                System.out.println("\n" + "\n" +
+                        YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE " + ANSI_RESET + " " +
+                        BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER " + ANSI_RESET + " " +
+                        GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER " + ANSI_RESET + " " +
+                        PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP " + ANSI_RESET + " " +
+                        CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER " + ANSI_RESET
+                );
 
 
-        //map[x][y] = ship;
-
-    }
-
+                // Adding new line after the map prints
+                System.out.println("\n");
+            }
 
 }
+
+
 

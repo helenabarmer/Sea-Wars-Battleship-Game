@@ -13,6 +13,25 @@ public abstract class Player {
     //Method to shoot on the gameboard
     public void shoot(){
 
+        if(){
+            if(=={X} || =={*}){
+            }
+        else{
+
+            }
+        }
+        else {
+            if(=={}){
+
+            }
+        else if(=={X} || =={*}){
+
+            }
+        else{
+
+            }
+        }
+
     }
 
     // Method to get specific coordinates

@@ -8,7 +8,7 @@ public abstract class Player {
         this.name = name;
     }
 
-    //Method to shoot on the gameboard
+    //Method to shoot on the map
     public void shoot(){
 
     }

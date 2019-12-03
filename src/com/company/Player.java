@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Player {
 
     private String name;
@@ -12,6 +14,7 @@ public abstract class Player {
 
     //Method to shoot on the map
     public void shoot(){
+
 /*
         if(){
             if (map[x][y]=="S"||map[x][y]==""){

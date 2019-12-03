@@ -9,6 +9,8 @@ public class Human extends Player {
     ArrayList<Ship> ships = new ArrayList<>();
     ArrayList<Map> maps = new ArrayList<>();
     Map playerOneMap = new Map();
+    Position position;
+
 
     // Size of map, 10 x 10 grid
     String[][] map = new String[10][10];

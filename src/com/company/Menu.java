@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
     public Scanner getScanner() {
-        return scanner;
+        return input;
     }
 
     // Get "battle" to start the battle through the BattleShipProgram
@@ -20,16 +20,25 @@ public class Menu {
         System.out.println("1. Player VS Player (PvP)");
         System.out.println("2. Player VS Computer (PvE)");
         System.out.println("3. Quit Sea Wars");
-        int userChoice = scanner.nextInt();
-        String playerName = scanner.nextLine();
+        int userChoice = input.nextInt();
 
         switch (userChoice) {
             case 1:
-                System.out.println("Player VS Player (PvP)");
-                System.out.println("Player 1, please place your ships (6) as shown below");
-                Human player1 = new Human(playerName);
+                System.out.println("You have chosen 'Player VS Player' (PvP)");
+                // Player One...
+                System.out.println("Player 1, please type in your name");
+                Human player1 = new Human(""); // player is the input from user.
+
+                // Player Two...
+                System.out.println("Player 2, please type in your name");
+                Human player2 = new Human(""); // player is the input from user.
+                // We use player1 and player2 later in the do-while-loop, where we toggle BATTLE.
+
+                System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
+                player1.placeShips();
+                /*
                 System.out.println("Player 2, please place your ships (6) as shown below");
-                Human player2 = new Human(playerName);
+                Human player2 = new Human(playerName); */
                 //do {
 
                 // }
@@ -39,7 +48,7 @@ public class Menu {
 
             case 2:
                 System.out.println("Player VS Computer (PvE)");
-                Human human = new Human(playerName);
+                // Human human = new Human(playerName);
                 Map humanMap = new Map();
 
                 // Name of Computer will include automatically via Computer-Class

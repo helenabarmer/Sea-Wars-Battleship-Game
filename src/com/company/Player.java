@@ -7,6 +7,7 @@ public abstract class Player {
     private String name;
     public Map playerMap;
 
+
     public Player(String name){
         this.name = name;
         playerMap = new Map();
@@ -45,9 +46,13 @@ public abstract class Player {
     public void getShotCoordinates(){
     }
 
+
+
     public String getName(){
         return this.name;
     }
+
+
 
 
 

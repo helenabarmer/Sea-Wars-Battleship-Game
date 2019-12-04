@@ -125,6 +125,8 @@ public class Map {
                     switch (shipType) {
                         case "submarine":
                             map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                            Position positionSubmarine = new Position(xInput, yInput);
+                            positions.add(positionSubmarine);
                             break;
 
                         case "destroyer":

@@ -11,10 +11,10 @@ public class Main {
         player1.placeShips();
         player1.loopAndPrintShips();
 
-        Human player2 = new Human("Player 2");
+        /*Human player2 = new Human("Player 2");
         System.out.println("Welcome " + player2.getName());
         player2.placeShips();
-        player2.loopAndPrintShips();
+        player2.loopAndPrintShips();*/
 
 
 

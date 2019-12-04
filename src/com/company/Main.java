@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //BattleShipProgram battleShipProgram = new BattleShipProgram();
-        //Map map = new Map();
+        // BattleShipProgram battleShipProgram = new BattleShipProgram();
+       // Map map = new Map();
         Human player1 = new Human("Player 1");
         System.out.println("Welcome " + player1.getName());
         player1.placeShips();
@@ -15,8 +15,6 @@ public class Main {
         System.out.println("Welcome " + player2.getName());
         player2.placeShips();
         player2.loopAndPrintShips();
-
-
 
     }
 }

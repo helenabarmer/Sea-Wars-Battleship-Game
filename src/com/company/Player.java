@@ -1,9 +1,12 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Player {
 
     private String name;
     public Map playerMap;
+
 
     public Player(String name){
         this.name = name;
@@ -13,7 +16,6 @@ public abstract class Player {
     //Method to shoot on the map
     public void shoot(){
 
-        
 /*
         if(){
             if (map[x][y]=="S"||map[x][y]==""){
@@ -36,17 +38,21 @@ public abstract class Player {
         else{
                 map[x][y] = "*";
             }
-        } */
-
+        }
+*/
     }
 
     // Method to get specific coordinates
     public void getShotCoordinates(){
     }
 
+
+
     public String getName(){
         return this.name;
     }
+
+
 
 
 

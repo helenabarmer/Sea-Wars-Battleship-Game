@@ -34,15 +34,11 @@ public class Map {
     // Reset colour
     public static final String ANSI_RESET = "\u001B[0m";
 
-    // Maximum size for the map, columns and rows
-    //private int maxColumnMap = 11;
-    //private int maxRowMap = 11;
-
     //Constant size for the map
     public final static int MAP_SIZE = 11;
 
     // Map template with grid size from variables (could be user input later on)
-    String[][] map = new String[MAP_SIZE][MAP_SIZE];
+    //String[][] map = new String[MAP_SIZE][MAP_SIZE];
     ArrayList<Ship> ships = new ArrayList<>();
 
 
@@ -52,7 +48,7 @@ public class Map {
 
 
     // Printing map with empty squares [ ]
-    public void printEmptyMap() {
+    public void printEmptyMap(String map[][]) {
 
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
@@ -112,38 +108,36 @@ public class Map {
     }
 
     // Add shooting locations to map
-    public void addShootToMap(Map playerMap, int xInput, int yInput, int size, String battle){
+    public void addShootToMap(Map playerMap[][], String map[][], int xInput, int yInput, int size, String battle){
 
-        if(battle == "hit"){
-            map[xInput][yInput] = "*";
-        }
-        else if (battle == "miss"){
-            map[xInput][yInput] = "X";
-        }
-        else{
-            map[xInput][yInput] = " ";
-
-        }
-
-        /*for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             for (int y = yInput; y <= yInput; y++) {
                 y += i;
                 for (int x = xInput; x <= xInput; x++) {
-                    if(map[x][y] == "S")
-                    //if(map[x][y] != null && battle == "hit" && yInput == y){
-                        map[x][y] = "*";
+                    switch (battle) {
+                        case "hit":
+                            map[x][y] = "*";
+                            break;
 
-                    else if(map[x][y] == " "){
-                        map[x][y] = "X";}
+                        case "miss":
+                            map[x][y] = "X";
+                            break;
+
+                        default:
+                            System.out.println("Invalid");
+                            break;
                     }
 
                 }
-            }*/
+            }
         }
+    }
+
+
 
 
     // Add coordinates and ships to map
-    public void addCoordinateToMap(int xInput, int yInput, int size, String shipType) {
+    public void addCoordinateToMap(String map[][], int xInput, int yInput, int size, String shipType) {
         for (int i = 0; i < size; i++) {
             for (int y = yInput; y <= yInput; y++) {
                 y += i;
@@ -187,7 +181,7 @@ public class Map {
 
 
 
-    public void printPlayerMapShips(Map playerMap, int x, int y, int size, String shipType) {
+    public void printPlayerMapShips(String map[][], int x, int y, int size, String shipType) {
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
                 "                      OCEAN MAP                      " + ANSI_RESET);
@@ -197,7 +191,7 @@ public class Map {
         }
 
         // Adding coordinates from user input
-        addCoordinateToMap(x, y, size, shipType);
+        addCoordinateToMap(map,  x, y, size, shipType);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();
@@ -246,7 +240,7 @@ public class Map {
 
 
 
-    public void printBattle(Map playerMap, int x, int y, int size, String battle) {
+    public void printBattle(String map[][],  int x, int y, String battle) {
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
                 "                      OCEAN MAP                      " + ANSI_RESET);
@@ -256,7 +250,8 @@ public class Map {
         }
 
         // Adding coordinates from user input
-        addShootToMap(playerMap, x, y, size, battle);
+        //addShootToMap(playerMap, x, y, size, battle);
+        //addShootToMap(playerMap, map, x, y, size, battle);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();

@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class Menu {
 
+    // Creating maps for the players and computer
+    String playerOneMap[][] = new String[11][11];
+    String playerTwoMap[][] = new String[11][11];
+    Map computerMap[][] = new Map[11][11];
+
     private Scanner input = new Scanner(System.in);
 
     public Scanner getScanner() {
@@ -35,7 +40,7 @@ public class Menu {
                 // We use player1 and player2 later in the do-while-loop, where we toggle BATTLE.
 
                 System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
-                player1.placeShips();
+                player1.placeShips(playerOneMap);
                 /*
                 System.out.println("Player 2, please place your ships (6) as shown below");
                 Human player2 = new Human(playerName); */

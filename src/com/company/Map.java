@@ -34,15 +34,11 @@ public class Map {
     // Reset colour
     public static final String ANSI_RESET = "\u001B[0m";
 
-    // Maximum size for the map, columns and rows
-    //private int maxColumnMap = 11;
-    //private int maxRowMap = 11;
-
     //Constant size for the map
     public final static int MAP_SIZE = 11;
 
     // Map template with grid size from variables (could be user input later on)
-    String[][] map = new String[MAP_SIZE][MAP_SIZE];
+    //String[][] map = new String[MAP_SIZE][MAP_SIZE];
     ArrayList<Ship> ships = new ArrayList<>();
 
 
@@ -52,7 +48,7 @@ public class Map {
 
 
     // Printing map with empty squares [ ]
-    public void printEmptyMap() {
+    public void printEmptyMap(String map[][]) {
 
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
@@ -101,53 +97,24 @@ public class Map {
         }
 
         System.out.println("\n" + "\n" +
-                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE " + ANSI_RESET + " " +
-                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER " + ANSI_RESET + " " +
-                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER " + ANSI_RESET + " " +
-                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP " + ANSI_RESET + " " +
-                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER " + ANSI_RESET
+                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE (1) " + ANSI_RESET + " " +
+                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER (1) " + ANSI_RESET + " " +
+                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER (1) " + ANSI_RESET + " " +
+                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP (1) " + ANSI_RESET + " " +
+                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER (2) " + ANSI_RESET
         );
         // Adding new line after the map prints
         System.out.println("\n");
     }
 
-    // Add shooting locations to map
-    public void addShootToMap(Map playerMap, int xInput, int yInput, int size, String battle){
-
-        if(battle == "hit"){
-            map[xInput][yInput] = "*";
-        }
-        else if (battle == "miss"){
-            map[xInput][yInput] = "X";
-        }
-        else{
-            map[xInput][yInput] = " ";
-
-        }
-
-        /*for (int i = 0; i < size; i++) {
-            for (int y = yInput; y <= yInput; y++) {
-                y += i;
-                for (int x = xInput; x <= xInput; x++) {
-                    if(map[x][y] == "S")
-                    //if(map[x][y] != null && battle == "hit" && yInput == y){
-                        map[x][y] = "*";
-
-                    else if(map[x][y] == " "){
-                        map[x][y] = "X";}
-                    }
-
-                }
-            }*/
-        }
-
 
     // Add coordinates and ships to map
-    public void addCoordinateToMap(int xInput, int yInput, int size, String shipType) {
+    public void addCoordinateToMap(String map[][], int xInput, int yInput, int size, String shipType) {
         for (int i = 0; i < size; i++) {
             for (int y = yInput; y <= yInput; y++) {
                 y += i;
                 for (int x = xInput; x <= xInput; x++) {
+
                     switch (shipType) {
                         case "submarine":
                             map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
@@ -175,19 +142,22 @@ public class Map {
                             map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
                             break;
 
+                        case "battle":
+                            map[x][y] = " ";
+                            break;
+
+
                         default:
                             System.out.println("Invalid");
                             break;
                     }
-
-                }
-                    }
                 }
             }
+        }
+    }
 
 
-
-    public void printPlayerMapShips(Map playerMap, int x, int y, int size, String shipType) {
+    public void printPlayerMapShips(String map[][], int x, int y, int size, String shipType) {
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
                 "                      OCEAN MAP                      " + ANSI_RESET);
@@ -197,7 +167,7 @@ public class Map {
         }
 
         // Adding coordinates from user input
-        addCoordinateToMap(x, y, size, shipType);
+        addCoordinateToMap(map,  x, y, size, shipType);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();
@@ -231,22 +201,19 @@ public class Map {
         }
 
         System.out.println("\n" + "\n" +
-                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE " + ANSI_RESET + " " +
-                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER " + ANSI_RESET + " " +
-                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER " + ANSI_RESET + " " +
-                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP " + ANSI_RESET + " " +
-                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER " + ANSI_RESET
+                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE (1) " + ANSI_RESET + " " +
+                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER (1) " + ANSI_RESET + " " +
+                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER (1) " + ANSI_RESET + " " +
+                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP (1) " + ANSI_RESET + " " +
+                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER (2) " + ANSI_RESET
         );
 
         // Adding new line after the map prints
         System.out.println("\n");
     }
 
-
-
-
-
-    public void printBattle(Map playerMap, int x, int y, int size, String battle) {
+    
+    public void printBattle(String map[][],  int x, int y, String battle) {
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
                 "                      OCEAN MAP                      " + ANSI_RESET);
@@ -254,9 +221,6 @@ public class Map {
         for (int line = 1; line <= map.length; line++) {
             System.out.print(ANSI_BLUE + "_____" + ANSI_RESET);
         }
-
-        // Adding coordinates from user input
-        addShootToMap(playerMap, x, y, size, battle);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();
@@ -290,130 +254,16 @@ public class Map {
         }
 
         System.out.println("\n" + "\n" +
-                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE " + ANSI_RESET + " " +
-                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER " + ANSI_RESET + " " +
-                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER " + ANSI_RESET + " " +
-                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP " + ANSI_RESET + " " +
-                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER " + ANSI_RESET
+                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE (1) " + ANSI_RESET + " " +
+                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER (1) " + ANSI_RESET + " " +
+                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER (1) " + ANSI_RESET + " " +
+                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP (1) " + ANSI_RESET + " " +
+                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER (2) " + ANSI_RESET
         );
-
         // Adding new line after the map prints
         System.out.println("\n");
     }
-
 
 }
-
-
-
-    // First version of addCoordinateToMap()
-    /*private void addCoordinateToMap(int xInput, int yInput, int size) {
-
-        // Submarine
-        if (size == 3) {
-            // Add coordinates from user input
-            for (int y = yInput; y <= yInput; y++) {
-                for (int x = xInput; x <= xInput; x++) {
-                    map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
-                    y++;
-                    for (int y1 = yInput; y1 <= yInput; y1++) {
-                        map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
-                        y++;
-                        for (int y2 = yInput; y2 <= yInput; y2++) {
-                            map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Destroyer
-        if (size == 2) {
-            // Add coordinates from user input
-            for (int y = yInput; y <= yInput; y++) {
-                for (int x = xInput; x <= xInput; x++) {
-                    map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
-                    y++;
-                    for (int y1 = yInput; y1 <= yInput; y1++) {
-                        map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
-                    }
-                }
-            }
-        }
-
-        // Cruiser
-        if (size == 4) {
-            // Add coordinates from user input
-            for (int y1 = yInput; y1 <= yInput; y1++) {
-                for (int x = xInput; x <= xInput; x++) {
-                    map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                    y1++;
-                    for (int y2 = yInput; y2 <= yInput; y2++) {
-                        map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                        y1++;
-                        for (int y3 = yInput; y3 <= yInput; y3++) {
-                            map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                            y1++;
-                        }
-                        for (int y4 = yInput; y4 <= yInput; y4++) {
-                            map[x][y1] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                        }
-                    }
-                }
-            }
-        }
-
-
-        // Battleship
-        if (size == 5) {
-            // Add coordinates from user input
-            for (int y1 = yInput; y1 <= yInput; y1++) {
-                for (int x = xInput; x <= xInput; x++) {
-                    map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                    y1++;
-                    for (int y2 = yInput; y2 <= yInput; y2++) {
-                        map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                        y1++;
-                        for (int y3 = yInput; y3 <= yInput; y3++) {
-                            map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                            y1++;
-                        }
-                        for (int y4 = yInput; y4 <= yInput; y4++) {
-                            map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                            y1++;
-                        }
-                        for (int y5 = yInput; y5 <= yInput; y5++) {
-                            map[x][y1] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Carrier 3x2
-        if (size == 6) {
-            // Add coordinates from user input
-            for (int y = yInput; y <= yInput; y++) {
-                for (int x = xInput; x <= xInput; x++) {
-                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                    y++;
-                    for (int y1 = yInput; y1 <= yInput; y1++) {
-                        for(int x1 = xInput; x1 <= xInput; x1++){
-                            map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                            y++;
-                            for (int y2 = yInput; y2 <= yInput; y2++) {
-                                for(int x2 = xInput; x2 <= xInput; x2++){
-                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }*/
-
-
-
 
 

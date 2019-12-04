@@ -43,8 +43,8 @@ public abstract class Player {
     }
 
     // Method to get specific coordinates
-    public void getShotCoordinates(){
-    }
+    //public void getShotCoordinates(){
+    //}
 
 
 

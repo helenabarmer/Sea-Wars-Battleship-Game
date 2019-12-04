@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class Menu {
 
+    // Creating maps for the players and computer
+    String playerOneMap[][] = new String[11][11];
+    String playerTwoMap[][] = new String[11][11];
+    Map computerMap[][] = new Map[11][11];
+
     private Scanner input = new Scanner(System.in);
 
     // Get "battle" to start the battle through the BattleShipProgram
@@ -33,11 +38,20 @@ public class Menu {
                 Human player2 = new Human(playerTwoName);
                 System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
 
+
+                System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
+                player1.placeShips(playerOneMap);
+                /*
+                System.out.println("Player 2, please place your ships (6) as shown below");
+                Human player2 = new Human(playerName); */
+                //do {
+
                 System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
-                player1.placeShips();
+                player1.placeShips(playerOneMap);
+
 
                 System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
-                player2.placeShips();
+                player2.placeShips(playerTwoMap);
 
                 //do {
                         // We use player1 and player2 in the do-while-loop, where we toggle turns.
@@ -58,7 +72,7 @@ public class Menu {
                 System.out.println("You'll be playing against the" + " " + computer.getName() + "\n");
 
                 System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
-                human.placeShips();
+                human.placeShips(playerOneMap);
                 // Map computerMap = new Map();
                 break;
                 //do battle {

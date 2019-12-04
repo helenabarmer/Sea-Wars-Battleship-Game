@@ -27,6 +27,25 @@ public class Human extends Player {
 
     }
 
+    public void testShoot(){
+        for(Ship ship: ships){
+            System.out.println("Enter X-coordinate: ");
+            int xShoot = input.nextInt();
+            System.out.println("Enter Y-coordinate: ");
+            int yShoot = input.nextInt();
+            if(xShoot == ship.getPosX() && yShoot == ship.getPosY()){
+                System.out.println("HIT!");
+            }
+            else{
+                System.out.println("MISS!");
+            }
+
+        }
+
+        }
+
+
+
     // Shoot method against ships
     public void shoot(){
         for(Ship ship: ships){
@@ -39,7 +58,7 @@ public class Human extends Player {
                 for (int y = yShoot; y <= yShoot; y++) {
                     y += i;
                     for (int x = xShoot; x <= xShoot; x++) {
-                        if(xShoot == ship.getPosX() && yShoot == ship.getPosY()){
+                        if(xShoot == ship.getPosX() && yShoot == ship.getPosY() ||  yShoot == ship.getSize()){
                             playerMap.printBattle(playerMap, xShoot, yShoot, ship.getSize(), "hit");
                             System.out.println("HIT!");
                         }
@@ -50,8 +69,6 @@ public class Human extends Player {
                     }
                 }
             }
-
-
         }
 
 
@@ -180,8 +197,6 @@ public class Human extends Player {
 
                     // Printing information about the added ship
                     //loopAndPrintShips(carrier);
-
-
                     break;
 
                 case "carrier2":
@@ -209,12 +224,17 @@ public class Human extends Player {
             }
         }
 
-        shoot();
-
         // Add map to ArrayList
         maps.add(playerMap);
+
+        // TEST
+        for(Ship ship: ships){
+            System.out.println("TEST! "+ship.getPos());
+        }
+
         System.out.println(playerMap.positions.toString());
-        System.out.println(playerMap.positions.isEmpty());
+        shoot();
+
     }
 
 

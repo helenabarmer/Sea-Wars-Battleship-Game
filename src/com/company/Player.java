@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Player {
 
     private String name;
@@ -13,7 +15,6 @@ public abstract class Player {
     //Method to shoot on the map
     public void shoot(){
 
-        
 /*
         if(){
             if (map[x][y]=="S"||map[x][y]==""){
@@ -36,8 +37,8 @@ public abstract class Player {
         else{
                 map[x][y] = "*";
             }
-        } */
-
+        }
+*/
     }
 
     // Method to get specific coordinates
@@ -50,5 +51,5 @@ public abstract class Player {
 
 
 
-*/
+
 }

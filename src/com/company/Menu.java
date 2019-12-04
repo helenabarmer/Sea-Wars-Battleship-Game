@@ -30,7 +30,7 @@ public class Menu {
                 Human player1 = new Human(playerName);
                 System.out.println("Player 2, please place your ships (6) as shown below");
                 Human player2 = new Human(playerName);
-                //do battle {
+                //do {
 
                 // }
                 // while {

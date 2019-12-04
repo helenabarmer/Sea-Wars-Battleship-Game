@@ -20,10 +20,12 @@ public class Human extends Player {
 
     public Human(String name) {
         super(name);
+
         System.out.println("Please enter your name: ");
         name = input.nextLine();
         System.out.println("Hello" + " " + name + "!");
         // Keep printed string above, otherwise "name" won't be useful.
+
     }
 
     // All added coordinates
@@ -54,10 +56,7 @@ public class Human extends Player {
                 System.out.println("HIT!");
                 playerMap[xShoot][yShoot] = "*";
             }
-            else if (playerMap[xShoot][yShoot].contains("D")) {
-                System.out.println("HIT!");
-                playerMap[xShoot][yShoot] = "*";
-            }
+
             else if (playerMap[xShoot][yShoot].contains("C")) {
                 System.out.println("HIT!");
                 playerMap[xShoot][yShoot] = "*";

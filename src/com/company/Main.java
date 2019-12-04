@@ -4,12 +4,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String playerOneMap[][] = new String[11][11];
-        String playerTwoMap[][] = new String[11][11];
+
+        //String playerOneMap[][] = new String[11][11];
+        //String playerTwoMap[][] = new String[11][11];
 
         // BattleShipProgram battleShipProgram = new BattleShipProgram();
+
+        BattleShipProgram battleShipProgram = new BattleShipProgram();
+
        // Map map = new Map();
-        Human player1 = new Human("Player 1");
+        /*Human player1 = new Human("Player 1");
         System.out.println("Welcome " + player1.getName());
         player1.placeShips(playerOneMap);
         player1.loopAndPrintShips();
@@ -18,6 +22,6 @@ public class Main {
         System.out.println("Welcome " + player2.getName());
         player2.placeShips(playerTwoMap);
         player2.loopAndPrintShips();
-
+        */
     }
 }

@@ -27,118 +27,64 @@ public class Human extends Player {
     // All added coordinates
     public void getShotCoordinates() {
         for(Ship ship: ships){
-            //x = ship.getPosX();
-            //y = ship.getPosY();
             System.out.println(ship.getPosX());
             System.out.println(ship.getPosY());
         }
-        //return new int [] {x, y};
     }
 
-    public void testShoot(String playerMap[][]){
+    public void shoot(String playerMap[][]){
+
+        int hitCount = 0;
+
+        // Initialize 2D matrix map
+        for (int y = 1; y < testMap.length; y++) {
+            for (int x = 1; x < testMap.length; x++) {
+                testMap[x][y] = " ";
+            }}
 
         for(int i =0; i<=5; i++){
-        System.out.println("Enter X-coordinate: ");
+        System.out.println("Shoot! Enter X-coordinate: ");
         int xShoot = input.nextInt();
-        System.out.println("Enter Y-coordinate: ");
-        int yShoot = input.nextInt();
-        String s = " ";
-
-            if (playerMap[xShoot][yShoot].contains("S")) {
-                System.out.println("HIT!");
-                playerMap[xShoot][yShoot] = "*";
-            }
-            else if (playerMap[xShoot][yShoot].contains("D")) {
-                System.out.println("HIT!");
-                playerMap[xShoot][yShoot] = "*";
-            }
-
-            else if (playerMap[xShoot][yShoot].contains("C")) {
-                System.out.println("HIT!");
-                playerMap[xShoot][yShoot] = "*";
-            }
-            else if (playerMap[xShoot][yShoot].contains("B")) {
-                System.out.println("HIT!");
-                playerMap[xShoot][yShoot] = "*";
-            }
-            else if (playerMap[xShoot][yShoot].contains("c")) {
-                System.out.println("HIT!");
-                playerMap[xShoot][yShoot] = "*";
-            }
-            else {
-                System.out.println("MISS!");
-                playerMap[xShoot][yShoot] = "X";
-
-            }
-
-        /*if(playerMap[xShoot][yShoot].equals("S")){
-            System.out.println("HIT!");
-            playerMap[xShoot][yShoot] = "*";
-        }
-        else if(playerMap[xShoot][yShoot].equals("D")){
-            System.out.println("MISS!");
-            playerMap[xShoot][yShoot] = "X";
-        }
-        else if(playerMap[xShoot][yShoot].equals(" ")){
-            System.out.println("MISS!");
-            playerMap[xShoot][yShoot] = "X";
-        }
-        else{
-            System.out.println("INVALID!");
-        }*/
-
-        map.printBattle(playerMap, xShoot, yShoot, "battle");
-
-        /*for(Ship ship: ships){
-            map.printBattle(playerMap, testMap, xShoot, yShoot, ship.getSize(), "battle");
-        }*/
-
-        }
-
-        }
-
-
-
-    // Shoot method against ships
-    public void shoot(Map playerMap[][]){
-
-        /*System.out.println("Enter X-coordinate: ");
-        int xShoot = input.nextInt();
-        System.out.println("Enter Y-coordinate: ");
+        System.out.println("Shoot! Enter Y-coordinate: ");
         int yShoot = input.nextInt();
 
-        if(playerMap.equals("S")){
-            System.out.println("HIT!");
-           // String[xShoot][yShoot] = "*";
-        }
-        else{
-            System.out.println("MISS!");
-        }
-
-
-        for(Ship ship: ships){
-            System.out.println("Enter X-coordinate: ");
-            int xShoot = input.nextInt();
-            System.out.println("Enter Y-coordinate: ");
-            int yShoot = input.nextInt();
-
-            for (int i = 0; i < ship.getSize(); i++) {
-                for (int y = yShoot; y <= yShoot; y++) {
-                    y += i;
-                    for (int x = xShoot; x <= xShoot; x++) {
-                        if(xShoot == ship.getPosX() && yShoot == ship.getPosY() ||  yShoot == ship.getSize()){
-                            map.printBattle(playerMap, xShoot, yShoot, ship.getSize(), "hit");
-                            System.out.println("HIT!");
-                        }
-                        else{
-                            map.printBattle(playerMap, xShoot, yShoot, ship.getSize(), "miss");
-                            System.out.println("MISS!");
-                        }
+                    if (playerMap[xShoot][yShoot].contains("S")) {
+                        System.out.println("HIT!");
+                        testMap[xShoot][yShoot] = "*";
+                        hitCount++;
                     }
-                }
-            }
-        }*/
-    }
+                    else if (playerMap[xShoot][yShoot].contains("D")) {
+                        System.out.println("HIT!");
+                        testMap[xShoot][yShoot] = "*";
+                        hitCount++;
+                    }
+
+                    else if (playerMap[xShoot][yShoot].contains("C")) {
+                        System.out.println("HIT!");
+                        testMap[xShoot][yShoot] = "*";
+                        hitCount++;
+                    }
+                    else if (playerMap[xShoot][yShoot].contains("B")) {
+                        System.out.println("HIT!");
+                        testMap[xShoot][yShoot] = "*";
+                        hitCount++;
+                    }
+                    else if (playerMap[xShoot][yShoot].contains("c")) {
+                        System.out.println("HIT!");
+                        testMap[xShoot][yShoot] = "*";
+                        hitCount++;
+                    }
+                    else if(playerMap[xShoot][yShoot].contains(" ")) {
+                        System.out.println("MISS!");
+                        testMap[xShoot][yShoot] = "X";
+                    }
+
+            System.out.println("Number of hits: " + hitCount);
+
+                map.printBattle(testMap, xShoot, yShoot, "battle");
+        }
+        }
+
 
     public void placeShips(String playerMap[][]) {
         // Adding ship sizes
@@ -156,14 +102,10 @@ public class Human extends Player {
         String typeCarrier1 = "carrier1";
         String typeCarrier2 = "carrier2";
 
-        // Array of ship sizes
-        // int[] shipSizes = {submarineSize, destroyerSize, cruiserSize, battleshipSize, carrier1Size, carrier2Size};
-
         // Array of ship names
         String[] shipNames = {typeSubmarine, typeDestroyer, typeCruiser, typeBattleship, typeCarrier1, typeCarrier2};
 
         // Printing the empty map to see the coordinates
-
         map.printEmptyMap(playerMap);
 
 
@@ -301,8 +243,7 @@ public class Human extends Player {
 
         System.out.println(map.positions.toString());
         //shoot();
-        testShoot(playerMap);
-
+        shoot(playerMap);
     }
 
 

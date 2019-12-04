@@ -114,34 +114,33 @@ public class Map {
     // Add shooting locations to map
     public void addShootToMap(Map playerMap, int xInput, int yInput, int size, String battle){
 
-        for (int i = 0; i < size; i++) {
-            for (int y = yInput; y <= yInput; y++) {
-                y += i;
-                for (int x = xInput; x <= xInput; x++) {
-                    if(map[x][y] != null && battle == "hit" && yInput == y){
-                        map[x][y] = "*";
-                    }
-                    else if(battle == "miss"){
-                        map[x][y] = "X";}
-                }
-            }
+        if(battle == "hit"){
+            map[xInput][yInput] = "*";
         }
+        else if (battle == "miss"){
+            map[xInput][yInput] = "X";
+        }
+        else{
+            map[xInput][yInput] = " ";
 
-
+        }
 
         /*for (int i = 0; i < size; i++) {
             for (int y = yInput; y <= yInput; y++) {
                 y += i;
                 for (int x = xInput; x <= xInput; x++) {
-                    if(xInput == x && yInput == y && battle == "hit"){
+                    if(map[x][y] == "S")
+                    //if(map[x][y] != null && battle == "hit" && yInput == y){
                         map[x][y] = "*";
-                    }
-                    else{
+
+                    else if(map[x][y] == " "){
                         map[x][y] = "X";}
+                    }
+
                 }
-            }
-        }*/
-    }
+            }*/
+        }
+
 
     // Add coordinates and ships to map
     public void addCoordinateToMap(int xInput, int yInput, int size, String shipType) {
@@ -179,7 +178,9 @@ public class Map {
                         default:
                             System.out.println("Invalid");
                             break;
-                    }}
+                    }
+
+                }
                     }
                 }
             }

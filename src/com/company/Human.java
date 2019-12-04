@@ -17,6 +17,9 @@ public class Human extends Player {
 
     public Human(String name) {
         super(name);
+        name = input.nextLine();
+        System.out.println("Hello" + " " + name + "!");
+        // Keep printed string above, otherwise "name" won't be useful.
     }
 
     public void getShotCoordinates() {

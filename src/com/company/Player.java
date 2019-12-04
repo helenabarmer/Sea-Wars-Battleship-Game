@@ -46,9 +46,13 @@ public abstract class Player {
     public void getShotCoordinates(){
     }
 
+
+
     public String getName(){
         return this.name;
     }
+
+
 
 
 

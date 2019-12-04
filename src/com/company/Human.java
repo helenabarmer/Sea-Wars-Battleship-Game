@@ -22,6 +22,7 @@ public class Human extends Player {
         // Keep printed string above, otherwise "name" won't be useful.
     }
 
+    // All added coordinates
     public void getShotCoordinates() {
         for(Ship ship: ships){
             System.out.println(ship.getPosX());
@@ -53,11 +54,7 @@ public class Human extends Player {
                     }
                 }
             }
-
-
         }
-
-
     }
 
     public void placeShips() {

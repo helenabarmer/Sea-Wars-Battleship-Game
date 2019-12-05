@@ -21,7 +21,6 @@ It does not matter if you place a boat horizontally or vertically.
 Each player takes turns to say the coordinates of a space(for example, A3 or D9), this place is shoot, meaning that the other player has to tell you if you hit any of their ships(though not which one) or if you missed. If you hit all the spaces that a ship was occupying the player has to tell you that you sunk a ship. The winner is the player who has sunk all his opponenets ships(hit all their ships).
 
 
-While these rules are the core of the game, as mentioned above there is a new trend of making it so that you can do more then just shoot. This means giving the ships or players special abilities that they can use. This is something we took into account, giving us two ships with abilities, the submarines(1 of the 3 1x3 size ship) have the ability to dive under water, which makes it so it cant be hit, and the destroyer(The 1x2 size ships) has the ability to hit the submarine even if it uses its ability.
 
 We as a grupp have made this game, and it wouldn't have been possible without all of their help.
 

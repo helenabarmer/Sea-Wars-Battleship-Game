@@ -34,86 +34,90 @@ public class Human extends Player {
         }
     }
 
-    public boolean shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2){
+    public void shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2){
 
         boolean gameOver = false;
-        int hitsPlayer1 = 0;
-        int hitsPlayer2 = 0;
 
-        String ships[] = {"S", "D", "C", "B", "c"};
+        do {
+            int hitsPlayer1 = 0;
+            int hitsPlayer2 = 0;
 
-        // PLAYER 1
+            String ships[] = {"S", "D", "C", "B", "c"};
 
-        // Initialize 2D matrix map
-        for (int y = 1; y < battleMap2.length; y++) {
-            for (int x = 1; x < battleMap2.length; x++) {
-                battleMap2[x][y] = " ";
+            // PLAYER 1
+
+            // Initialize 2D matrix map
+            for (int y = 1; y < battleMap2.length; y++) {
+                for (int x = 1; x < battleMap2.length; x++) {
+                    battleMap2[x][y] = " ";
+                }
             }
-        }
 
-        System.out.println("Your turn to shoot " + player1 + "!");
-        System.out.println("Shoot! Enter X-coordinate: ");
-        int xShoot = input.nextInt();
-        System.out.println("Shoot! Enter Y-coordinate: ");
-        int yShoot = input.nextInt();
+            System.out.println("Your turn to shoot " + player1 + "!");
+            System.out.println("Shoot! Enter X-coordinate: ");
+            int xShoot = input.nextInt();
+            System.out.println("Shoot! Enter Y-coordinate: ");
+            int yShoot = input.nextInt();
 
-        for(int i =0; i<ships.length; i++){
-            if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
-                System.out.println("HIT!");
-                battleMap2[xShoot][yShoot] = "*";
-                hitsPlayer1++;
+            for(int i =0; i<ships.length; i++){
+                if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
+                    System.out.println("HIT!");
+                    battleMap2[xShoot][yShoot] = "*";
+                    hitsPlayer1++;
+                }
+                else if(playerTwoMap[xShoot][yShoot].contains(" ")) {
+                    System.out.println("MISS!");
+                    battleMap2[xShoot][yShoot] = "X";
+                }
             }
-            else if(playerTwoMap[xShoot][yShoot].contains(" ")) {
-                System.out.println("MISS!");
-                battleMap2[xShoot][yShoot] = "X";
+
+
+            // PLAYER 2
+
+            // Initialize 2D matrix map
+            for (int y = 1; y < battleMap1.length; y++) {
+                for (int x = 1; x < battleMap1.length; x++) {
+                    battleMap1[x][y] = " ";
+                }
             }
-        }
 
+            System.out.println("Your turn to shoot " + player2 + "!");
+            System.out.println("Shoot! Enter X-coordinate: ");
+            xShoot = input.nextInt();
+            System.out.println("Shoot! Enter Y-coordinate: ");
+            yShoot = input.nextInt();
 
-        // PLAYER 2
-
-        // Initialize 2D matrix map
-        for (int y = 1; y < battleMap1.length; y++) {
-            for (int x = 1; x < battleMap1.length; x++) {
-                battleMap1[x][y] = " ";
+            for(int i =0; i<ships.length; i++){
+                if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
+                    System.out.println("HIT!");
+                    battleMap1[xShoot][yShoot] = "*";
+                    hitsPlayer2++;
+                }
+                else if(playerOneMap[xShoot][yShoot].contains(" ")) {
+                    System.out.println("MISS!");
+                    battleMap1[xShoot][yShoot] = "X";
+                }
             }
-        }
 
-        System.out.println("Your turn to shoot " + player2 + "!");
-        System.out.println("Shoot! Enter X-coordinate: ");
-        xShoot = input.nextInt();
-        System.out.println("Shoot! Enter Y-coordinate: ");
-        yShoot = input.nextInt();
+            map.printBattle(battleMap2, xShoot, yShoot, "battle");
+            map.printBattle(battleMap1, xShoot, yShoot, "battle");
 
-        for(int i =0; i<ships.length; i++){
-            if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
-                System.out.println("HIT!");
-                battleMap1[xShoot][yShoot] = "*";
-                hitsPlayer2++;
+
+            System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
+            System.out.println("Number of hits for " + player2 + " is: " + hitsPlayer2);
+
+
+            if(hitsPlayer1>=20){
+                gameOver = true;
+                System.out.println(player1 + " wins! GAME OVER FOR " + player2);
             }
-            else if(playerOneMap[xShoot][yShoot].contains(" ")) {
-                System.out.println("MISS!");
-                battleMap1[xShoot][yShoot] = "X";
+            else if(hitsPlayer2>=20){
+                gameOver = true;
+                System.out.println(player2 + " wins! GAME OVER FOR " + player1);
             }
-        }
 
-        map.printBattle(battleMap2, xShoot, yShoot, "battle");
-        map.printBattle(battleMap1, xShoot, yShoot, "battle");
+        }while(gameOver);
 
-
-        System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
-        System.out.println("Number of hits for " + player2 + " is: " + hitsPlayer2);
-
-
-        if(hitsPlayer1>=20){
-            gameOver = true;
-            System.out.println(player1 + " wins! GAME OVER FOR " + player2);
-        }
-        else if(hitsPlayer2>=20){
-            gameOver = true;
-            System.out.println(player2 + " wins! GAME OVER FOR " + player1);
-        }
-        return gameOver;
         }
 
 

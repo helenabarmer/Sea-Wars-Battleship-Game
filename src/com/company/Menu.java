@@ -54,10 +54,11 @@ public class Menu {
                 System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
                 player2.placeShips(playerTwoMap, player2.getName());
 
-                do{
+
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
-                }
-                while(false);
+
+
+
 
 
 

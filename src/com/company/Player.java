@@ -15,7 +15,7 @@ public abstract class Player {
 
 
     //Method to shoot on the map
-    public void shoot(){
+    public void shoot(String[][] playerOneMap, String[][] computerMap, String name){
 
 /*
         if(){

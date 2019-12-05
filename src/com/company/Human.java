@@ -288,8 +288,16 @@ public class Human extends Player {
     private int[] userInputCoordinates(String shipType, int size){
         System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
         int xInput = input.nextInt();
+        while (xInput < 0 || xInput > 10) {
+            System.out.println("Please Enter Valid Coordinate");
+            xInput = input.nextInt();
+        }
         System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
         int yInput = input.nextInt();
+        while (yInput < 0 || yInput > 10) {
+            System.out.println("Please Enter Valid Coordinate");
+            yInput = input.nextInt();
+        }
 
 
             return new int [] {xInput, yInput};

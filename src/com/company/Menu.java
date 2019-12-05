@@ -24,6 +24,8 @@ public class Menu {
         int userChoice = input.nextInt();
         Scanner inputFromUser = new Scanner(System.in);
 
+
+
         switch (userChoice) {
             case 1:
                 System.out.println("You have chosen 'Player VS Player' (PvP)" + "\n");

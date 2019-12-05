@@ -43,10 +43,12 @@ public class Menu {
                     Human player2 = new Human(playerTwoName);
                     System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
 
+                    /*
                     System.out.println("Player 2, please type in your name");
                     String playerTwoName = inputFromUser.nextLine();
                     Human player2 = new Human(playerTwoName);
                     System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
+                     */
 
                     //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
                     //player1.placeShips(playerOneMap);

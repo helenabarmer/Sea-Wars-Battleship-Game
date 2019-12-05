@@ -291,7 +291,9 @@ public class Human extends Player {
         System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
         int yInput = input.nextInt();
 
-        return new int [] {xInput, yInput};
+
+            return new int [] {xInput, yInput};
+
     }
 
         // Looping through ArrayList of ships and printing information about them

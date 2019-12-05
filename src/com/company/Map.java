@@ -110,51 +110,54 @@ public class Map {
 
     // Add coordinates and ships to map
     public void addCoordinateToMap(String map[][], int xInput, int yInput, int size, String shipType) {
-        for (int i = 0; i < size; i++) {
-            for (int y = yInput; y <= yInput; y++) {
-                y += i;
-                for (int x = xInput; x <= xInput; x++) {
 
-                    switch (shipType) {
-                        case "submarine":
-                            map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
-                            positionSubmarine = new Position(xInput, yInput);
-                            positions.add(positionSubmarine);
-                            break;
+            for (int i = 0; i < size; i++) {
+                for (int y = yInput; y <= yInput; y++) {
+                    y += i;
+                    for (int x = xInput; x <= xInput; x++) {
 
-                        case "destroyer":
-                            map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                        switch (shipType) {
+                            case "submarine":
+                                map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                                positionSubmarine = new Position(xInput, yInput);
+                                positions.add(positionSubmarine);
+                                break;
 
-                        case "cruiser":
-                            map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                            case "destroyer":
+                                map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                                break;
 
-                        case "battleship":
-                            map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                            case "cruiser":
+                                map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                                break;
 
-                        case "carrier1":
-                            map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                            case "battleship":
+                                map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                                break;
 
-                        case "carrier2":
-                            map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                            case "carrier1":
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                break;
 
-                        case "battle":
-                            map[x][y] = " ";
-                            break;
+                            case "carrier2":
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "battle":
+                                map[x][y] = " ";
+                                break;
 
 
-                        default:
-                            System.out.println("Invalid");
-                            break;
+                            default:
+                                System.out.println("Invalid");
+                                break;
+                        }
                     }
                 }
             }
         }
-    }
+
+
 
 
     public void printPlayerMapShips(String map[][], int x, int y, int size, String shipType) {

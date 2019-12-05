@@ -37,6 +37,7 @@ public class Human extends Player {
     public boolean shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2){
 
         boolean gameOver = false;
+
         int hitsPlayer1 = 0;
         int hitsPlayer2 = 0;
 
@@ -115,8 +116,6 @@ public class Human extends Player {
         }
         return gameOver;
         }
-
-
 
 
     public void placeShips(String playerMap[][], String playerName) {

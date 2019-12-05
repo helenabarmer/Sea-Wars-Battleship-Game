@@ -57,7 +57,7 @@ public class Menu {
                 do{
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
                 }
-                while(false);
+                while(true);
 
 
 

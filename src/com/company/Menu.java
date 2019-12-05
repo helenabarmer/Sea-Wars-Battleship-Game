@@ -39,19 +39,28 @@ public class Menu {
                 System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
 
 
-                System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
-                player1.placeShips(playerOneMap);
+                //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
+                //player1.placeShips(playerOneMap);
+
                 /*
                 System.out.println("Player 2, please place your ships (6) as shown below");
                 Human player2 = new Human(playerName); */
                 //do {
 
                 System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
-                player1.placeShips(playerOneMap);
+                player1.placeShips(playerOneMap, player1.getName());
 
 
                 System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
-                player2.placeShips(playerTwoMap);
+                player2.placeShips(playerTwoMap, player2.getName());
+
+                do{
+                    player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
+                }
+                while(false);
+
+
+
 
                 //do {
                         // We use player1 and player2 in the do-while-loop, where we toggle turns.
@@ -72,7 +81,7 @@ public class Menu {
                 System.out.println("You'll be playing against the" + " " + computer.getName() + "\n");
 
                 System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
-                human.placeShips(playerOneMap);
+                human.placeShips(playerOneMap, human.getName());
                 // Map computerMap = new Map();
                 break;
                 //do battle {

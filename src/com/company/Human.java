@@ -71,7 +71,7 @@ public class Human extends Player {
                 battleMap2[xShoot][yShoot] = "X";
             }
             if (hitsPlayer1 == 20) {
-                System.out.println(player1 + "WINS! GAME OVER FOR: " + player2);
+                System.out.println(player1 + " " + "WINS! GAME OVER FOR: " + player2);
                 break;
             }
 

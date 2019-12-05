@@ -10,28 +10,24 @@ public class Menu {
     Map computerMap[][] = new Map[11][11];
 
     private Scanner input = new Scanner(System.in);
+    private boolean gameStillRunning;
 
-    private boolean gameIsRunning;
-
-    public boolean isGameIsRunning() {
-        return gameIsRunning;
+    public boolean isGameStillRunning() {
+        return gameStillRunning;
     }
-    // Get "battle" to start the battle through the BattleShipProgram
-    // BattleShipProgram battle = new BattleShipProgram();
 
     //Switch case to present MENU; Gives user three options.
     public void Choices() {
 
-        System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
-        System.out.println("1. Player VS Player (PvP)");
-        System.out.println("2. Player VS Computer (PvE)");
-        System.out.println("3. Quit");
-        int userChoice = input.nextInt();
-        Scanner inputFromUser = new Scanner(System.in);
-
-
-
         do {
+
+            System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
+            System.out.println("1. Player VS Player (PvP)");
+            System.out.println("2. Player VS Computer (PvE)");
+            System.out.println("3. Quit");
+            int userChoice = input.nextInt();
+            Scanner inputFromUser = new Scanner(System.in);
+
 
             switch (userChoice) {
                 case 1:
@@ -47,6 +43,13 @@ public class Menu {
                     Human player2 = new Human(playerTwoName);
                     System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
 
+                    System.out.println("Player 2, please type in your name");
+                    String playerTwoName = inputFromUser.nextLine();
+                    Human player2 = new Human(playerTwoName);
+                    System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
+
+                    //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
+                    //player1.placeShips(playerOneMap);
 
                     //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
                     //player1.placeShips(playerOneMap);
@@ -54,7 +57,7 @@ public class Menu {
                 /*
                 System.out.println("Player 2, please place your ships (6) as shown below");
                 Human player2 = new Human(playerName); */
-                    //do {
+
 
                     System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
                     player1.placeShips(playerOneMap, player1.getName());
@@ -65,6 +68,8 @@ public class Menu {
 
 
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
+
+                    break;
 
                 case 2:
                     System.out.println("You have chosen 'Player VS Computer' (PvE)" + "\n \n" + "Please enter your name:");
@@ -84,10 +89,9 @@ public class Menu {
 
                 case 3:
                     System.out.println("You will now Quit Sea Wars");
-                    break;
+                    System.exit(0); // Shuts down program
             }
-        }
-        while (gameIsRunning = true);
+        } while (gameStillRunning = true);
     }
 }
 

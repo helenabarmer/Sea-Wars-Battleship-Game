@@ -11,6 +11,11 @@ public class Menu {
 
     private Scanner input = new Scanner(System.in);
 
+    private boolean gameIsRunning;
+
+    public boolean isGameIsRunning() {
+        return gameIsRunning;
+    }
     // Get "battle" to start the battle through the BattleShipProgram
     // BattleShipProgram battle = new BattleShipProgram();
 
@@ -26,72 +31,64 @@ public class Menu {
 
 
 
-        switch (userChoice) {
-            case 1:
-                System.out.println("You have chosen 'Player VS Player' (PvP)" + "\n");
+        do {
 
-                System.out.println("Player 1, please type in your name");
-                String playerOneName = inputFromUser.nextLine();
-                Human player1 = new Human(playerOneName); // playerOneName is the input from user.
-                System.out.println("Welcome" + " " + player1.getName() + "!" + "\n");
+            switch (userChoice) {
+                case 1:
+                    System.out.println("You have chosen 'Player VS Player' (PvP)" + "\n");
 
-                System.out.println("Player 2, please type in your name");
-                String playerTwoName = inputFromUser.nextLine();
-                Human player2 = new Human(playerTwoName);
-                System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
+                    System.out.println("Player 1, please type in your name");
+                    String playerOneName = inputFromUser.nextLine();
+                    Human player1 = new Human(playerOneName); // playerOneName is the input from user.
+                    System.out.println("Welcome" + " " + player1.getName() + "!" + "\n");
+
+                    System.out.println("Player 2, please type in your name");
+                    String playerTwoName = inputFromUser.nextLine();
+                    Human player2 = new Human(playerTwoName);
+                    System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
 
 
-                //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
-                //player1.placeShips(playerOneMap);
+                    //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
+                    //player1.placeShips(playerOneMap);
 
                 /*
                 System.out.println("Player 2, please place your ships (6) as shown below");
                 Human player2 = new Human(playerName); */
-                //do {
+                    //do {
 
-                System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
-                player1.placeShips(playerOneMap, player1.getName());
+                    System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
+                    player1.placeShips(playerOneMap, player1.getName());
 
 
-                System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
-                player2.placeShips(playerTwoMap, player2.getName());
+                    System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
+                    player2.placeShips(playerTwoMap, player2.getName());
 
 
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
 
-                //do {
-                        // We use player1 and player2 in the do-while-loop, where we toggle turns.
-                // }
-                // while {
-                // }
-                // break;
+                case 2:
+                    System.out.println("You have chosen 'Player VS Computer' (PvE)" + "\n \n" + "Please enter your name:");
 
-            case 2:
-                System.out.println("You have chosen 'Player VS Computer' (PvE)" + "\n \n" + "Please enter your name:");
+                    String humanName = inputFromUser.nextLine();
+                    Human human = new Human(humanName);
+                    System.out.println("Welcome" + " " + human.getName() + "!");
 
-                String humanName = inputFromUser.nextLine();
-                Human human = new Human(humanName);
-                System.out.println("Welcome" + " " + human.getName() + "!");
+                    // Name of Computer will include automatically via Computer-Class
+                    Computer computer = new Computer();
+                    System.out.println("You'll be playing against the" + " " + computer.getName() + "\n");
 
-                // Name of Computer will include automatically via Computer-Class
-                Computer computer = new Computer();
-                System.out.println("You'll be playing against the" + " " + computer.getName() + "\n");
+                    System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
+                    human.placeShips(playerOneMap, human.getName());
+                    // Map computerMap = new Map();
+                    break;
 
-                System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
-                human.placeShips(playerOneMap, human.getName());
-                // Map computerMap = new Map();
-                break;
-                //do battle {
-
-                // }
-                // while {
-                // }
-            case 3:
-                System.out.println("You will now Quit Sea Wars");
-                break;
+                case 3:
+                    System.out.println("You will now Quit Sea Wars");
+                    break;
+            }
         }
+        while (gameIsRunning = true);
     }
-
 }
 
  // Constructor removed, not needed?

@@ -26,7 +26,13 @@ While these rules are the core of the game, as mentioned above there is a new tr
 We as a grupp have made this game, and it wouldn't have been possible without all of their help.
 
 Creators:
+Helena Barmer - https://github.com/helenabarmer
 
-Albert Malmkvist
+Emmanuel Ndziba - https://github.com/Manne24
+ 
+Johan Wikström - https://github.com/johan-github
+ 
+Kurnia Suryani Elmstedt - https://github.com/kurnisurni
 
-https://github.com/AlbertMalmkvist  
+Albert Malmkvist - https://github.com/AlbertMalmkvist  
+

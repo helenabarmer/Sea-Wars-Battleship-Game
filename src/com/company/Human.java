@@ -61,7 +61,7 @@ public class Human extends Player {
             // PLAYER 1
 
 
-            System.out.println("Your turn to shoot " + player1 + "!");
+            System.out.println("Your turn to shoot, " + player1 + "!");
             System.out.println("Shoot! Enter X-coordinate: ");
             int xShoot = input.nextInt();
             System.out.println("Shoot! Enter Y-coordinate: ");
@@ -86,7 +86,7 @@ public class Human extends Player {
                 }
 
             // PLAYER 2
-            System.out.println("Your turn to shoot " + player2 + "!");
+            System.out.println("Your turn to shoot, " + player2 + "!");
             System.out.println("Shoot! Enter X-coordinate: ");
             xShoot = input.nextInt();
             System.out.println("Shoot! Enter Y-coordinate: ");

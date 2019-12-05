@@ -7,7 +7,7 @@ public class Menu {
     // Creating maps for the players and computer
     String playerOneMap[][] = new String[11][11];
     String playerTwoMap[][] = new String[11][11];
-    Map computerMap[][] = new Map[11][11];
+    String computerMap[][] = new String[11][11];
 
     private Scanner input = new Scanner(System.in);
 
@@ -59,12 +59,6 @@ public class Menu {
 
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
 
-
-
-
-
-
-
                 //do {
                         // We use player1 and player2 in the do-while-loop, where we toggle turns.
                 // }
@@ -85,6 +79,7 @@ public class Menu {
 
                 System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
                 human.placeShips(playerOneMap, human.getName());
+                computer.AIPlaceShips(computerMap);
                 // Map computerMap = new Map();
                 break;
                 //do battle {

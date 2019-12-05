@@ -6,7 +6,5 @@ public class BattleShipProgram {
 
         Menu menu = new Menu();
         menu.Choices();
-
-
     }
 }

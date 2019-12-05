@@ -167,7 +167,7 @@ public class Map {
         }
 
         // Adding coordinates from user input
-        addCoordinateToMap(map,  x, y, size, shipType);
+        addCoordinateToMap(map, x, y, size, shipType);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();

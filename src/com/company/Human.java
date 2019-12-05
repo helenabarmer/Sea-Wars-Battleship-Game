@@ -34,13 +34,13 @@ public class Human extends Player {
         }
     }
 
-    public void shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2){
+    public void shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2) {
 
-        boolean gameOver = false;
+        boolean gameOver = true;
+        int hitsPlayer1 = 0;
+        int hitsPlayer2 = 0;
 
-        while(gameOver){
-            int hitsPlayer1 = 0;
-            int hitsPlayer2 = 0;
+        do {
 
             String ships[] = {"S", "D", "C", "B", "c"};
 
@@ -59,21 +59,23 @@ public class Human extends Player {
             System.out.println("Shoot! Enter Y-coordinate: ");
             int yShoot = input.nextInt();
 
-            for(int i =0; i<ships.length; i++){
+            for (int i = 0; i < ships.length; i++) {
                 if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
                     battleMap2[xShoot][yShoot] = "*";
                     hitsPlayer1++;
+
                 }
-                else if(playerTwoMap[xShoot][yShoot].contains(" ")) {
-                    System.out.println("MISS!");
-                    battleMap2[xShoot][yShoot] = "X";
-                }
+            }if(playerTwoMap[xShoot][yShoot].contains(" ")) {
+                System.out.println("MISS!");
+                battleMap2[xShoot][yShoot] = "X";
+            }
+            if (hitsPlayer1 == 20) {
+                System.out.println(player1 + "WINS! GAME OVER FOR: " + player2);
+                break;
             }
 
-
             // PLAYER 2
-
             // Initialize 2D matrix map
             for (int y = 1; y < battleMap1.length; y++) {
                 for (int x = 1; x < battleMap1.length; x++) {
@@ -87,17 +89,22 @@ public class Human extends Player {
             System.out.println("Shoot! Enter Y-coordinate: ");
             yShoot = input.nextInt();
 
-            for(int i =0; i<ships.length; i++){
+            for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
                     battleMap1[xShoot][yShoot] = "*";
                     hitsPlayer2++;
+
                 }
-                else if(playerOneMap[xShoot][yShoot].contains(" ")) {
-                    System.out.println("MISS!");
-                    battleMap1[xShoot][yShoot] = "X";
-                }
+            } if(playerOneMap[xShoot][yShoot].contains(" ")) {
+                System.out.println("MISS!");
+                battleMap1[xShoot][yShoot] = "X";
             }
+            if (hitsPlayer2 == 20) {
+                System.out.println(player2 + "WINS! GAME OVER FOR: " + player1);
+                break;
+            }
+
 
             map.printBattle(battleMap2, xShoot, yShoot, "battle");
             map.printBattle(battleMap1, xShoot, yShoot, "battle");
@@ -107,17 +114,10 @@ public class Human extends Player {
             System.out.println("Number of hits for " + player2 + " is: " + hitsPlayer2);
 
 
-            if(hitsPlayer1>=20){
-                gameOver = true;
-                System.out.println(player1 + " wins! GAME OVER FOR " + player2);
-            }
-            else if(hitsPlayer2>=20){
-                gameOver = true;
-                System.out.println(player2 + " wins! GAME OVER FOR " + player1);
-            }
-        }
+        }while(gameOver);
 
-        }
+
+    }
 
 
     public void placeShips(String playerMap[][], String playerName) {

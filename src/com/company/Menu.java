@@ -59,12 +59,6 @@ public class Menu {
 
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
 
-
-
-
-
-
-
                 //do {
                         // We use player1 and player2 in the do-while-loop, where we toggle turns.
                 // }

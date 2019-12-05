@@ -38,7 +38,7 @@ public class Human extends Player {
 
         boolean gameOver = false;
 
-        do {
+        while(gameOver){
             int hitsPlayer1 = 0;
             int hitsPlayer2 = 0;
 
@@ -115,12 +115,9 @@ public class Human extends Player {
                 gameOver = true;
                 System.out.println(player2 + " wins! GAME OVER FOR " + player1);
             }
-
-        }while(gameOver);
-
         }
 
-
+        }
 
 
     public void placeShips(String playerMap[][], String playerName) {

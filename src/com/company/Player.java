@@ -20,7 +20,7 @@ public abstract class Player {
 /*
         if(){
             if (map[x][y]=="S"||map[x][y]==""){
-
+//Does it hit a empty space or one with the sub, no changes
             }
             else if(map[x][y]=="X" ||map[x][y] =="*"){
 

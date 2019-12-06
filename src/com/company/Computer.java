@@ -70,8 +70,8 @@ Map map = new Map();
 
             // AI
 
-            xShoot = random.nextInt(10);
-            yShoot = random.nextInt(10);
+            xShoot = random.nextInt(11);
+            yShoot = random.nextInt(11);
 
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {

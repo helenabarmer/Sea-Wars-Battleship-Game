@@ -84,10 +84,16 @@ public class Menu {
                     Computer computer = new Computer();
                     System.out.println("You'll be playing against the" + " " + computer.getName() + "\n");
 
-                    System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
-                    human.placeShips(playerOneMap, human.getName());
-                    // Map computerMap = new Map();
-                    break;
+                System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
+                human.placeShips(playerOneMap, human.getName());
+                computer.AIPlaceShips(computerMap);
+
+                computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
+
+
+                // Map computerMap = new Map();
+                break;
+                //do battle {
 
                 case 3:
                     System.out.println("You will now Quit Sea Wars");

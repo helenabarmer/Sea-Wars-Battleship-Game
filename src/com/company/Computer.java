@@ -6,12 +6,102 @@ import java.util.Scanner;
 
 public class Computer extends Player {
 Map map = new Map();
+
+    String battleMap1[][] = new String[11][11];
+    String battleMapAI[][] = new String[11][11];
+
     Scanner input = new Scanner(System.in);
     ArrayList<Ship> ships = new ArrayList<>();
 
     public Computer() {
         super("Computer");
     }
+
+    public void shoot(String playerOneMap[][], String computerMap[][], String player1, String AI){
+        boolean gameOver = true;
+        int hitsPlayer1 = 0;
+        int hitsAI = 0;
+        Random random = new Random();
+
+        // Initialize 2D matrix map for PLAYER 1
+        for (int y = 1; y < battleMapAI.length; y++) {
+            for (int x = 1; x < battleMapAI.length; x++) {
+                battleMapAI[x][y] = " ";
+            }
+        }
+
+        // Initialize 2D matrix map for AI
+        for (int y = 1; y < battleMap1.length; y++) {
+            for (int x = 1; x < battleMap1.length; x++) {
+                battleMap1[x][y] = " ";
+            }
+        }
+
+        do {
+
+            String ships[] = {"S", "D", "C", "B", "c"};
+
+            // PLAYER 1
+
+            System.out.println("Your turn to shoot, " + player1 + "!");
+            System.out.println("Shoot! Enter X-coordinate: ");
+            int xShoot = input.nextInt();
+            System.out.println("Shoot! Enter Y-coordinate: ");
+            int yShoot = input.nextInt();
+
+            for (int i = 0; i < ships.length; i++) {
+                if (computerMap[xShoot][yShoot].contains(ships[i])) {
+                    System.out.println("HIT!");
+                    battleMapAI[xShoot][yShoot] = "*";
+                    hitsPlayer1++;
+                }
+            }if(computerMap[xShoot][yShoot].contains(" ")) {
+                System.out.println("MISS!");
+                battleMapAI[xShoot][yShoot] = "X";
+            }
+
+            System.out.println("MAP OF COMPUTER " + AI);
+            map.printBattle(battleMapAI, xShoot, yShoot, "battle");
+
+            if (hitsPlayer1 == 20) {
+                System.out.println(player1 + "WINS! GAME OVER FOR: " + AI);
+                break;
+            }
+
+            // AI
+
+            xShoot = random.nextInt(11);
+            yShoot = random.nextInt(11);
+
+            for (int i = 0; i < ships.length; i++) {
+                if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
+                    System.out.println("HIT!");
+                    battleMap1[xShoot][yShoot] = "*";
+                    hitsAI++;
+
+                }
+            } if(playerOneMap[xShoot][yShoot].contains(" ")) {
+                System.out.println("MISS!");
+                battleMap1[xShoot][yShoot] = "X";
+            }
+
+            System.out.println("MAP OF PLAYER " + player1);
+            map.printBattle(battleMap1, xShoot, yShoot, "battle");
+
+            if (hitsAI == 20) {
+                System.out.println(AI + "WINS! GAME OVER FOR: " + player1);
+                break;
+            }
+
+
+            System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
+            System.out.println("Number of hits for " + AI + " is: " + hitsAI);
+
+        }while(gameOver);
+
+
+    }
+
 
     public void AIPlaceShips(String playerMap[][]) {
         // Adding ship sizes

@@ -22,6 +22,7 @@ public class Map {
     public static final String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";
     public static final String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m";
     public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";
+    public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
 
 
     //Colours for text
@@ -389,11 +390,8 @@ public class Map {
         }
 
         System.out.println("\n" + "\n" +
-                YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE (1) " + ANSI_RESET + " " +
-                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D: DESTROYER (1) " + ANSI_RESET + " " +
-                GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C: CRUISER (1) " + ANSI_RESET + " " +
-                PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B: BATTLESHIP (1) " + ANSI_RESET + " " +
-                CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c: CARRIER (2) " + ANSI_RESET
+                RED_BACKGROUND_BRIGHT  + WHITE_BOLD + "HIT (*) " + ANSI_RESET + " " +
+                BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "MISS (X) " + ANSI_RESET + " "
         );
         // Adding new line after the map prints
         System.out.println("\n");

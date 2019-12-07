@@ -9,6 +9,7 @@ public class Human extends Player {
     public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
     public static final String BLACK_BACKGROUND = "\033[40m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
 
     // Colours for text
     public static final String ANSI_BLUE = "\u001B[34m";
@@ -91,7 +92,7 @@ public class Human extends Player {
                     }
                 }if(playerTwoMap[xShoot][yShoot].contains(" ")) {
                     System.out.println("MISS!");
-                    battleMap2[xShoot][yShoot] = "X";
+                    battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + "X" + ANSI_RESET + ANSI_BLUE;
                 }
             System.out.println("MAP OF PLAYER " + player2);
             map.printBattle(battleMap2, xShoot, yShoot, "battle");
@@ -117,7 +118,7 @@ public class Human extends Player {
             }
             if(playerOneMap[xShoot][yShoot].contains(" ")) {
                 System.out.println("MISS!");
-                battleMap1[xShoot][yShoot] = "X";
+                battleMap1[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + "X" + ANSI_RESET + ANSI_BLUE;
             }
 
             System.out.println("MAP OF PLAYER " + player1);

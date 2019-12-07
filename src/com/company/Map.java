@@ -1,6 +1,10 @@
 package com.company;
 
+import jdk.internal.util.xml.impl.Input;
+
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Map {
@@ -107,14 +111,147 @@ public class Map {
         System.out.println("\n");
     }
 
+    private int[] AIRandomCoordinatesToMap(){
+
+            Random random = new Random();
+
+            int randomX = random.nextInt(11);
+
+            while (randomX < 1 || randomX > 10) {
+                randomX = random.nextInt();
+            }
+
+            int randomY = random.nextInt(11);
+            while (randomY < 1 || randomY > 10) {
+                randomY = random.nextInt();
+            }
+            //System.out.printf("Computer shoots at: (%d,%d) \n", randomX, randomY);
+            return new int [] {randomX, randomY};
+        }
 
     // Add coordinates and ships to map
-    public void addCoordinateToMap(String map[][], int xInput, int yInput, int size, String shipType) {
+    public void testAddCoordinate(String map[][], int size, String shipType) {
+
+        boolean thisInput = true;
+
+        while (thisInput) {
+
+            System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
+            int xInput = input.nextInt();
+            while (xInput < 0 || xInput > 10) {
+                System.out.println("Please Enter Valid Coordinate");
+                xInput = input.nextInt();
+            }
+            System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
+            int yInput = input.nextInt();
+            while (yInput < 0 || yInput > 10) {
+                System.out.println("Please Enter Valid Coordinate");
+                yInput = input.nextInt();
+            }
 
             for (int i = 0; i < size; i++) {
                 for (int y = yInput; y <= yInput; y++) {
                     y += i;
                     for (int x = xInput; x <= xInput; x++) {
+
+                        while (xInput < size && yInput < size) {
+                            switch (shipType) {
+                                case "submarine":
+                                    map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                                    positionSubmarine = new Position(xInput, yInput);
+                                    positions.add(positionSubmarine);
+                                    break;
+
+                                case "destroyer":
+                                    map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                                    break;
+
+                                case "cruiser":
+                                    map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                                    break;
+
+                                case "battleship":
+                                    map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                                    break;
+
+                                case "carrier1":
+                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                    break;
+
+                                case "carrier2":
+                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                    break;
+
+                                case "battle":
+                                    map[x][y] = " ";
+                                    break;
+
+                                default:
+                                    System.out.println("Invalid");
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+    // Add coordinates and ships to map
+    public void addCoordinateToMap(String map[][], int size, String shipType) {
+
+        try{
+        System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
+        int xInput = input.nextInt();
+
+        while (xInput < 0 || xInput > 10) {
+            System.out.println("Please Enter Valid X- Coordinate");
+            xInput = input.nextInt();
+        }
+
+        System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
+        int yInput = input.nextInt();
+
+        while (yInput < 0 || yInput>8 && shipType.equals("submarine")) {
+            System.out.println("Please Enter Valid Y-Coordinate");
+            yInput = input.nextInt();
+        }
+
+        while (yInput < 0 || yInput>9 && shipType.equals("destroyer")) {
+            System.out.println("Please Enter Valid Y-Coordinate");
+            yInput = input.nextInt();
+        }
+
+        while (yInput < 0 || yInput>7 && shipType.equals("cruiser")) {
+            System.out.println("Please Enter Valid Y-Coordinate");
+            yInput = input.nextInt();
+        }
+
+        while (yInput < 0 || yInput>6 && shipType.equals("battleship")) {
+            System.out.println("Please Enter Valid Y-Coordinate");
+            yInput = input.nextInt();
+        }
+
+        while (yInput < 0 || yInput>8 && shipType.equals("carrier")) {
+            System.out.println("Please Enter Valid Y-Coordinate");
+            yInput = input.nextInt();
+        }
+
+            for (int i = 0; i < size; i++) {
+                for (int y = yInput; y <= yInput; y++) {
+                    y += i;
+                    for (int x = xInput; x <= xInput; x++) {
+
+
+
 
                         switch (shipType) {
                             case "submarine":
@@ -147,7 +284,6 @@ public class Map {
                                 map[x][y] = " ";
                                 break;
 
-
                             default:
                                 System.out.println("Invalid");
                                 break;
@@ -156,11 +292,21 @@ public class Map {
                 }
             }
         }
+        catch (InputMismatchException e){
+            e.getMessage();
+        }
+
+
+        }
 
 
 
 
-    public void printPlayerMapShips(String map[][], int x, int y, int size, String shipType) {
+    public void printPlayerMapShips(String map[][], int size, String shipType) {
+
+        // Adding coordinates from user input
+        addCoordinateToMap(map, size, shipType);
+
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
                 "                      OCEAN MAP                      " + ANSI_RESET);
@@ -168,9 +314,6 @@ public class Map {
         for (int line = 1; line <= map.length; line++) {
             System.out.print(ANSI_BLUE + "_____" + ANSI_RESET);
         }
-
-        // Adding coordinates from user input
-        addCoordinateToMap(map, x, y, size, shipType);
 
         // New line to structure the [ ] with the coordinates on the side
         System.out.println();

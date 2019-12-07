@@ -86,9 +86,9 @@ public class Menu {
 
                 System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
                 human.placeShips(playerOneMap, human.getName());
-                computer.AIPlaceShips(computerMap);
+                //computer.AIPlaceShips(computerMap);
 
-                computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
+                //computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
 
 
                 // Map computerMap = new Map();

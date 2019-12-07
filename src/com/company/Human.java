@@ -157,18 +157,20 @@ public class Human extends Player {
 
                 // It's yellow and we all live there
                 case "submarine":
+
+
                     // Method for adding coordinates
-                    coordinates = userInputCoordinates(typeSubmarine, submarineSize);
+                    //coordinates = userInputCoordinates(typeSubmarine, submarineSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], submarineSize, typeSubmarine);
+                    map.printPlayerMapShips(playerMap, submarineSize, typeSubmarine);
 
                     // Add submarine to ships ArrayList
-                    Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
-                    ships.add(sub);
+                    //Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
+                    //ships.add(sub);
 
                     //Printing information about the added ship
-                    System.out.println(sub.toString());
+                    //System.out.println(sub.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(sub);
@@ -176,17 +178,17 @@ public class Human extends Player {
 
                 case "destroyer":
                     // Method for adding coordinates
-                    coordinates = userInputCoordinates(typeDestroyer, destroyerSize);
+                    //coordinates = userInputCoordinates(typeDestroyer, destroyerSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], destroyerSize, typeDestroyer);
+                    map.printPlayerMapShips(playerMap, destroyerSize, typeDestroyer);
 
                     // Add destroyer to ships ArrayList
-                    Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
-                    ships.add(dest);
+                    //Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
+                    //ships.add(dest);
 
                     //Printing information about the added ship
-                    System.out.println(dest.toString());
+                    //System.out.println(dest.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(dest);
@@ -194,17 +196,17 @@ public class Human extends Player {
 
                 case "cruiser":
                     // Method for adding coordinates
-                    coordinates = userInputCoordinates(typeCruiser, cruiserSize);
+                    //coordinates = userInputCoordinates(typeCruiser, cruiserSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], cruiserSize, typeCruiser);
+                    map.printPlayerMapShips(playerMap, cruiserSize, typeCruiser);
 
                     // Add cruiser to ships ArrayList
-                    Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
-                    ships.add(crus);
+                    //Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
+                    //ships.add(crus);
 
                     //Printing information about the added ship
-                    System.out.println(crus.toString());
+                    //System.out.println(crus.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(crus);
@@ -212,17 +214,17 @@ public class Human extends Player {
 
                 case "battleship":
                     // Method for adding coordinates
-                    coordinates = userInputCoordinates(typeBattleship, battleshipSize);
+                    //coordinates = userInputCoordinates(typeBattleship, battleshipSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], battleshipSize, typeBattleship);
+                    map.printPlayerMapShips(playerMap, battleshipSize, typeBattleship);
 
                     // Add battleship to ships ArrayList
-                    BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
-                    ships.add(battleShip);
+                    //BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
+                    //ships.add(battleShip);
 
                     //Printing information about the added ship
-                    System.out.println(battleShip.toString());
+                    //System.out.println(battleShip.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(battleShip);
@@ -230,18 +232,18 @@ public class Human extends Player {
 
                 case "carrier1":
                     // Method for adding coordinates
-                    coordinates = userInputCoordinates(typeCarrier1, carrier1Size);
+                    //coordinates = userInputCoordinates(typeCarrier1, carrier1Size);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], carrier1Size, typeCarrier1);
+                    map.printPlayerMapShips(playerMap, carrier1Size, typeCarrier1);
 
                     // Add carrier ships ArrayList
-                    Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
+                    //Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
                     //String shipType = carr.getType();
-                    ships.add(carrier);
+                    //ships.add(carrier);
 
                     //Printing information about the added ship
-                    System.out.println(carrier.toString());
+                    //System.out.println(carrier.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(carrier);
@@ -249,18 +251,18 @@ public class Human extends Player {
 
                 case "carrier2":
                     // Method for adding coordinates
-                    coordinates = userInputCoordinates(typeCarrier2, carrier2Size);
+                    //coordinates = userInputCoordinates(typeCarrier2, carrier2Size);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], carrier2Size, typeCarrier2);
+                    map.printPlayerMapShips(playerMap, carrier2Size, typeCarrier2);
 
                     // Add carrier ships ArrayList
-                    Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
+                    //Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
                     //String shipType = carr.getType();
-                    ships.add(carrier2);
+                    //ships.add(carrier2);
 
                     //Printing information about the added ship
-                    System.out.println(carrier2.toString());
+                    //System.out.println(carrier2.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(carrier);
@@ -280,27 +282,39 @@ public class Human extends Player {
             System.out.println("! "+ship.getPos());
         }*/
 
-        loopAndPrintShips();
+        //loopAndPrintShips();
     }
 
 
     // Add X and Y coordinates through user input
-    private int[] userInputCoordinates(String shipType, int size){
-        System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
-        int xInput = input.nextInt();
-        while (xInput < 0 || xInput > 10) {
-            System.out.println("Please Enter Valid Coordinate");
-            xInput = input.nextInt();
-        }
-        System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
-        int yInput = input.nextInt();
-        while (yInput < 0 || yInput > 10) {
-            System.out.println("Please Enter Valid Coordinate");
-            yInput = input.nextInt();
-        }
+    public int[] userInputCoordinates(String shipType, int size){
+
+        // How to implement maz size?
+
+        /*for (int i = 0; i < size; i++) {
+            for (int y = yInput; y <= yInput; y++) {
+                y += i;
+                for (int x = xInput; x <= xInput; x++) {}}}*/
 
 
-            return new int [] {xInput, yInput};
+            System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
+            int xInput = input.nextInt();
+
+            System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
+            int yInput = input.nextInt();
+
+            while (xInput < 0 || xInput > 10) {
+                System.out.println("Please Enter Valid Coordinate");
+                xInput = input.nextInt();
+            }
+
+            while (yInput < 0 || yInput > 10) {
+                System.out.println("Please Enter Valid Coordinate");
+                yInput = input.nextInt();
+            }
+
+
+        return new int [] {xInput, yInput};
 
     }
 

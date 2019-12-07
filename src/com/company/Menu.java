@@ -1,8 +1,32 @@
 package com.company;
 
+import javax.swing.event.AncestorEvent;
 import java.util.Scanner;
 
 public class Menu {
+    // Colours for background
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m";
+    public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
+    public static final String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";
+    public static final String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m";
+    public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";
+    public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";
+    public static final String BLACK_BACKGROUND = "\033[40m";
+    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    public static final String RED_BRIGHT = "\033[0;91m";
+    public static final String RED_BACKGROUND = "\033[41m";
+    public static final String WHITE_BACKGROUND = "\033[47m";
+
+    // Reset colour
+    public static final String ANSI_RESET = "\u001B[0m";
+
+    // Colours for String
+    public static final String BLACK = "\033[0;30m";
+    public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
+
+
 
     // Creating maps for the players and computer
     String playerOneMap[][] = new String[11][11];
@@ -20,6 +44,58 @@ public class Menu {
     public void Choices() {
 
         do {
+
+
+            // TEST TO DRAW SHIP
+            System.out.println(
+                    RED_BACKGROUND + BLACK_BOLD +"          WELCOME TO SEA WARS!        " + ANSI_RESET +
+                            "\n" +  "\n" +
+
+                    "                     " + ANSI_WHITE_BACKGROUND + "  " +  ANSI_RESET + BLACK_BACKGROUND_BRIGHT + "  " + ANSI_RESET +
+                           ANSI_WHITE_BACKGROUND + "  " +  ANSI_RESET +
+
+                            "\n" +
+                    "                       " + BLACK_BACKGROUND_BRIGHT + "  " + ANSI_RESET + "\n" +
+                    "                       " + BLACK_BACKGROUND_BRIGHT + "  " + ANSI_RESET + "\n" +
+                    "                     " + ANSI_WHITE_BACKGROUND + "      " +  ANSI_RESET +
+                            "\n" +
+                    "                   " + WHITE_BACKGROUND_BRIGHT+ "      " + ANSI_RESET +
+                            ANSI_WHITE_BACKGROUND + "  " +  ANSI_RESET +
+                            "\n" +
+                    "   " + WHITE_BACKGROUND_BRIGHT+ "  " + ANSI_RESET +
+                            "      " + WHITE_BACKGROUND_BRIGHT+ "  " + ANSI_RESET +
+                            "      " + ANSI_WHITE_BACKGROUND + "        " +  ANSI_RESET +
+                            "      " + WHITE_BACKGROUND_BRIGHT+ "  " + ANSI_RESET +
+
+                            "\n" +
+
+                    "     " + WHITE_BACKGROUND_BRIGHT+ "  " + ANSI_RESET +
+                            BLACK_BACKGROUND_BRIGHT +  "  " + ANSI_RESET +  "    " +
+                            WHITE_BACKGROUND_BRIGHT+ "  " + ANSI_RESET +
+                            BLACK_BACKGROUND_BRIGHT +  "  " + ANSI_RESET + "  " +
+                            WHITE_BACKGROUND_BRIGHT+ "    " + ANSI_RESET +
+                            ANSI_WHITE_BACKGROUND +  "  " + ANSI_RESET +
+                            WHITE_BACKGROUND_BRIGHT+ "  " + ANSI_RESET + "  "  +
+
+                            BLACK_BACKGROUND_BRIGHT +  "  " + ANSI_RESET +
+                            WHITE_BACKGROUND_BRIGHT+  "  " + ANSI_RESET +
+                            "\n" +
+                    "   " + BLACK_BACKGROUND_BRIGHT + "      " + ANSI_RESET + "  " + BLACK_BACKGROUND_BRIGHT +"      " +
+                            ANSI_RESET  + "  " + ANSI_WHITE_BACKGROUND + "        " +  ANSI_RESET +  "  " + BLACK_BACKGROUND_BRIGHT +
+                            "      " + ANSI_RESET + "\n" +
+                            " " + BLACK_BACKGROUND   + "                                    " + ANSI_RESET + "\n" +
+                    "   " + ANSI_WHITE_BACKGROUND + "        " + ANSI_RESET +"  " +
+                            ANSI_WHITE_BACKGROUND + "  " + ANSI_RESET +
+                            ANSI_WHITE_BACKGROUND +  ANSI_RESET +"  " +
+                            ANSI_WHITE_BACKGROUND + "  " + ANSI_RESET +
+                            ANSI_WHITE_BACKGROUND +  ANSI_RESET +"  " +
+                            ANSI_WHITE_BACKGROUND + "  " + ANSI_RESET +
+                            ANSI_WHITE_BACKGROUND +  ANSI_RESET +"  " +
+                            ANSI_WHITE_BACKGROUND +"            " + ANSI_RESET + "\n" +
+                    "    " + ANSI_WHITE_BACKGROUND + "                              " + ANSI_RESET + "\n" +
+                            "      " + ANSI_WHITE_BACKGROUND + "                            " + ANSI_RESET + "\n" +
+                           " " + ANSI_BLUE_BACKGROUND + "                                    " + ANSI_RESET + "\n"
+            );
 
             System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
             System.out.println("1. Player VS Player (PvP)");

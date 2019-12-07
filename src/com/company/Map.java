@@ -197,7 +197,7 @@ public class Map {
         }
     }
 
-    
+
     // Add coordinates and ships to map
     public void addCoordinateToMap(String map[][], int size, String shipType) {
 

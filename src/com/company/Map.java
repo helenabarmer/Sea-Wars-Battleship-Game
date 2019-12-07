@@ -22,18 +22,14 @@ public class Map {
     public static final String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";
     public static final String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m";
     public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";
-    public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";
+
 
     //Colours for text
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String WHITE_BOLD = "\033[1;37m";
-    public static final String BLUE_BOLD = "\033[1;34m";
     public static final String BLACK_BOLD = "\033[1;30m";
-
-    // Underline
-    public static final String BLACK_UNDERLINED = "\033[4;30m";
 
     // Reset colour
     public static final String ANSI_RESET = "\u001B[0m";

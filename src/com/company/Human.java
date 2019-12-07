@@ -5,6 +5,17 @@ import java.util.Scanner;
 
 public class Human extends Player {
 
+    // Colour for console, background
+    public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
+    public static final String BLACK_BACKGROUND = "\033[40m";
+    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    // Colours for text
+    public static final String ANSI_BLUE = "\u001B[34m";
+
+    // Reset colour
+    public static final String ANSI_RESET = "\u001B[0m";
+
     Scanner input = new Scanner(System.in);
     ArrayList<Ship> ships = new ArrayList<>();
     ArrayList<Map> maps = new ArrayList<>();
@@ -37,6 +48,9 @@ public class Human extends Player {
     public void shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2) {
 
         boolean gameOver = true;
+        String hitBarPlayer1 = "";
+        String hitBarPlayer2 = "";
+        String winBar = "********************";
         int hitsPlayer1 = 0;
         int hitsPlayer2 = 0;
 
@@ -71,7 +85,8 @@ public class Human extends Player {
                 for (int i = 0; i < ships.length; i++) {
                     if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
                         System.out.println("HIT!");
-                        battleMap2[xShoot][yShoot] = "*";
+                        battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
+                        hitBarPlayer1 += "*";
                         hitsPlayer1++;
                     }
                 }if(playerTwoMap[xShoot][yShoot].contains(" ")) {
@@ -95,7 +110,8 @@ public class Human extends Player {
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
-                    battleMap1[xShoot][yShoot] = "*";
+                    battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
+                    hitBarPlayer2+= "*";
                     hitsPlayer2++;
                 }
             }
@@ -115,9 +131,12 @@ public class Human extends Player {
             //map.printBattle(battleMap2, xShoot, yShoot, "battle");
             //map.printBattle(battleMap1, xShoot, yShoot, "battle");
 
-
             System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
+            System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
+            System.out.println(RED_BACKGROUND_BRIGHT + hitBarPlayer1 + ANSI_RESET);
             System.out.println("Number of hits for " + player2 + " is: " + hitsPlayer2);
+            System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
+            System.out.println(RED_BACKGROUND_BRIGHT + hitBarPlayer2 + ANSI_RESET);
 
 
         }while(gameOver);

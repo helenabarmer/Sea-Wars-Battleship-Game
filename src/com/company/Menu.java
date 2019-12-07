@@ -6,24 +6,17 @@ import java.util.Scanner;
 public class Menu {
     // Colours for background
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
-    public static final String YELLOW_BACKGROUND_BRIGHT = "\033[0;103m";
     public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
-    public static final String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";
-    public static final String PURPLE_BACKGROUND_BRIGHT = "\033[0;105m";
-    public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";
     public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";
     public static final String BLACK_BACKGROUND = "\033[40m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
-    public static final String RED_BRIGHT = "\033[0;91m";
     public static final String RED_BACKGROUND = "\033[41m";
-    public static final String WHITE_BACKGROUND = "\033[47m";
+
 
     // Reset colour
     public static final String ANSI_RESET = "\u001B[0m";
 
     // Colours for String
-    public static final String BLACK = "\033[0;30m";
     public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
 
 

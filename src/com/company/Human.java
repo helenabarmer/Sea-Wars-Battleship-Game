@@ -113,7 +113,7 @@ public class Human extends Player {
             System.out.println("MAP OF PLAYER " + player2);
             map.printBattle(battleMap2, xShoot, yShoot, "battle");
                 if (hitsPlayer1 == 20) {
-                    System.out.println(player1 + "WINS! GAME OVER FOR: " + player2);
+                    System.out.println(player1 + " WINS! GAME OVER FOR: " + player2);
                     break;
                 }
 

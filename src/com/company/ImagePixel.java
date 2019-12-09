@@ -22,6 +22,10 @@ public class ImagePixel {
     }
 
 
+
+
+
+
     // Method prints a colorful logo
 
     public void menuLogo(){

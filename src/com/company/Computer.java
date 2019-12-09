@@ -25,9 +25,9 @@ Map map = new Map();
 
         // Initialize 2D matrix map for PLAYER 1
         for (int y = 1; y < battleMapAI.length; y++) {
-            for (int x = 1; x < battleMapAI.length; x++) {
-                battleMapAI[x][y] = " ";
-            }
+                for (int x = 1; x < battleMapAI.length; x++) {
+                    battleMapAI[x][y] = " ";
+                }
         }
 
         // Initialize 2D matrix map for AI

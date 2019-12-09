@@ -16,6 +16,7 @@ public class ImagePixel {
     // Colours for String
     public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
 
+<<<<<<< HEAD
     public ImagePixel() {
         //menuLogo();
     }
@@ -24,6 +25,9 @@ public class ImagePixel {
 
 
 
+=======
+    // Method prints a colorful logo
+>>>>>>> master
     public void menuLogo(){
 
         System.out.println(

@@ -61,14 +61,14 @@ public class Human extends Player {
         // Initialize 2D matrix map, player 1
         for (int y = 1; y < battleMap2.length; y++) {
             for (int x = 1; x < battleMap2.length; x++) {
-                battleMap2[x][y] = " ";
+                battleMap2[x][y] = SquareState.NONE.getSquareSymbol();
             }
         }
 
         // Initialize 2D matrix map, player 2
         for (int y = 1; y < battleMap1.length; y++) {
             for (int x = 1; x < battleMap1.length; x++) {
-                battleMap1[x][y] = " ";
+                battleMap1[x][y] = SquareState.NONE.getSquareSymbol();
             }
         }
 
@@ -87,6 +87,7 @@ public class Human extends Player {
                 for (int i = 0; i < ships.length; i++) {
                     if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
                         System.out.println("HIT!");
+<<<<<<< HEAD
                         if(!playerTwoMap[xShoot][yShoot].contains(ships[i])){
                             for(int j = 0; j<shipNames.length; j++){
                                 System.out.println("YOU SUNK this test " +ships[j] + "\n");
@@ -94,16 +95,23 @@ public class Human extends Player {
                             }
                         }
                         battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
+=======
+                        battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+>>>>>>> master
                         hitBarPlayer1 += "*";
                         hitsPlayer1++;
 
                     }
+<<<<<<< HEAD
 
 
                 }
                 if(playerTwoMap[xShoot][yShoot].contains(" ")) {
+=======
+                }if(playerTwoMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
+>>>>>>> master
                     System.out.println("MISS!");
-                    battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + "X" + ANSI_RESET + ANSI_BLUE;
+                    battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
                 }
 
             System.out.println("MAP OF PLAYER " + player2);
@@ -122,8 +130,13 @@ public class Human extends Player {
 
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
+<<<<<<< HEAD
                     System.out.println("HIT TEST!");
                     battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
+=======
+                    System.out.println("HIT!");
+                    battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+>>>>>>> master
                     hitBarPlayer2+= "*";
                     hitsPlayer2++;
                 }
@@ -135,9 +148,9 @@ public class Human extends Player {
                 }
 
             }
-            if(playerOneMap[xShoot][yShoot].contains(" ")) {
+            if(playerOneMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
-                battleMap1[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + "X" + ANSI_RESET + ANSI_BLUE;
+                battleMap1[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
             }
 
             System.out.println("MAP OF PLAYER " + player1);

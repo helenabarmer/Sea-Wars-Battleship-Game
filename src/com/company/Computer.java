@@ -5,7 +5,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Computer extends Player {
-Map map = new Map();
+
+    // Colour for console, background
+    private static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
+    private static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    // Reset colour
+    private static final String ANSI_RESET = "\u001B[0m" ;
+
+    Map map = new Map();
 
     String battleMap1[][] = new String[11][11];
     String battleMapAI[][] = new String[11][11];
@@ -17,23 +27,26 @@ Map map = new Map();
         super("Computer");
     }
 
-    public void shoot(String playerOneMap[][], String computerMap[][], String player1, String AI){
+    public void shootAI(String playerMap[][], String computerMap[][], String player1, String AI){
         boolean gameOver = true;
+        String hitBarPlayer1 = "";
+        String hitBarAI = "";
+        String winBar = "********************";
         int hitsPlayer1 = 0;
         int hitsAI = 0;
         Random random = new Random();
 
         // Initialize 2D matrix map for PLAYER 1
         for (int y = 1; y < battleMapAI.length; y++) {
-            for (int x = 1; x < battleMapAI.length; x++) {
-                battleMapAI[x][y] = " ";
-            }
+                for (int x = 1; x < battleMapAI.length; x++) {
+                    battleMapAI[x][y] = SquareState.NONE.getSquareSymbol();
+                }
         }
 
         // Initialize 2D matrix map for AI
         for (int y = 1; y < battleMap1.length; y++) {
             for (int x = 1; x < battleMap1.length; x++) {
-                battleMap1[x][y] = " ";
+                battleMap1[x][y] = SquareState.NONE.getSquareSymbol();
             }
         }
 
@@ -52,50 +65,64 @@ Map map = new Map();
             for (int i = 0; i < ships.length; i++) {
                 if (computerMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
-                    battleMapAI[xShoot][yShoot] = "*";
+                    battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
+                    hitBarPlayer1 += "*";
                     hitsPlayer1++;
                 }
-            }if(computerMap[xShoot][yShoot].contains(" ")) {
+            }if(computerMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
-                battleMapAI[xShoot][yShoot] = "X";
+                battleMapAI[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + "X" + ANSI_RESET + ANSI_BLUE;
             }
 
             System.out.println("MAP OF COMPUTER " + AI);
             map.printBattle(battleMapAI, xShoot, yShoot, "battle");
 
             if (hitsPlayer1 == 20) {
-                System.out.println(player1 + "WINS! GAME OVER FOR: " + AI);
+                System.out.println(player1 + " WINS! GAME OVER FOR: " + AI);
                 break;
             }
 
             // AI
+            int xShootAI = random.nextInt(11);
+            int yShootAI = random.nextInt(11);
 
-            xShoot = random.nextInt(11);
-            yShoot = random.nextInt(11);
+            while (xShootAI < 1 || xShootAI > 10) {
+                xShootAI = random.nextInt();
+            }
+
+            while (yShootAI < 1 || yShootAI > 10) {
+                yShootAI = random.nextInt();
+            }
+
 
             for (int i = 0; i < ships.length; i++) {
-                if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
+                if (playerMap[xShootAI][yShootAI].contains(ships[i])) {
                     System.out.println("HIT!");
-                    battleMap1[xShoot][yShoot] = "*";
+                    battleMap1[xShootAI][yShootAI] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
+                    hitBarAI+= "*";
                     hitsAI++;
-
                 }
-            } if(playerOneMap[xShoot][yShoot].contains(" ")) {
+            }
+            if(playerMap[xShootAI][yShootAI].contains(" ")) {
                 System.out.println("MISS!");
-                battleMap1[xShoot][yShoot] = "X";
+                battleMap1[xShootAI][yShootAI] = BLACK_BACKGROUND_BRIGHT + "X" + ANSI_RESET + ANSI_BLUE;
             }
 
             System.out.println("MAP OF PLAYER " + player1);
-            map.printBattle(battleMap1, xShoot, yShoot, "battle");
+            map.printBattle(battleMap1, xShootAI, yShootAI, "battle");
 
             if (hitsAI == 20) {
-                System.out.println(AI + "WINS! GAME OVER FOR: " + player1);
+                System.out.println(AI + " WINS! GAME OVER FOR: " + player1);
                 break;
             }
 
 
             System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
+            System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
+            System.out.println(RED_BACKGROUND_BRIGHT + hitBarPlayer1 + ANSI_RESET);
             System.out.println("Number of hits for " + AI + " is: " + hitsAI);
+            System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
+            System.out.println(RED_BACKGROUND_BRIGHT + hitBarAI + ANSI_RESET);
 
         }while(gameOver);
 
@@ -136,112 +163,111 @@ Map map = new Map();
                 // It's yellow and we all live there
                 case "submarine":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeSubmarine, submarineSize);
+                    //coordinates = AIRandomCoordinates(typeSubmarine, submarineSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], submarineSize, typeSubmarine);
+                    map.printAIMapShips(playerMap, submarineSize, typeSubmarine);
 
                     // Add submarine to ships ArrayList
-                    Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
-                    ships.add(sub);
+                    //Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
+                    //ships.add(sub);
 
                     //Printing information about the added ship
-                    System.out.println(sub.toString());
+                    //System.out.println(sub.toString());
 
                     // Printing information about the added ship
-                    //loopAndPrintShips(sub);
+                    //loopAndPrintShips();
                     break;
 
                 case "destroyer":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeDestroyer, destroyerSize);
+                    //coordinates = AIRandomCoordinates(typeDestroyer, destroyerSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], destroyerSize, typeDestroyer);
+                    map.printAIMapShips(playerMap, destroyerSize, typeDestroyer);
 
                     // Add destroyer to ships ArrayList
-                    Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
-                    ships.add(dest);
+                    //Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
+                    //ships.add(dest);
 
                     //Printing information about the added ship
-                    System.out.println(dest.toString());
+                    //System.out.println(dest.toString());
 
                     // Printing information about the added ship
-                    //loopAndPrintShips(dest);
+                    //loopAndPrintShips();
                     break;
 
                 case "cruiser":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeCruiser, cruiserSize);
+                    //coordinates = AIRandomCoordinates(typeCruiser, cruiserSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], cruiserSize, typeCruiser);
+                    map.printAIMapShips(playerMap, cruiserSize, typeCruiser);
 
                     // Add cruiser to ships ArrayList
-                    Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
-                    ships.add(crus);
+                    //Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
+                    //ships.add(crus);
 
                     //Printing information about the added ship
-                    System.out.println(crus.toString());
+                    //System.out.println(crus.toString());
 
                     // Printing information about the added ship
-                    //loopAndPrintShips(crus);
+                    //loopAndPrintShips();
                     break;
 
                 case "battleship":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeBattleship, battleshipSize);
+                    //coordinates = AIRandomCoordinates(typeBattleship, battleshipSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], battleshipSize, typeBattleship);
+                    map.printAIMapShips(playerMap, battleshipSize, typeBattleship);
 
                     // Add battleship to ships ArrayList
-                    BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
-                    ships.add(battleShip);
+                    //BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
+                    //ships.add(battleShip);
 
                     //Printing information about the added ship
-                    System.out.println(battleShip.toString());
+                    //System.out.println(battleShip.toString());
 
                     // Printing information about the added ship
-                    //loopAndPrintShips(battleShip);
+                    //loopAndPrintShips();
                     break;
 
                 case "carrier1":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeCarrier1, carrier1Size);
+                    //coordinates = AIRandomCoordinates(typeCarrier1, carrier1Size);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], carrier1Size, typeCarrier1);
+                    map.printAIMapShips(playerMap, carrier1Size, typeCarrier1);
 
                     // Add carrier ships ArrayList
-                    Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
-                    //String shipType = carr.getType();
-                    ships.add(carrier);
+                    //Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
+                    //ships.add(carrier);
 
                     //Printing information about the added ship
-                    System.out.println(carrier.toString());
+                    //System.out.println(carrier.toString());
 
                     // Printing information about the added ship
-                    //loopAndPrintShips(carrier);
+                    //loopAndPrintShips();
                     break;
 
                 case "carrier2":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeCarrier2, carrier2Size);
+                    //coordinates = AIRandomCoordinates(typeCarrier2, carrier2Size);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], carrier2Size, typeCarrier2);
+                    map.printAIMapShips(playerMap, carrier2Size, typeCarrier2);
 
                     // Add carrier ships ArrayList
-                    Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
+                    //Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
                     //String shipType = carr.getType();
-                    ships.add(carrier2);
+                    //ships.add(carrier2);
 
                     //Printing information about the added ship
-                    System.out.println(carrier2.toString());
+                    //System.out.println(carrier2.toString());
 
                     // Printing information about the added ship
-                    //loopAndPrintShips(carrier);
+                    //loopAndPrintShips();
                     break;
 
                 default:
@@ -253,8 +279,18 @@ Map map = new Map();
     // random X and Y coordinates
     private int[] AIRandomCoordinates(String shipType, int size){
         Random random = new Random();
-        int randomX = random.nextInt(10);
-        int randomY = random.nextInt(10);
+
+        int randomX = random.nextInt(11);
+
+        while (randomX < 1 || randomX > 10) {
+            randomX = random.nextInt();
+        }
+
+        int randomY = random.nextInt(11);
+
+        while (randomY < 1 || randomY > 10) {
+            randomY = random.nextInt();
+        }
         //System.out.printf("Computer shoots at: (%d,%d) \n", randomX, randomY);
         return new int [] {randomX, randomY};
     }
@@ -264,6 +300,5 @@ Map map = new Map();
         for (Ship myShip : ships) {
             System.out.println(myShip.toString());
         }
-
     }
 }

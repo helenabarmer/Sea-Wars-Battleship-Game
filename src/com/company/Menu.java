@@ -1,8 +1,12 @@
 package com.company;
 
+import javax.swing.event.AncestorEvent;
 import java.util.Scanner;
 
 public class Menu {
+
+    // ImagePixel logo = new ImagePixel();
+    // logo
 
     // Creating maps for the players and computer
     String playerOneMap[][] = new String[11][11];
@@ -20,6 +24,9 @@ public class Menu {
     public void Choices() {
 
         do {
+
+
+            // TEST TO DRAW SHIP
 
             System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
             System.out.println("1. Player VS Player (PvP)");
@@ -86,9 +93,9 @@ public class Menu {
 
                 System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
                 human.placeShips(playerOneMap, human.getName());
-                computer.AIPlaceShips(computerMap);
+                //computer.AIPlaceShips(computerMap);
 
-                computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
+                //computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
 
 
                 // Map computerMap = new Map();

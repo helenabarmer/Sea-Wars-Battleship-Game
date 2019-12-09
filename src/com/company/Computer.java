@@ -69,24 +69,32 @@ Map map = new Map();
             }
 
             // AI
+            int xShootAI = random.nextInt(10);
+            int yShootAI = random.nextInt(10);
 
-            xShoot = random.nextInt(10);
-            yShoot = random.nextInt(10);
+            /*while (xShoot < 1 || xShoot > 10) {
+                xShoot = random.nextInt();
+            }
+
+            while (yShoot < 1 || yShoot > 10) {
+                yShoot = random.nextInt();
+            }*/
+
 
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
-                    battleMap1[xShoot][yShoot] = "*";
+                    battleMap1[xShootAI][yShootAI] = "*";
                     hitsAI++;
 
                 }
             } if(playerOneMap[xShoot][yShoot].contains(" ")) {
                 System.out.println("MISS!");
-                battleMap1[xShoot][yShoot] = "X";
+                battleMap1[xShootAI][yShootAI] = "X";
             }
 
             System.out.println("MAP OF PLAYER " + player1);
-            map.printBattle(battleMap1, xShoot, yShoot, "battle");
+            map.printBattle(battleMap1, xShootAI, yShootAI, "battle");
 
             if (hitsAI == 20) {
                 System.out.println(AI + "WINS! GAME OVER FOR: " + player1);
@@ -103,7 +111,7 @@ Map map = new Map();
     }
 
 
-    public void AIPlaceShips(String playerMap[][]) {
+    /*public void AIPlaceShips(String playerMap[][]) {
         // Adding ship sizes
         int submarineSize = 3;
         int destroyerSize = 2;
@@ -136,17 +144,17 @@ Map map = new Map();
                 // It's yellow and we all live there
                 case "submarine":
                     // Method for adding coordinates
-                    coordinates = AIRandomCoordinates(typeSubmarine, submarineSize);
+                    //coordinates = AIRandomCoordinates(typeSubmarine, submarineSize);
 
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, coordinates[0], coordinates[1], submarineSize, typeSubmarine);
+                    map.printPlayerMapShips(playerMap, submarineSize, typeSubmarine);
 
                     // Add submarine to ships ArrayList
-                    Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
-                    ships.add(sub);
+                    //Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
+                    //ships.add(sub);
 
                     //Printing information about the added ship
-                    System.out.println(sub.toString());
+                    //System.out.println(sub.toString());
 
                     // Printing information about the added ship
                     //loopAndPrintShips(sub);
@@ -249,12 +257,21 @@ Map map = new Map();
                     break;
             }
         }
-}
+}*/
     // random X and Y coordinates
     private int[] AIRandomCoordinates(String shipType, int size){
         Random random = new Random();
-        int randomX = random.nextInt(10);
-        int randomY = random.nextInt(10);
+
+        int randomX = random.nextInt(11);
+
+        while (randomX < 1 || randomX > 10) {
+            randomX = random.nextInt();
+        }
+
+        int randomY = random.nextInt(11);
+        while (randomY < 1 || randomY > 10) {
+            randomY = random.nextInt();
+        }
         //System.out.printf("Computer shoots at: (%d,%d) \n", randomX, randomY);
         return new int [] {randomX, randomY};
     }
@@ -264,6 +281,5 @@ Map map = new Map();
         for (Ship myShip : ships) {
             System.out.println(myShip.toString());
         }
-
     }
 }

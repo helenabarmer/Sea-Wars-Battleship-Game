@@ -123,73 +123,6 @@ public class Map {
             return new int [] {randomX, randomY};
         }
 
-    // Add coordinates and ships to map
-    public void testAddCoordinate(String map[][], int size, String shipType) {
-
-        boolean thisInput = true;
-
-        while (thisInput) {
-
-            System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
-            int xInput = input.nextInt();
-            while (xInput < 0 || xInput > 10) {
-                System.out.println("Please Enter Valid Coordinate");
-                xInput = input.nextInt();
-            }
-            System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
-            int yInput = input.nextInt();
-            while (yInput < 0 || yInput > 10) {
-                System.out.println("Please Enter Valid Coordinate");
-                yInput = input.nextInt();
-            }
-
-            for (int i = 0; i < size; i++) {
-                for (int y = yInput; y <= yInput; y++) {
-                    y += i;
-                    for (int x = xInput; x <= xInput; x++) {
-
-                        while (xInput < size && yInput < size) {
-                            switch (shipType) {
-                                case "submarine":
-                                    map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
-
-                                    break;
-
-                                case "destroyer":
-                                    map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "cruiser":
-                                    map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "battleship":
-                                    map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "carrier1":
-                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "carrier2":
-                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "battle":
-                                    map[x][y] = " ";
-                                    break;
-
-                                default:
-                                    System.out.println("Invalid");
-                                    break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 
     // Add coordinates and ships to map
     public void addCoordinateToMap(String map[][], int size, String shipType) {
@@ -201,38 +134,36 @@ public class Map {
         System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
         int yInput = input.nextInt();
 
-        while (xInput < 0 || xInput > 10) {
+        while (xInput < 1 || xInput > 10) {
             System.out.println("Please Enter Valid X- Coordinate");
             xInput = input.nextInt();
         }
 
-        while (yInput < 0 || yInput>8 && shipType.equals("submarine")) {
+        while (yInput < 1 || yInput>8 && shipType.equals("submarine")) {
             System.out.println("Please Enter Valid Y-Coordinate");
             yInput = input.nextInt();
         }
 
-        while (yInput < 0 || yInput>9 && shipType.equals("destroyer")) {
+        while (yInput < 1 || yInput>9 && shipType.equals("destroyer")) {
             System.out.println("Please Enter Valid Y-Coordinate");
             yInput = input.nextInt();
         }
 
-        while (yInput < 0 || yInput>7 && shipType.equals("cruiser")) {
+        while (yInput < 1 || yInput>7 && shipType.equals("cruiser")) {
             System.out.println("Please Enter Valid Y-Coordinate");
             yInput = input.nextInt();
         }
 
-        while (yInput < 0 || yInput>6 && shipType.equals("battleship")) {
+        while (yInput < 1 || yInput>6 && shipType.equals("battleship")) {
             System.out.println("Please Enter Valid Y-Coordinate");
             yInput = input.nextInt();
         }
 
-        while (yInput < 0 || yInput>8 && shipType.equals("carrier")) {
+        while (yInput < 1 || yInput>8 && shipType.equals("carrier")) {
             System.out.println("Please Enter Valid Y-Coordinate");
             yInput = input.nextInt();
         }
-
-
-
+        
 
             for (int i = 0; i < size; i++) {
                 for (int y = yInput; y <= yInput; y++) {

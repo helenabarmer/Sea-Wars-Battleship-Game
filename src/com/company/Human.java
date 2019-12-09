@@ -95,21 +95,17 @@ public class Human extends Player {
                             }
                         }
                         battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
-
                         battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-
                         hitBarPlayer1 += "*";
                         hitsPlayer1++;
 
                     }
 
 
-
                 }
-                if(playerTwoMap[xShoot][yShoot].contains(" ")) {
-
-                }if(playerTwoMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
-
+                //if(playerTwoMap[xShoot][yShoot].contains(" ")) {
+                //}
+                if(playerTwoMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                     System.out.println("MISS!");
                     battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
                 }

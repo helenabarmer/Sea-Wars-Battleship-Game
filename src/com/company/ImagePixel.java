@@ -2,10 +2,6 @@ package com.company;
 
 public class ImagePixel {
 
-    public ImagePixel() {
-        //menuLogo();
-    }
-
     // Colours for background
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
     public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
@@ -19,6 +15,13 @@ public class ImagePixel {
 
     // Colours for String
     public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
+
+    public ImagePixel() {
+        //menuLogo();
+    }
+
+
+
 
 
     public void menuLogo(){
@@ -73,5 +76,7 @@ public class ImagePixel {
                         " " + ANSI_BLUE_BACKGROUND + "                                    " + ANSI_RESET + "\n"
         );
     }
+
+
 
 }

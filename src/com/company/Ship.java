@@ -39,7 +39,6 @@ public class Ship {
         return this.positionsArrayList;
     }
 
-
     public int getSize() {
         return this.size;
     }
@@ -63,6 +62,8 @@ public class Ship {
     public String getTypeOfShip() {
         return this.typeOfShip;
     }
+
+
 
 
 

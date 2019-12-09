@@ -1,17 +1,16 @@
 package com.company;
 
 import javax.swing.event.AncestorEvent;
+import java.awt.*;
 import java.util.Scanner;
 
 public class Menu {
-
-    // ImagePixel logo = new ImagePixel();
-    // logo
 
     // Creating maps for the players and computer
     String playerOneMap[][] = new String[11][11];
     String playerTwoMap[][] = new String[11][11];
     String computerMap[][] = new String[11][11];
+
 
     private Scanner input = new Scanner(System.in);
     private boolean gameStillRunning;
@@ -22,6 +21,8 @@ public class Menu {
 
     //Switch case to present MENU; Gives user three options.
     public void Choices() {
+
+
 
         do {
 

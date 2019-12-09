@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    // ImagePixel logo = new ImagePixel();
-    // logo
-
     // Creating maps for the players and computer
     String playerOneMap[][] = new String[11][11];
     String playerTwoMap[][] = new String[11][11];
@@ -24,7 +21,9 @@ public class Menu {
     public void Choices() {
 
         do {
-
+            // Method gets logo and prints it each time Menu (switch-case) is shown.
+            ImagePixel logo = new ImagePixel();
+            logo.menuLogo();
 
             // TEST TO DRAW SHIP
 
@@ -40,6 +39,7 @@ public class Menu {
                 case 1:
                     System.out.println("You have chosen 'Player VS Player' (PvP)" + "\n");
 
+                    //Welcoming players and let them enter their name
                     System.out.println("Player 1, please type in your name");
                     String playerOneName = inputFromUser.nextLine();
                     Human player1 = new Human(playerOneName); // playerOneName is the input from user.
@@ -50,32 +50,16 @@ public class Menu {
                     Human player2 = new Human(playerTwoName);
                     System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
 
-                    /*
-                    System.out.println("Player 2, please type in your name");
-                    String playerTwoName = inputFromUser.nextLine();
-                    Human player2 = new Human(playerTwoName);
-                    System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
-                     */
 
-                    //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
-                    //player1.placeShips(playerOneMap);
-
-                    //System.out.println(player1.getName() + " " + ", please place your ships (6) as shown below");
-                    //player1.placeShips(playerOneMap);
-
-                /*
-                System.out.println("Player 2, please place your ships (6) as shown below");
-                Human player2 = new Human(playerName); */
-
-
+                    // Let player 1 and player 2 place their ships
                     System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
                     player1.placeShips(playerOneMap, player1.getName());
-
 
                     System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
                     player2.placeShips(playerTwoMap, player2.getName());
 
 
+                    // Let player ONE shoot first, then let each player take turn on shooting.
                     player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
 
                     break;
@@ -97,10 +81,9 @@ public class Menu {
 
                 //computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
 
-
                 // Map computerMap = new Map();
                 break;
-                //do battle {
+
 
                 case 3:
                     System.out.println("You will now Quit Sea Wars");
@@ -109,14 +92,3 @@ public class Menu {
         } while (gameStillRunning = true);
     }
 }
-
- // Constructor removed, not needed?
-
-//Play against human / number of players
-//Play against computer / AI
-//Quit game
-// ---
-// Copy/Paste below into Main to run method.
-// Menu menu = new Menu();
-//  menu.Choices();
-// ---

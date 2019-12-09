@@ -87,7 +87,7 @@ public class Human extends Player {
                 for (int i = 0; i < ships.length; i++) {
                     if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
                         System.out.println("HIT!");
-<<<<<<< HEAD
+
                         if(!playerTwoMap[xShoot][yShoot].contains(ships[i])){
                             for(int j = 0; j<shipNames.length; j++){
                                 System.out.println("YOU SUNK this test " +ships[j] + "\n");
@@ -95,21 +95,21 @@ public class Human extends Player {
                             }
                         }
                         battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
-=======
+
                         battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
->>>>>>> master
+
                         hitBarPlayer1 += "*";
                         hitsPlayer1++;
 
                     }
-<<<<<<< HEAD
+
 
 
                 }
                 if(playerTwoMap[xShoot][yShoot].contains(" ")) {
-=======
+
                 }if(playerTwoMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
->>>>>>> master
+
                     System.out.println("MISS!");
                     battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
                 }
@@ -130,13 +130,12 @@ public class Human extends Player {
 
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
-<<<<<<< HEAD
                     System.out.println("HIT TEST!");
                     battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
-=======
+
                     System.out.println("HIT!");
                     battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
->>>>>>> master
+
                     hitBarPlayer2+= "*";
                     hitsPlayer2++;
                 }

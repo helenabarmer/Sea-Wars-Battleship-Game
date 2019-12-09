@@ -26,14 +26,14 @@ Map map = new Map();
         // Initialize 2D matrix map for PLAYER 1
         for (int y = 1; y < battleMapAI.length; y++) {
                 for (int x = 1; x < battleMapAI.length; x++) {
-                    battleMapAI[x][y] = " ";
+                    battleMapAI[x][y] = SquareState.NONE.getSquareSymbol();
                 }
         }
 
         // Initialize 2D matrix map for AI
         for (int y = 1; y < battleMap1.length; y++) {
             for (int x = 1; x < battleMap1.length; x++) {
-                battleMap1[x][y] = " ";
+                battleMap1[x][y] = SquareState.NONE.getSquareSymbol();
             }
         }
 
@@ -52,12 +52,12 @@ Map map = new Map();
             for (int i = 0; i < ships.length; i++) {
                 if (computerMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
-                    battleMapAI[xShoot][yShoot] = "*";
+                    battleMapAI[xShoot][yShoot] = SquareState.HIT.getSquareSymbol();
                     hitsPlayer1++;
                 }
-            }if(computerMap[xShoot][yShoot].contains(" ")) {
+            }if(computerMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
-                battleMapAI[xShoot][yShoot] = "X";
+                battleMapAI[xShoot][yShoot] = SquareState.MISS.getSquareSymbol();
             }
 
             System.out.println("MAP OF COMPUTER " + AI);
@@ -84,13 +84,13 @@ Map map = new Map();
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
                     System.out.println("HIT!");
-                    battleMap1[xShootAI][yShootAI] = "*";
+                    battleMap1[xShootAI][yShootAI] = SquareState.HIT.getSquareSymbol();
                     hitsAI++;
 
                 }
-            } if(playerOneMap[xShoot][yShoot].contains(" ")) {
+            } if(playerOneMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
-                battleMap1[xShootAI][yShootAI] = "X";
+                battleMap1[xShootAI][yShootAI] = SquareState.MISS.getSquareSymbol();
             }
 
             System.out.println("MAP OF PLAYER " + player1);

@@ -1,19 +1,24 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Player {
 
     private String name;
     public Map playerMap;
+
 
     public Player(String name){
         this.name = name;
         playerMap = new Map();
     }
 
-    //Method to shoot on the map
-    public void shoot(){
 
-        if(/*Submarine ability on?*/){
+    //Method to shoot on the map
+    public void shoot(String[][] playerOneMap, String[][] computerMap, String name){
+
+/*
+        if(){
             if (map[x][y]=="S"||map[x][y]==""){
 //Does it hit a empty space or one with the sub, no changes
             }
@@ -35,16 +40,20 @@ public abstract class Player {
                 map[x][y] = "*";
             }
         }
-
+*/
     }
 
     // Method to get specific coordinates
-    public void getShotCoordinates(){
-    }
+    //public void getShotCoordinates(){
+    //}
+
+
 
     public String getName(){
         return this.name;
     }
+
+
 
 
 

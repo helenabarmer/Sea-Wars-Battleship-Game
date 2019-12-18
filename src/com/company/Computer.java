@@ -172,28 +172,6 @@ public class Computer extends Player {
 
                     break;
 
-
-                case "destroyer":
-                    // Print map with added coordinates
-                    map.printAIMapShips(playerMap, destroyerSize, typeDestroyer);
-                    break;
-
-                case "cruiser":
-                    // Print map with added coordinates
-                    map.printAIMapShips(playerMap, cruiserSize, typeCruiser);
-                    break;
-
-                case "battleship":
-                    map.printAIMapShips(playerMap, battleshipSize, typeBattleship);
-                    break;
-
-                case "carrier1":
-                    map.printAIMapShips(playerMap, carrier1Size, typeCarrier1);
-                    break;
-
-                case "carrier2":
-                    map.printAIMapShips(playerMap, carrier2Size, typeCarrier2);
-
                 case DESTROYER:
                     // Method for adding coordinates
                     //coordinates = AIRandomCoordinates(typeDestroyer, destroyerSize);

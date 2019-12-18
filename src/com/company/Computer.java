@@ -160,112 +160,32 @@ public class Computer extends Player {
 
                 // It's yellow and we all live there
                 case "submarine":
-                    // Method for adding coordinates
-                    //coordinates = AIRandomCoordinates(typeSubmarine, submarineSize);
 
                     // Print map with added coordinates
                     map.printAIMapShips(playerMap, submarineSize, typeSubmarine);
 
-                    // Add submarine to ships ArrayList
-                    //Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
-                    //ships.add(sub);
-
-                    //Printing information about the added ship
-                    //System.out.println(sub.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
 
                 case "destroyer":
-                    // Method for adding coordinates
-                    //coordinates = AIRandomCoordinates(typeDestroyer, destroyerSize);
-
                     // Print map with added coordinates
                     map.printAIMapShips(playerMap, destroyerSize, typeDestroyer);
-
-                    // Add destroyer to ships ArrayList
-                    //Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
-                    //ships.add(dest);
-
-                    //Printing information about the added ship
-                    //System.out.println(dest.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
 
                 case "cruiser":
-                    // Method for adding coordinates
-                    //coordinates = AIRandomCoordinates(typeCruiser, cruiserSize);
-
                     // Print map with added coordinates
                     map.printAIMapShips(playerMap, cruiserSize, typeCruiser);
-
-                    // Add cruiser to ships ArrayList
-                    //Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
-                    //ships.add(crus);
-
-                    //Printing information about the added ship
-                    //System.out.println(crus.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
 
                 case "battleship":
-                    // Method for adding coordinates
-                    //coordinates = AIRandomCoordinates(typeBattleship, battleshipSize);
-
-                    // Print map with added coordinates
                     map.printAIMapShips(playerMap, battleshipSize, typeBattleship);
-
-                    // Add battleship to ships ArrayList
-                    //BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
-                    //ships.add(battleShip);
-
-                    //Printing information about the added ship
-                    //System.out.println(battleShip.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
 
                 case "carrier1":
-                    // Method for adding coordinates
-                    //coordinates = AIRandomCoordinates(typeCarrier1, carrier1Size);
-
-                    // Print map with added coordinates
                     map.printAIMapShips(playerMap, carrier1Size, typeCarrier1);
-
-                    // Add carrier ships ArrayList
-                    //Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
-                    //ships.add(carrier);
-
-                    //Printing information about the added ship
-                    //System.out.println(carrier.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
 
                 case "carrier2":
-                    // Method for adding coordinates
-                    //coordinates = AIRandomCoordinates(typeCarrier2, carrier2Size);
-
-                    // Print map with added coordinates
                     map.printAIMapShips(playerMap, carrier2Size, typeCarrier2);
-
-                    // Add carrier ships ArrayList
-                    //Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
-                    //String shipType = carr.getType();
-                    //ships.add(carrier2);
-
-                    //Printing information about the added ship
-                    //System.out.println(carrier2.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
 
                 default:

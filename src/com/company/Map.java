@@ -184,94 +184,120 @@ public class Map {
     }
 
 
-        // Add coordinates and ships to map
-        public void addCoordinateToMap (String map[][],int size, String shipType){
+    // Add coordinates and ships to map
+    public void addCoordinateToMap(String map[][], int size, String shipType) {
 
-            try {
-                System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
-                int xInput = input.nextInt();
+        try {
+            System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
+            int xInput = input.nextInt();
 
-                System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
-                int yInput = input.nextInt();
-
-                while (xInput < 1 || xInput > 10) {
-                    System.out.println("Please Enter Valid X- Coordinate");
-                    xInput = input.nextInt();
-                }
-
-                while (yInput < 1 || yInput > 8 && shipType.equals("submarine")) {
-                    System.out.println("Please Enter Valid Y-Coordinate");
-                    yInput = input.nextInt();
-                }
-
-                while (yInput < 1 || yInput > 9 && shipType.equals("destroyer")) {
-                    System.out.println("Please Enter Valid Y-Coordinate");
-                    yInput = input.nextInt();
-                }
-
-                while (yInput < 1 || yInput > 7 && shipType.equals("cruiser")) {
-                    System.out.println("Please Enter Valid Y-Coordinate");
-                    yInput = input.nextInt();
-                }
-
-                while (yInput < 1 || yInput > 6 && shipType.equals("battleship")) {
-                    System.out.println("Please Enter Valid Y-Coordinate");
-                    yInput = input.nextInt();
-                }
-
-                while (yInput < 1 || yInput > 8 && shipType.equals("carrier")) {
-                    System.out.println("Please Enter Valid Y-Coordinate");
-                    yInput = input.nextInt();
-                }
+            System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
+            int yInput = input.nextInt();
 
 
+            // To not be able to add outside of the grid (coordinates 1 - 10)
+            while (xInput < 1 || xInput > 10) {
+                System.out.println("Please Enter Valid X- Coordinate");
+                xInput = input.nextInt();
+            }
+
+            while (yInput < 1 || yInput > 8 && shipType.equals("submarine")) {
+                System.out.println("Please Enter Valid Y-Coordinate");
+                yInput = input.nextInt();
+            }
+
+            while (yInput < 1 || yInput > 9 && shipType.equals("destroyer")) {
+                System.out.println("Please Enter Valid Y-Coordinate");
+                yInput = input.nextInt();
+            }
+
+            while (yInput < 1 || yInput > 7 && shipType.equals("cruiser")) {
+                System.out.println("Please Enter Valid Y-Coordinate");
+                yInput = input.nextInt();
+            }
+
+            while (yInput < 1 || yInput > 6 && shipType.equals("battleship")) {
+                System.out.println("Please Enter Valid Y-Coordinate");
+                yInput = input.nextInt();
+            }
+
+            while (yInput < 1 || yInput > 8 && shipType.equals("carrier")) {
+                System.out.println("Please Enter Valid Y-Coordinate");
+                yInput = input.nextInt();
+            }
+
+            while (!map[xInput][yInput].equals(" ")) {
                 for (int i = 0; i < size; i++) {
                     for (int y = yInput; y <= yInput; y++) {
                         y += i;
                         for (int x = xInput; x <= xInput; x++) {
+                            if (map[x][y] != " ") {
+                                System.out.println("Invalid!");
+                                System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
+                                xInput = input.nextInt();
 
-                            switch (shipType) {
-                                case "submarine":
-                                    map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.SUBMARINE.getShipType() + ANSI_RESET + ANSI_BLUE;
-                                    Submarine submarine = new Submarine(x, y, true);
-                                    ships.add(submarine);
-                                    break;
-
-                                case "destroyer":
-                                    map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "cruiser":
-                                    map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "battleship":
-                                    map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "carrier1":
-                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "carrier2":
-                                    map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                                    break;
-
-                                case "battle":
-                                    map[x][y] = " ";
-                                    break;
-
-                                default:
-                                    System.out.println("Invalid");
-                                    break;
+                                System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
+                                yInput = input.nextInt();
+                            } else {
+                                break;
                             }
+
+                        }
+
+                    }
+                }
+            }
+
+
+            for (int i = 0; i < size; i++) {
+                for (int y = yInput; y <= yInput; y++) {
+                    y += i;
+                    for (int x = xInput; x <= xInput; x++) {
+
+                        switch (shipType) {
+                            case "submarine":
+                                map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.SUBMARINE.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "destroyer":
+                                map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "cruiser":
+                                map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "battleship":
+                                map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "carrier1":
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "carrier2":
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                break;
+
+                            case "battle":
+                                map[x][y] = " ";
+                                break;
+
+                            default:
+                                System.out.println("Invalid");
+                                break;
+
                         }
                     }
                 }
-            } catch (InputMismatchException e) {
-                e.getMessage();
             }
+        } catch (InputMismatchException e) {
+            e.getMessage();
         }
+    }
+
+
+
 
 
         public void printPlayerMapShips (String map[][],int size, String shipType){

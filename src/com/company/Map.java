@@ -122,27 +122,27 @@ public class Map {
 
         }
 
-        while (randomY < 0 || randomY > 9 ) {
+        while (randomY < 0 || randomY > 9 && shipType.equals("submarine") ) {
             randomY = random.nextInt();
 
         }
 
-        while (randomY < 0 || randomY > 7 ) {
+        while (randomY < 0 || randomY > 7 && shipType.equals("destoryer")) {
             randomY = random.nextInt();
 
         }
 
-        while (randomY < 0 || randomY > 6 ) {
+        while (randomY < 0 || randomY > 6 && shipType.equals("cruiser")) {
             randomY = random.nextInt();
 
         }
 
-        while (randomY < 0 || randomY > 8 ) {
+        while (randomY < 0 || randomY > 8 && shipType.equals("battleship")) {
             randomY = random.nextInt();
 
         }
 
-        while (randomY < 0 || randomY > 8 ) {
+        while (randomY < 0 || randomY > 8 && shipType.equals("carrier")) {
             randomY = random.nextInt();
 
         }

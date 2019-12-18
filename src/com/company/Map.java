@@ -141,21 +141,22 @@ public class Map {
                 y += i;
                 for (int x = randomX; x <= randomX; x++) {
 
-                    switch (shipType) {
-                        case "submarine":
-                            map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
-                            //positionSubmarine = new Position(randomX, randomY);
-                            //10
-                            // positions.add(positionSubmarine);
-                            break;
+                        while (xInput < size && yInput < size) {
+                            // ALL SHIPTYPE IN ENUM SHIPTYPE
+                            switch (shipType) {
+                                case "submarine":
+                                    map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.SUBMARINE.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                    positionSubmarine = new Position(xInput, yInput);
+                                    positions.add(positionSubmarine);
+                                    break;
 
-                        case "destroyer":
-                            map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                                case "destroyer":
+                                    map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.DESTROYER.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                    break;
 
-                        case "cruiser":
-                            map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
-                            break;
+                                case "cruiser":
+                                    map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + ShipType.CRUISER + ANSI_RESET + ANSI_BLUE;
+                                    break;
 
                         case "battleship":
                             map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;

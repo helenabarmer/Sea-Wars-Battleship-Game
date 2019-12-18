@@ -54,12 +54,12 @@ public class Menu {
                     System.out.println("Player 1, please type in your name");
                     String playerOneName = inputFromUser.nextLine();
                     Human player1 = new Human(playerOneName); // playerOneName is the input from user.
-                    System.out.println("Welcome" + " " + player1.getName() + "!" + "\n");
+                    System.out.println("Welcome," + " " + player1.getName() + "!" + "\n");
 
                     System.out.println("Player 2, please type in your name");
                     String playerTwoName = inputFromUser.nextLine();
                     Human player2 = new Human(playerTwoName);
-                    System.out.println("Welcome" + " " + player2.getName() + "!" + "\n");
+                    System.out.println("Welcome," + " " + player2.getName() + "!" + "\n");
 
 
                     // Let player 1 and player 2 place their ships
@@ -80,7 +80,7 @@ public class Menu {
 
                     String humanName = inputFromUser.nextLine();
                     Human human = new Human(humanName);
-                    System.out.println("Welcome" + " " + human.getName() + "!");
+                    System.out.println("Welcome," + " " + human.getName() + "!");
 
                     // Name of Computer will include automatically via Computer-Class
                     Computer computer = new Computer();
@@ -88,17 +88,19 @@ public class Menu {
 
                 System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
                 human.placeShips(playerOneMap, human.getName());
-                //computer.AIPlaceShips(computerMap);
 
-                //computer.shoot(playerOneMap, computerMap, human.getName(), "Computer");
+                computer.AIPlaceShips(computerMap);
 
-                // Map computerMap = new Map();
+                computer.shootAI(computerMap, playerOneMap, human.getName(), computer.getName());
+
                 break;
 
 
                 case 3:
                     System.out.println("You will now Quit Sea Wars");
                     System.exit(0); // Shuts down program
+                default:
+                    throw new IllegalStateException("Unexpected value: " + userChoice);
             }
 
         } while (gameStillRunning = true);

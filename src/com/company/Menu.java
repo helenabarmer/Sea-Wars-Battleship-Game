@@ -23,8 +23,6 @@ public class Menu {
     //Switch case to present MENU; Gives user three options.
     public void Choices() {
 
-
-
         do {
             // Method gets logo and prints it each time Menu (switch-case) is shown.
             ImagePixel logo = new ImagePixel();

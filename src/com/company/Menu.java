@@ -46,32 +46,32 @@ public class Menu {
 
             switch (userChoice) {
                 case 1:
-                    System.out.println("You have chosen 'Player VS Player' (PvP)" + "\n");
+                System.out.println("You have chosen 'Player VS Player' (PvP)" + "\n");
 
-                    //Welcoming players and let them enter their name
-                    System.out.println("Player 1, please type in your name");
-                    String playerOneName = inputFromUser.nextLine();
-                    Human player1 = new Human(playerOneName); // playerOneName is the input from user.
-                    System.out.println("Welcome," + " " + player1.getName() + "!" + "\n");
+                //Welcoming players and let them enter their name
+                System.out.println("Player 1, please type in your name");
+                String playerOneName = inputFromUser.nextLine();
+                Human player1 = new Human(playerOneName); // playerOneName is the input from user.
+                System.out.println("Welcome," + " " + player1.getName() + "!" + "\n");
 
-                    System.out.println("Player 2, please type in your name");
-                    String playerTwoName = inputFromUser.nextLine();
-                    Human player2 = new Human(playerTwoName);
-                    System.out.println("Welcome," + " " + player2.getName() + "!" + "\n");
-
-
-                    // Let player 1 and player 2 place their ships
-                    System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
-                    player1.placeShips(playerOneMap, player1.getName());
-
-                    System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
-                    player2.placeShips(playerTwoMap, player2.getName());
+                System.out.println("Player 2, please type in your name");
+                String playerTwoName = inputFromUser.nextLine();
+                Human player2 = new Human(playerTwoName);
+                System.out.println("Welcome," + " " + player2.getName() + "!" + "\n");
 
 
-                    // Let player ONE shoot first, then let each player take turn on shooting.
-                    player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
+                // Let player 1 and player 2 place their ships
+                System.out.println(player1.getName() + "," + " " + "please place your ships (6) as shown below");
+                player1.placeShips(playerOneMap, player1.getName());
 
-                    break;
+                System.out.println(player2.getName() + "," + " " + "please place your ships (6) as shown below");
+                player2.placeShips(playerTwoMap, player2.getName());
+
+
+                // Let player ONE shoot first, then let each player take turn on shooting.
+                player1.shoot(playerOneMap, playerTwoMap, player1.getName(), player2.getName());
+
+                break;
 
                 case 2:
                     System.out.println("You have chosen 'Player VS Computer' (PvE)" + "\n \n" + "Please enter your name:");

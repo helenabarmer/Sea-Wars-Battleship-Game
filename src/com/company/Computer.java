@@ -161,23 +161,38 @@ public class Computer extends Player {
             switch (shipNames[i]) {
 
                 // It's yellow and we all live there
+
                 case SUBMARINE:
                     // Method for adding coordinates
                     //coordinates = AIRandomCoordinates(typeSubmarine, submarineSize);
 
+
                     // Print map with added coordinates
                     map.printAIMapShips(playerMap, submarineSize, submarine);
 
-                    // Add submarine to ships ArrayList
-                    //Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
-                    //ships.add(sub);
-
-                    //Printing information about the added ship
-                    //System.out.println(sub.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips();
                     break;
+
+
+                case "destroyer":
+                    // Print map with added coordinates
+                    map.printAIMapShips(playerMap, destroyerSize, typeDestroyer);
+                    break;
+
+                case "cruiser":
+                    // Print map with added coordinates
+                    map.printAIMapShips(playerMap, cruiserSize, typeCruiser);
+                    break;
+
+                case "battleship":
+                    map.printAIMapShips(playerMap, battleshipSize, typeBattleship);
+                    break;
+
+                case "carrier1":
+                    map.printAIMapShips(playerMap, carrier1Size, typeCarrier1);
+                    break;
+
+                case "carrier2":
+                    map.printAIMapShips(playerMap, carrier2Size, typeCarrier2);
 
                 case DESTROYER:
                     // Method for adding coordinates
@@ -268,6 +283,7 @@ public class Computer extends Player {
 
                     // Printing information about the added ship
                     //loopAndPrintShips();
+
                     break;
 
                 default:

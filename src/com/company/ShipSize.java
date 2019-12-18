@@ -5,7 +5,8 @@ public enum ShipSize {
     DESTROYER(2),
     CRUISER(4),
     BATTLESHIP(5),
-    CARRIER(3);
+    CARRIER1(3),
+    CARRIER2(3);
 
     private int size;
 

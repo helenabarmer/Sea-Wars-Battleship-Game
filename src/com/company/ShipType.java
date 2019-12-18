@@ -5,7 +5,8 @@ public enum ShipType {
     DESTROYER("D"),
     CRUISER("C"),
     BATTLESHIP("B"),
-    CARRIER("c");
+    CARRIER1("c"),
+    CARRIER2("c");
 
     private String shipType;
 

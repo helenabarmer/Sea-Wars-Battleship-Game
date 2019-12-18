@@ -106,8 +106,6 @@ Map map = new Map();
             System.out.println("Number of hits for " + AI + " is: " + hitsAI);
 
         }while(gameOver);
-
-
     }
 
 

@@ -2,6 +2,7 @@ package com.company;
 
 import javax.swing.event.AncestorEvent;
 import java.awt.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -29,14 +30,20 @@ public class Menu {
             ImagePixel logo = new ImagePixel();
             logo.menuLogo();
 
+
             // TEST TO DRAW SHIP
+
 
             System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
             System.out.println("1. Player VS Player (PvP)");
             System.out.println("2. Player VS Computer (PvE)");
             System.out.println("3. Quit");
             int userChoice = input.nextInt();
+
+
             Scanner inputFromUser = new Scanner(System.in);
+
+
 
 
             switch (userChoice) {
@@ -93,6 +100,7 @@ public class Menu {
                     System.out.println("You will now Quit Sea Wars");
                     System.exit(0); // Shuts down program
             }
+
         } while (gameStillRunning = true);
     }
 }

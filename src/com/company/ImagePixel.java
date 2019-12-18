@@ -80,7 +80,4 @@ public class ImagePixel {
                         " " + ANSI_BLUE_BACKGROUND + "                                    " + ANSI_RESET + "\n"
         );
     }
-
-
-
 }

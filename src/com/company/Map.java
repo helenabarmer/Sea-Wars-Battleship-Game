@@ -224,6 +224,28 @@ public class Map {
                     yInput = input.nextInt();
                 }
 
+                // Prevent ship to be placed on another ship
+                while (!map[xInput][yInput].equals(" ")) {
+                    for (int i = 0; i < size; i++){
+                        for (int y = yInput; y <= yInput; y++) {
+                            y += i;
+                            for (int x = xInput; x <= xInput; x++) {
+                                if (map[x][y] != " ") {
+                                    System.out.println("Oops, can't place a boat on another boat mate.");
+                                    System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
+                                    xInput = input.nextInt();
+
+                                    System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
+                                    yInput = input.nextInt();
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
 
                 for (int i = 0; i < size; i++) {
                     for (int y = yInput; y <= yInput; y++) {

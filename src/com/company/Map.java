@@ -105,7 +105,7 @@ public class Map {
     }
 
     // Adding AI:s coordinates to the map
-    private void AIRandomCoordinatesToMap(String map[][], int size, String shipType) {
+    private void AIRandomCoordinatesToMap(String map[][], int size, ShipType shipType) {
 
         Random random = new Random();
 
@@ -117,23 +117,27 @@ public class Map {
             System.out.println("Random X" + randomX);
             System.out.println("Random Y" + randomY);
 
-            while (randomY < 1 || randomY > 8 && shipType.equals("submarine")) {
+            while (randomY < 1 || randomY > 8 && shipType.equals(ShipType.SUBMARINE)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
-            while (randomY < 1 || randomY > 9 && shipType.equals("destroyer")) {
+            while (randomY < 1 || randomY > 9 && shipType.equals(ShipType.DESTROYER)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
-            while (randomY < 1 || randomY > 7 && shipType.equals("cruiser")) {
+            while (randomY < 1 || randomY > 7 && shipType.equals(ShipType.CRUISER)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
-            while (randomY < 1 || randomY > 6 && shipType.equals("battleship")) {
+            while (randomY < 1 || randomY > 6 && shipType.equals(ShipType.BATTLESHIP)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
-            while (randomY < 1 || randomY > 8 && shipType.equals("carrier")) {
+            while (randomY < 1 || randomY > 8 && shipType.equals(ShipType.CARRIER1)) {
+                randomY = random.nextInt(10 - 1) + 1;
+            }
+
+            while (randomY < 1 || randomY > 8 && shipType.equals(ShipType.CARRIER2)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
@@ -160,33 +164,29 @@ public class Map {
                     for (int x = randomX; x <= randomX; x++) {
 
                         switch (shipType) {
-                            case "submarine":
-                                map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S" + ANSI_RESET + ANSI_BLUE;
+                            case SUBMARINE:
+                                map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.SUBMARINE.getShipType() + ANSI_RESET + ANSI_BLUE;
 
                                 break;
 
-                            case "destroyer":
-                                map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                            case DESTROYER:
+                                map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.DESTROYER.getShipType() + ANSI_RESET + ANSI_BLUE;
                                 break;
 
-                            case "cruiser":
-                                map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                            case CRUISER:
+                                map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + ShipType.CRUISER.getShipType() + ANSI_RESET + ANSI_BLUE;
                                 break;
 
-                            case "battleship":
-                                map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                            case BATTLESHIP:
+                                map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.BATTLESHIP.getShipType() + ANSI_RESET + ANSI_BLUE;
                                 break;
 
-                            case "carrier1":
-                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                            case CARRIER1:
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.CARRIER1.getShipType() + ANSI_RESET + ANSI_BLUE;
                                 break;
 
-                            case "carrier2":
-                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
-                                break;
-
-                            case "battle":
-                                map[x][y] = " ";
+                            case CARRIER2:
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.CARRIER2.getShipType() + ANSI_RESET + ANSI_BLUE;
                                 break;
 
                             default:
@@ -195,7 +195,6 @@ public class Map {
                         }
                     }
                 }
-
             }
         }
         catch(Exception e){
@@ -374,7 +373,8 @@ public class Map {
         System.out.println("\n");
     }
 
-    public void printAIMapShips (String map[][],int size, String shipType){
+
+        public void printAIMapShips (String map[][],int size, ShipType shipType){
 
         // AI adds random coordinates
         AIRandomCoordinatesToMap(map, size, shipType);
@@ -413,10 +413,10 @@ public class Map {
         // Add this to center the coordinates with the [ ] in the map
         System.out.print(" ");
 
-            // Adding X-coordinates
+            /*// Adding X-coordinates
             for (int k = 1; k < map.length; k++) {
                 System.out.print(ANSI_RED + "" + k + "X" + " | " + ANSI_RESET);
-            }
+            }*/
 
         System.out.println("\n" + "\n" +
                 YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + "S: SUBMARINE (1) " + ANSI_RESET + " " +

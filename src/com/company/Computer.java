@@ -72,7 +72,6 @@ public class Computer extends Player {
                             battleMapAI[xShoot][yShoot] = ships[i];
                         }
                     }
-                    battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
                     battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
                     hitBarPlayer1 += "*";
                     hitsPlayer1++;
@@ -93,8 +92,8 @@ public class Computer extends Player {
 
             // AI
 
-            int xShootAI = random.nextInt(11);
-            int yShootAI = random.nextInt(11);
+            int xShootAI = random.nextInt(10 - 1) + 1;
+            int yShootAI = random.nextInt(10 - 1) + 1;
 
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShootAI][yShootAI].contains(ships[i])) {
@@ -106,7 +105,6 @@ public class Computer extends Player {
                             battleMap1[xShootAI][yShootAI] = ships[i];
                         }
                     }
-                    battleMap1[xShootAI][yShootAI] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
                     battleMap1[xShootAI][yShootAI] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
                     hitBarAI += "*";
                     hitsAI++;
@@ -125,6 +123,7 @@ public class Computer extends Player {
                 break;
             }
 
+
             System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
             System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
             System.out.println(RED_BACKGROUND_BRIGHT + hitBarPlayer1 + ANSI_RESET);
@@ -134,27 +133,31 @@ public class Computer extends Player {
 
         }
         while (gameOver);
+
+
     }
 
 
     public void AIPlaceShips(String playerMap[][]) {
         // Adding ship sizes
-        int submarineSize = 3;
-        int destroyerSize = 2;
-        int cruiserSize = 4;
-        int battleshipSize = 5;
-        int carrier1Size = 3;
-        int carrier2Size = 3;
 
-        String typeSubmarine = "submarine";
-        String typeDestroyer = "destroyer";
-        String typeCruiser = "cruiser";
-        String typeBattleship = "battleship";
-        String typeCarrier1 = "carrier1";
-        String typeCarrier2 = "carrier2";
+        int submarineSize = ShipSize.SUBMARINE.getSize();
+        int destroyerSize = ShipSize.DESTROYER.getSize();;
+        int cruiserSize = ShipSize.CRUISER.getSize();
+        int battleshipSize = ShipSize.BATTLESHIP.getSize();
+        int carrier1Size = ShipSize.CARRIER1.getSize();
+        int carrier2Size = ShipSize.CARRIER2.getSize();
+
+        ShipType submarine = ShipType.SUBMARINE;
+        ShipType destroyer = ShipType.DESTROYER;
+        ShipType cruiser = ShipType.CRUISER;
+        ShipType battleship = ShipType.BATTLESHIP;
+        ShipType carrier1 = ShipType.CARRIER1;
+        ShipType carrier2 = ShipType.CARRIER2;
+
 
         // Array of ship names
-        String[] shipNames = {typeSubmarine, typeDestroyer, typeCruiser, typeBattleship, typeCarrier1, typeCarrier2};
+        ShipType[] shipNames = {submarine, destroyer, cruiser, battleship, carrier1, carrier2};
 
         // Printing the empty map to see the coordinates
         map.printEmptyMap(playerMap);
@@ -168,35 +171,51 @@ public class Computer extends Player {
             switch (shipNames[i]) {
 
                 // It's yellow and we all live there
-                case "submarine":
+
+                case SUBMARINE:
 
                     // Print map with added coordinates
-                    map.printAIMapShips(playerMap, submarineSize, typeSubmarine);
+                    map.printAIMapShips(playerMap, submarineSize, submarine);
+
                     break;
 
-                case "destroyer":
+                case DESTROYER:
+
+
                     // Print map with added coordinates
-                    map.printAIMapShips(playerMap, destroyerSize, typeDestroyer);
+                    map.printAIMapShips(playerMap, destroyerSize, destroyer);
+
+
                     break;
 
-                case "cruiser":
+                case CRUISER:
+
+
                     // Print map with added coordinates
-                    map.printAIMapShips(playerMap, cruiserSize, typeCruiser);
+                    map.printAIMapShips(playerMap, cruiserSize, cruiser);
+
+
                     break;
 
-                case "battleship":
+                case BATTLESHIP:
+
+
                     // Print map with added coordinates
-                    map.printAIMapShips(playerMap, battleshipSize, typeBattleship);
+                    map.printAIMapShips(playerMap, battleshipSize, battleship);
+
                     break;
 
-                case "carrier1":
+                case CARRIER1:
+
                     // Print map with added coordinates
-                    map.printAIMapShips(playerMap, carrier1Size, typeCarrier1);
+                    map.printAIMapShips(playerMap, carrier1Size, carrier1);
+
                     break;
 
-                case "carrier2":
+                case CARRIER2:
                     // Print map with added coordinates
-                    map.printAIMapShips(playerMap, carrier2Size, typeCarrier2);
+                    map.printAIMapShips(playerMap, carrier2Size, carrier2);
+
                     break;
 
                 default:
@@ -206,10 +225,5 @@ public class Computer extends Player {
         }
     }
 
-    // Looping through ArrayList of ships and printing information about them
-    public void loopAndPrintShips() {
-        for (Ship myShip : ships) {
-            System.out.println(myShip.toString());
-        }
-    }
+
 }

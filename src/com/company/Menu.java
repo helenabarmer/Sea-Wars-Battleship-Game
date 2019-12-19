@@ -41,8 +41,7 @@ public class Menu {
 
             Scanner inputFromUser = new Scanner(System.in);
 
-
-
+            while(userChoice > 0 && userChoice <3){
 
             switch (userChoice) {
                 case 1:
@@ -84,21 +83,24 @@ public class Menu {
                     Computer computer = new Computer();
                     System.out.println("You'll be playing against the" + " " + computer.getName() + "\n");
 
-                System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
-                human.placeShips(playerOneMap, human.getName());
+                    System.out.println(human.getName() + "," + " " + "please place your ships (6) as shown below");
+                    human.placeShips(playerOneMap, human.getName());
 
-                computer.AIPlaceShips(computerMap);
+                    computer.AIPlaceShips(computerMap);
 
-                computer.shootAI(computerMap, playerOneMap, human.getName(), computer.getName());
+                    computer.shootAI(computerMap, playerOneMap, human.getName(), computer.getName());
 
-                break;
+                    break;
 
 
                 case 3:
                     System.out.println("You will now Quit Sea Wars");
                     System.exit(0); // Shuts down program
+                    break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + userChoice);
+
+            }
             }
 
         } while (gameStillRunning = true);

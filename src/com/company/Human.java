@@ -6,54 +6,46 @@ import java.util.Scanner;
 public class Human extends Player {
 
     // Colour for console, background
-    public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
-    public static final String BLACK_BACKGROUND = "\033[40m";
-    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
+    private static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
+    private static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    private static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";
 
     // Colours for text
-    public static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_BLUE = "\u001B[34m";
 
     // Reset colour
-    public static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
-    Scanner input = new Scanner(System.in);
-    ArrayList<Ship> ships = new ArrayList<>();
-    ArrayList<Map> maps = new ArrayList<>();
-    ArrayList<Position> positions = new ArrayList<>();
+    // User input
+    private Scanner input = new Scanner(System.in);
 
-    Map map = new Map();
+    // Object of Map
+    private Map map = new Map();
 
-    // Testing to set size from human to map
-    String testMap[][] = new String[11][11];
-    String battleMap1[][] = new String[11][11];
-    String battleMap2[][] = new String[11][11];
+    // Battle maps
+   private String[][] battleMap1 = new String[11][11];
+   private String[][] battleMap2 = new String[11][11];
 
-    Submarine sub;
-    Position position;
+   // Empty map
+   private String[][] emptyMap = new String[11][11];
 
+   // Constructor
     public Human(String name) {
         super(name);
-        // Keep printed string above, otherwise "name" won't be useful.
     }
 
-    // All added coordinates
-    public void getShotCoordinates() {
-        for(Ship ship: ships){
-            System.out.println(ship.getPosX());
-            System.out.println(ship.getPosY());
-        }
-    }
 
-    public void shoot(String playerOneMap[][], String playerTwoMap[][], String player1, String player2) {
+    public void shoot(String[][] playerOneMap, String[][] playerTwoMap, String player1, String player2){
 
-        System.out.println(player1 +  " get ready to battle! ");
-        map.printEmptyMap(testMap);
+        System.out.println(player1 +  "Get ready to battle! ");
+        map.printEmptyMap(emptyMap);
 
-        boolean gameOver = true;
+        // Game bar with hits
         String hitBarPlayer1 = "";
         String hitBarPlayer2 = "";
         String winBar = "********************";
+
+        // Total hits for players
         int hitsPlayer1 = 0;
         int hitsPlayer2 = 0;
 
@@ -72,8 +64,9 @@ public class Human extends Player {
         }
 
         do {
-            String ships[] = {"S", "D", "C", "B", "c"};
-            String shipNames[] = {"Submarine", "Destroyer", "Cruiser", "Battleship", "Carrier"};
+            String[] ships = {"S", "D", "C", "B", "c"};
+            String[] shipNames = {"Submarine", "Destroyer", "Cruiser", "Battleship", "Carrier"};
+
 
             // PLAYER 1
             System.out.println("Your turn to shoot, " + player1 + "!");
@@ -82,8 +75,9 @@ public class Human extends Player {
             System.out.println("Shoot! Enter Y-coordinate: ");
             int yShoot = input.nextInt();
 
+            // Loop to only shoot within the range of the coordinates
             while(xShoot <1 || xShoot>10 || yShoot<1 || yShoot>10){
-                System.out.println("Invalid choice");
+                System.out.println("Invalid choice! ");
                 System.out.println("Shoot! Enter X-coordinate: ");
                 xShoot = input.nextInt();
                 System.out.println("Shoot! Enter Y-coordinate: ");
@@ -91,9 +85,9 @@ public class Human extends Player {
             }
 
 
+            // Loop through the map and see if there are ships placed there
             for (int i = 0; i < ships.length; i++) {
                 if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
-                    System.out.println("HIT!");
 
                     if(!playerTwoMap[xShoot][yShoot].contains(ships[i])){
                         for(int j = 0; j<shipNames.length; j++){
@@ -101,13 +95,22 @@ public class Human extends Player {
                             battleMap2[xShoot][yShoot] = ships[i];
                         }
                     }
-                    battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                    hitBarPlayer1 += "*";
-                    hitsPlayer1++;
+
+                    // If you have already had a hit on the square
+                    if(battleMap2[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
+                        System.out.println("You have already bombed this area without any luck. " + "\n");
+                    }
+
+                    else{
+                        System.out.println("HIT!");
+                        battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+                        hitBarPlayer1 += "*";
+                        hitsPlayer1++;
+                    }
                 }
             }
-            //if(playerTwoMap[xShoot][yShoot].contains(" ")) {
-            //}
+
+            // If the square does not have a ship placed there
             if(playerTwoMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
                 battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
@@ -138,29 +141,27 @@ public class Human extends Player {
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
 
-                    //System.out.println("HIT TEST!");
-                    //battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
-                    System.out.println("HIT!");
-                    //battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
-
-                    //System.out.println("HIT!");
-                    //battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-
-                    //hitBarPlayer2 += "*";
-                    //hitsPlayer2 ++;
-
                 if(!playerOneMap[xShoot][yShoot].contains(ships[i])){
                     for(int j = 0; j<shipNames.length; j++){
                         System.out.println("YOU SUNK " +ships[j] + "\n");
                         battleMap1[xShoot][yShoot] = ships[i];
                     }
                 }
-                    battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + "*" + ANSI_RESET + ANSI_BLUE;
-                    battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                    hitBarPlayer2 += "*";
-                    hitsPlayer2++;
+                    // If you have already had a hit on the square
+                    if(battleMap1[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
+                        System.out.println("You have already bombed this area without any luck. " + "\n");
+                    }
+
+                    else{
+                        System.out.println("HIT!");
+                        battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+                        hitBarPlayer2 += "*";
+                        hitsPlayer2++;
+                    }
                 }
             }
+
+            // If the grid is empty / miss
             if(playerOneMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
                 battleMap1[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
@@ -169,13 +170,12 @@ public class Human extends Player {
             System.out.println("MAP OF PLAYER " + player1);
             map.printBattle(battleMap1, xShoot, yShoot, "battle");
 
+            // If all ships are hit
             if (hitsPlayer2 == 20) {
                 System.out.println(player2 + " WINS! GAME OVER FOR: " + player1);
                 break;
             }
 
-            //map.printBattle(battleMap2, xShoot, yShoot, "battle");
-            //map.printBattle(battleMap1, xShoot, yShoot, "battle");
 
             System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
             System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
@@ -184,13 +184,12 @@ public class Human extends Player {
             System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
             System.out.println(RED_BACKGROUND_BRIGHT + hitBarPlayer2 + ANSI_RESET);
 
-
-        }while(gameOver);
+        }while(true);
 
     }
 
 
-    public void placeShips(String playerMap[][], String playerName) {
+    public void placeShips(String[][] playerMap, String playerName) {
         // Adding ship sizes
         int submarineSize = 3;
         int destroyerSize = 2;
@@ -199,15 +198,16 @@ public class Human extends Player {
         int carrier1Size = 3;
         int carrier2Size = 3;
 
-        String typeSubmarine = "submarine";
-        String typeDestroyer = "destroyer";
-        String typeCruiser = "cruiser";
-        String typeBattleship = "battleship";
-        String typeCarrier1 = "carrier1";
-        String typeCarrier2 = "carrier2";
+        ShipType submarine = ShipType.SUBMARINE;
+        ShipType destroyer = ShipType.DESTROYER;
+        ShipType cruiser = ShipType.CRUISER;
+        ShipType battleship = ShipType.BATTLESHIP;
+        ShipType carrier1 = ShipType.CARRIER1;
+        ShipType carrier2 = ShipType.CARRIER2;
+
 
         // Array of ship names
-        String[] shipNames = {typeSubmarine, typeDestroyer, typeCruiser, typeBattleship, typeCarrier1, typeCarrier2};
+        ShipType[] shipNames = {submarine, destroyer, cruiser, battleship, carrier1, carrier2};
 
         // Printing the empty map to see the coordinates
         map.printEmptyMap(playerMap);
@@ -221,116 +221,35 @@ public class Human extends Player {
             switch (shipNames[i]) {
 
                 // It's yellow and we all live there
-                case "submarine":
-
-
-                    // Method for adding coordinates
-                    //coordinates = userInputCoordinates(typeSubmarine, submarineSize);
-
+                case SUBMARINE:
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, submarineSize, typeSubmarine);
+                    map.printPlayerMapShips(playerMap, submarineSize, submarine);
 
-                    // Add submarine to ships ArrayList
-                    //Submarine sub = new Submarine(coordinates[0], coordinates[1], true);
-                    //ships.add(sub);
-
-                    //Printing information about the added ship
-                    //System.out.println(sub.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips(sub);
                     break;
 
-                case "destroyer":
-                    // Method for adding coordinates
-                    //coordinates = userInputCoordinates(typeDestroyer, destroyerSize);
-
+                case DESTROYER:
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, destroyerSize, typeDestroyer);
-
-                    // Add destroyer to ships ArrayList
-                    //Destroyer dest = new Destroyer(coordinates[0], coordinates[1], true);
-                    //ships.add(dest);
-
-                    //Printing information about the added ship
-                    //System.out.println(dest.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips(dest);
+                    map.printPlayerMapShips(playerMap, destroyerSize, destroyer);
                     break;
 
-                case "cruiser":
-                    // Method for adding coordinates
-                    //coordinates = userInputCoordinates(typeCruiser, cruiserSize);
-
+                case CRUISER:
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, cruiserSize, typeCruiser);
-
-                    // Add cruiser to ships ArrayList
-                    //Cruiser crus = new Cruiser(coordinates[0], coordinates[1], true);
-                    //ships.add(crus);
-
-                    //Printing information about the added ship
-                    //System.out.println(crus.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips(crus);
+                    map.printPlayerMapShips(playerMap, cruiserSize, cruiser);
                     break;
 
-                case "battleship":
-                    // Method for adding coordinates
-                    //coordinates = userInputCoordinates(typeBattleship, battleshipSize);
-
+                case BATTLESHIP:
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, battleshipSize, typeBattleship);
-
-                    // Add battleship to ships ArrayList
-                    //BattleShip battleShip = new BattleShip(coordinates[0], coordinates[1], true);
-                    //ships.add(battleShip);
-
-                    //Printing information about the added ship
-                    //System.out.println(battleShip.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips(battleShip);
+                    map.printPlayerMapShips(playerMap, battleshipSize, battleship);
                     break;
 
-                case "carrier1":
-                    // Method for adding coordinates
-                    //coordinates = userInputCoordinates(typeCarrier1, carrier1Size);
-
+                case CARRIER1:
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, carrier1Size, typeCarrier1);
-
-                    // Add carrier ships ArrayList
-                    //Carrier carrier = new Carrier(coordinates[0], coordinates[1], true);
-                    //String shipType = carr.getType();
-                    //ships.add(carrier);
-
-                    //Printing information about the added ship
-                    //System.out.println(carrier.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips(carrier);
+                    map.printPlayerMapShips(playerMap, carrier1Size, carrier1);
                     break;
 
-                case "carrier2":
-                    // Method for adding coordinates
-                    //coordinates = userInputCoordinates(typeCarrier2, carrier2Size);
-
+                case CARRIER2:
                     // Print map with added coordinates
-                    map.printPlayerMapShips(playerMap, carrier2Size, typeCarrier2);
-
-                    // Add carrier ships ArrayList
-                    //Carrier carrier2 = new Carrier(coordinates[0], coordinates[1], true);
-                    //String shipType = carr.getType();
-                    //ships.add(carrier2);
-
-                    //Printing information about the added ship
-                    //System.out.println(carrier2.toString());
-
-                    // Printing information about the added ship
-                    //loopAndPrintShips(carrier);
+                    map.printPlayerMapShips(playerMap, carrier2Size, carrier2);
                     break;
 
                 default:
@@ -339,15 +258,6 @@ public class Human extends Player {
             }
         }
 
-        // Add map to ArrayList
-        //maps.add(playerMap);
-
-        // TEST
-        /*for(Ship ship: ships){
-            System.out.println("! "+ship.getPos());
-        }*/
-
-        //loopAndPrintShips();
     }
 
     public void testPrintSize(String shipName, int xInput, int yInput, int size){
@@ -393,12 +303,7 @@ public class Human extends Player {
 
     }
 
-    // Looping through ArrayList of ships and printing information about them
-    public void loopAndPrintShips (){
-        for (Ship myShip : ships) {
-            System.out.println(myShip.toString());
-        }
     }
-}
+
 
 

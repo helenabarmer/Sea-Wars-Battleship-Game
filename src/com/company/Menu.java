@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Menu {
 
     // Creating maps for the players and computer
-    String playerOneMap[][] = new String[11][11];
-    String playerTwoMap[][] = new String[11][11];
-    String computerMap[][] = new String[11][11];
+    private String[][] playerOneMap = new String[11][11];
+    private String[][] playerTwoMap = new String[11][11];
+    private String[][] computerMap = new String[11][11];
 
 
     private Scanner input = new Scanner(System.in);

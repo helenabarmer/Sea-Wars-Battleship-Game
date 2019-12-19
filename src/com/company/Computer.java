@@ -14,20 +14,28 @@ public class Computer extends Player {
     // Reset colour
     private static final String ANSI_RESET = "\u001B[0m";
 
-    Map map = new Map();
+    private Map map = new Map();
 
-    String battleMap1[][] = new String[11][11];
-    String battleMapAI[][] = new String[11][11];
+    // Maps for players vs players and player vs computer
+    private String[][] battleMap1 = new String[11][11];
+    private String[][] battleMapAI = new String[11][11];
 
-    Scanner input = new Scanner(System.in);
-    ArrayList<Ship> ships = new ArrayList<>();
+    // Empty map
+    private String[][] emptyMap = new String[11][11];
+
+    // User input
+    private Scanner input = new Scanner(System.in);
+
 
     public Computer() {
         super("Computer");
     }
 
-    public void shootAI(String playerOneMap[][], String computerMap[][], String player1, String AI) {
-        boolean gameOver = true;
+    public void shootAI(String[][] playerOneMap, String[][] computerMap, String player1, String AI) {
+
+        System.out.println(player1 +  "Get ready to battle! ");
+        map.printEmptyMap(emptyMap);
+
         String hitBarPlayer1 = "";
         String hitBarAI = "";
         String winBar = "********************";
@@ -62,9 +70,17 @@ public class Computer extends Player {
             System.out.println("Shoot! Enter Y-coordinate: ");
             int yShoot = input.nextInt();
 
+            while(xShoot <1 || xShoot>10 || yShoot<1 || yShoot>10){
+                System.out.println("Invalid choice! ");
+                System.out.println("Shoot! Enter X-coordinate: ");
+                xShoot = input.nextInt();
+                System.out.println("Shoot! Enter Y-coordinate: ");
+                yShoot = input.nextInt();
+            }
+
             for (int i = 0; i < ships.length; i++) {
+
                 if (computerMap[xShoot][yShoot].contains(ships[i])) {
-                    System.out.println("HIT!");
 
                     if (!computerMap[xShoot][yShoot].contains(ships[i])) {
                         for (int j = 0; j < shipNames.length; j++) {
@@ -72,11 +88,21 @@ public class Computer extends Player {
                             battleMapAI[xShoot][yShoot] = ships[i];
                         }
                     }
-                    battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                    hitBarPlayer1 += "*";
-                    hitsPlayer1++;
+
+                    // If you have already had a hit on the square
+                        if(battleMapAI[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
+                            System.out.println("You have already bombed this area without any luck. " + "\n");
+                        }
+
+                        else{
+                            System.out.println("HIT!");
+                            battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+                            hitBarPlayer1 += "*";
+                            hitsPlayer1++;
+                        }
+                    }
                 }
-            }
+
 
             if (computerMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
@@ -90,14 +116,14 @@ public class Computer extends Player {
                 break;
             }
 
-            // AI
 
+
+            // AI
             int xShootAI = random.nextInt(10 - 1) + 1;
             int yShootAI = random.nextInt(10 - 1) + 1;
 
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShootAI][yShootAI].contains(ships[i])) {
-                    System.out.println("HIT!");
 
                     if (!playerOneMap[xShootAI][yShootAI].contains(ships[i])) {
                         for (int j = 0; j < shipNames.length; j++) {
@@ -105,9 +131,16 @@ public class Computer extends Player {
                             battleMap1[xShootAI][yShootAI] = ships[i];
                         }
                     }
-                    battleMap1[xShootAI][yShootAI] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                    hitBarAI += "*";
-                    hitsAI++;
+
+                    if(!playerOneMap[xShootAI][yShootAI].contains(SquareState.HIT.getSquareSymbol())){
+                        System.out.println("HIT!");
+                        battleMap1[xShootAI][yShootAI] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+                        hitBarAI += "*";
+                        hitsAI++;
+                    }
+                    else{
+                        System.out.println("You have already bombed this area without any luck. ");
+                    }
                 }
             }
             if (playerOneMap[xShootAI][yShootAI].contains(SquareState.NONE.getSquareSymbol())) {
@@ -132,7 +165,7 @@ public class Computer extends Player {
             System.out.println(RED_BACKGROUND_BRIGHT + hitBarAI + ANSI_RESET);
 
         }
-        while (gameOver);
+        while (true);
 
 
     }

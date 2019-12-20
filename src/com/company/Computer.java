@@ -39,9 +39,17 @@ public class Computer extends Player {
         String hitBarPlayer1 = "";
         String hitBarAI = "";
         String winBar = "********************";
+
+        // Count hits for player and AI to see who wins
         int hitsPlayer1 = 0;
         int hitsAI = 0;
+
+        // Object of random for AI
         Random random = new Random();
+
+        // Use count to see if a ship has sunk
+        int countPlayer = 0;
+        int countAI = 0;
 
         // Initialize 2D matrix map for PLAYER 1
         for (int y = 1; y < battleMap1.length; y++) {
@@ -60,7 +68,6 @@ public class Computer extends Player {
         do {
 
             String ships[] = {"S", "D", "C", "B", "c"};
-            String shipNames[] = {"Submarine", "Destroyer", "Cruiser", "Battleship", "Carrier"};
 
             // PLAYER 1
 
@@ -82,24 +89,20 @@ public class Computer extends Player {
 
                 if (computerMap[xShoot][yShoot].contains(ships[i])) {
 
-                    if (!computerMap[xShoot][yShoot].contains(ships[i])) {
-                        for (int j = 0; j < shipNames.length; j++) {
-                            System.out.println("YOU SUNK " + ships[j] + "\n");
-                            battleMapAI[xShoot][yShoot] = ships[i];
-                        }
+                    // If you have already had a hit on the square
+                    if(battleMapAI[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
+                        System.out.println("You have already bombed this area without any luck. " + "\n");
                     }
 
-                    // If you have already had a hit on the square
-                        if(battleMapAI[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
-                            System.out.println("You have already bombed this area without any luck. " + "\n");
-                        }
+                    // Hit adds to the game status bar
+                    else{
+                        System.out.println("HIT! " + "\n");
 
-                        else{
-                            System.out.println("HIT!");
-                            battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                            hitBarPlayer1 += "*";
-                            hitsPlayer1++;
-                        }
+                        // Update battle map
+                        battleMapAI[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+                        hitBarPlayer1 += SquareState.HIT.getSquareSymbol();
+                        hitsPlayer1++;
+                    }
                     }
                 }
 
@@ -125,24 +128,23 @@ public class Computer extends Player {
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShootAI][yShootAI].contains(ships[i])) {
 
-                    if (!playerOneMap[xShootAI][yShootAI].contains(ships[i])) {
-                        for (int j = 0; j < shipNames.length; j++) {
-                            System.out.println("Computer SUNK " + ships[j] + "\n");
-                            battleMap1[xShootAI][yShootAI] = ships[i];
-                        }
+                    // If you have already had a hit on the square
+                    if(battleMap1[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
+                        System.out.println("You have already bombed this area without any luck. " + "\n");
                     }
 
-                    if(!playerOneMap[xShootAI][yShootAI].contains(SquareState.HIT.getSquareSymbol())){
-                        System.out.println("HIT!");
-                        battleMap1[xShootAI][yShootAI] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                        hitBarAI += "*";
-                        hitsAI++;
-                    }
+                    // Hit adds to the game status bar
                     else{
-                        System.out.println("You have already bombed this area without any luck. ");
+                        System.out.println("HIT! " + "\n");
+                        // Update battle map
+                        battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
+                        hitBarPlayer1 += SquareState.HIT.getSquareSymbol();
+                        hitsAI++;
                     }
                 }
             }
+
+
             if (playerOneMap[xShootAI][yShootAI].contains(SquareState.NONE.getSquareSymbol())) {
                 System.out.println("MISS!");
                 battleMap1[xShootAI][yShootAI] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;

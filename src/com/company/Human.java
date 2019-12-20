@@ -106,21 +106,27 @@ public class Human extends Player {
                         // If count equals the size of the ships the ships are sunk
                         if(countPlayer1 == ShipSize.SUBMARINE.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.SUBMARINE.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.SUBMARINE + "!");
+                            countPlayer1 = 0;
                         }
                         if(countPlayer1 == ShipSize.DESTROYER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.DESTROYER.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.DESTROYER + "!");
+                            countPlayer1 = 0;
                         }
                         if(countPlayer1 == ShipSize.CRUISER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CRUISER.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.CRUISER + "!");
+                            countPlayer1 = 0;
                         }
                         if(countPlayer1 == ShipSize.BATTLESHIP.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.BATTLESHIP.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.BATTLESHIP + "!");
+                            countPlayer1 = 0;
                         }
                         if(countPlayer1 == ShipSize.CARRIER1.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER1.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.CARRIER1 + "!");
+                            countPlayer1 = 0;
                         }
                         if(countPlayer1 == ShipSize.CARRIER2.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER2.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.CARRIER2 + "!");
+                            countPlayer1 = 0;
                         }
 
                         // Update battle map
@@ -179,21 +185,27 @@ public class Human extends Player {
                         // If count equals the size of the ships the ships are sunk
                         if(countPlayer2 == ShipSize.SUBMARINE.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.SUBMARINE.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.SUBMARINE + "!");
+                            countPlayer2 = 0;
                         }
                         if(countPlayer2 == ShipSize.DESTROYER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.DESTROYER.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.DESTROYER + "!");
+                            countPlayer2 = 0;
                         }
                         if(countPlayer2 == ShipSize.CRUISER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CRUISER.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.CRUISER + "!");
+                            countPlayer2 = 0;
                         }
                         if(countPlayer2 == ShipSize.BATTLESHIP.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.BATTLESHIP.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.BATTLESHIP + "!");
+                            countPlayer2 = 0;
                         }
                         if(countPlayer2 == ShipSize.CARRIER1.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER1.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.CARRIER1 + "!");
+                            countPlayer2 = 0;
                         }
                         if(countPlayer2 == ShipSize.CARRIER2.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER2.getShipType())){
                             System.out.println("YOU SUNK THE " + ShipType.CARRIER2 + "!");
+                            countPlayer2 = 0;
                         }
 
                         // Update battle map

@@ -37,7 +37,7 @@ public class Human extends Player {
 
     public void shoot(String[][] playerOneMap, String[][] playerTwoMap, String player1, String player2){
 
-        System.out.println(player1 +  "Get ready to battle! ");
+        System.out.println(player1 +  " get ready to battle! ");
         map.printEmptyMap(emptyMap);
 
         // Game bar with hits
@@ -48,6 +48,10 @@ public class Human extends Player {
         // Total hits for players
         int hitsPlayer1 = 0;
         int hitsPlayer2 = 0;
+
+        // Use count to see if a ship has sunk
+        int countPlayer1 = 0;
+        int countPlayer2 = 0;
 
         // Initialize 2D matrix map, player 1
         for (int y = 1; y < battleMap2.length; y++) {
@@ -65,8 +69,6 @@ public class Human extends Player {
 
         do {
             String[] ships = {"S", "D", "C", "B", "c"};
-            String[] shipNames = {"Submarine", "Destroyer", "Cruiser", "Battleship", "Carrier"};
-
 
             // PLAYER 1
             System.out.println("Your turn to shoot, " + player1 + "!");
@@ -89,22 +91,41 @@ public class Human extends Player {
             for (int i = 0; i < ships.length; i++) {
                 if (playerTwoMap[xShoot][yShoot].contains(ships[i])) {
 
-                    if(!playerTwoMap[xShoot][yShoot].contains(ships[i])){
-                        for(int j = 0; j<shipNames.length; j++){
-                            System.out.println("YOU SUNK " +ships[j] + "\n");
-                            battleMap2[xShoot][yShoot] = ships[i];
-                        }
-                    }
-
                     // If you have already had a hit on the square
                     if(battleMap2[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
                         System.out.println("You have already bombed this area without any luck. " + "\n");
                     }
 
+                    // Hit adds to the game status bar
                     else{
-                        System.out.println("HIT!");
+                        System.out.println("HIT! " + "\n");
+
+                        // Use count to check if ships are sunk
+                        countPlayer1++;
+
+                        // If count equals the size of the ships the ships are sunk
+                        if(countPlayer1 == ShipSize.SUBMARINE.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.SUBMARINE.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.SUBMARINE + "!");
+                        }
+                        if(countPlayer1 == ShipSize.DESTROYER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.DESTROYER.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.DESTROYER + "!");
+                        }
+                        if(countPlayer1 == ShipSize.CRUISER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CRUISER.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.CRUISER + "!");
+                        }
+                        if(countPlayer1 == ShipSize.BATTLESHIP.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.BATTLESHIP.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.BATTLESHIP + "!");
+                        }
+                        if(countPlayer1 == ShipSize.CARRIER1.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER1.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.CARRIER1 + "!");
+                        }
+                        if(countPlayer1 == ShipSize.CARRIER2.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER2.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.CARRIER2 + "!");
+                        }
+
+                        // Update battle map
                         battleMap2[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                        hitBarPlayer1 += "*";
+                        hitBarPlayer1 += SquareState.HIT.getSquareSymbol();
                         hitsPlayer1++;
                     }
                 }
@@ -112,7 +133,7 @@ public class Human extends Player {
 
             // If the square does not have a ship placed there
             if(playerTwoMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
-                System.out.println("MISS!");
+                System.out.println("MISS! " + "\n");
                 battleMap2[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
             }
 
@@ -130,6 +151,7 @@ public class Human extends Player {
             System.out.println("Shoot! Enter Y-coordinate: ");
             yShoot = input.nextInt();
 
+            // To not be able to shoot outside of the grid
             while(xShoot <1 || xShoot>10 || yShoot<1 || yShoot>10){
                 System.out.println("Invalid choice");
                 System.out.println("Shoot! Enter X-coordinate: ");
@@ -138,24 +160,45 @@ public class Human extends Player {
                 yShoot = input.nextInt();
             }
 
+            // Looping through the map and check if the grid is empty or not
             for (int i = 0; i < ships.length; i++) {
                 if (playerOneMap[xShoot][yShoot].contains(ships[i])) {
 
-                if(!playerOneMap[xShoot][yShoot].contains(ships[i])){
-                    for(int j = 0; j<shipNames.length; j++){
-                        System.out.println("YOU SUNK " +ships[j] + "\n");
-                        battleMap1[xShoot][yShoot] = ships[i];
-                    }
-                }
                     // If you have already had a hit on the square
                     if(battleMap1[xShoot][yShoot].contains(SquareState.HIT.getSquareSymbol())){
                         System.out.println("You have already bombed this area without any luck. " + "\n");
                     }
 
+                    // Hit adds to the game bar
                     else{
-                        System.out.println("HIT!");
+                        System.out.println("HIT! " + "\n");
+
+                        // Use count to check if ships are sunk
+                        countPlayer2++;
+
+                        // If count equals the size of the ships the ships are sunk
+                        if(countPlayer2 == ShipSize.SUBMARINE.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.SUBMARINE.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.SUBMARINE + "!");
+                        }
+                        if(countPlayer2 == ShipSize.DESTROYER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.DESTROYER.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.DESTROYER + "!");
+                        }
+                        if(countPlayer2 == ShipSize.CRUISER.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CRUISER.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.CRUISER + "!");
+                        }
+                        if(countPlayer2 == ShipSize.BATTLESHIP.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.BATTLESHIP.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.BATTLESHIP + "!");
+                        }
+                        if(countPlayer2 == ShipSize.CARRIER1.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER1.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.CARRIER1 + "!");
+                        }
+                        if(countPlayer2 == ShipSize.CARRIER2.getSize() && playerOneMap[xShoot][yShoot].contains(ShipType.CARRIER2.getShipType())){
+                            System.out.println("YOU SUNK THE " + ShipType.CARRIER2 + "!");
+                        }
+
+                        // Update battle map
                         battleMap1[xShoot][yShoot] = RED_BACKGROUND_BRIGHT + SquareState.HIT.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
-                        hitBarPlayer2 += "*";
+                        hitBarPlayer2 += SquareState.HIT.getSquareSymbol();
                         hitsPlayer2++;
                     }
                 }
@@ -163,10 +206,11 @@ public class Human extends Player {
 
             // If the grid is empty / miss
             if(playerOneMap[xShoot][yShoot].contains(SquareState.NONE.getSquareSymbol())) {
-                System.out.println("MISS!");
+                System.out.println("MISS! " + "\n");
                 battleMap1[xShoot][yShoot] = BLACK_BACKGROUND_BRIGHT + SquareState.MISS.getSquareSymbol() + ANSI_RESET + ANSI_BLUE;
             }
 
+            // Print the map of player 1
             System.out.println("MAP OF PLAYER " + player1);
             map.printBattle(battleMap1, xShoot, yShoot, "battle");
 
@@ -176,7 +220,7 @@ public class Human extends Player {
                 break;
             }
 
-
+            // Status for the game
             System.out.println("Number of hits for " + player1 + " is: " + hitsPlayer1);
             System.out.println(ANSI_WHITE_BACKGROUND + winBar + ANSI_RESET);
             System.out.println(RED_BACKGROUND_BRIGHT + hitBarPlayer1 + ANSI_RESET);
@@ -198,6 +242,7 @@ public class Human extends Player {
         int carrier1Size = 3;
         int carrier2Size = 3;
 
+        // Type of ships
         ShipType submarine = ShipType.SUBMARINE;
         ShipType destroyer = ShipType.DESTROYER;
         ShipType cruiser = ShipType.CRUISER;
@@ -206,13 +251,14 @@ public class Human extends Player {
         ShipType carrier2 = ShipType.CARRIER2;
 
 
-        // Array of ship names
+        // Array of ship types
         ShipType[] shipNames = {submarine, destroyer, cruiser, battleship, carrier1, carrier2};
 
         // Printing the empty map to see the coordinates
         map.printEmptyMap(playerMap);
 
 
+        // Looping through and adding the ships one by one
         for (int i = 0; i < shipNames.length; i++) {
             // Coordinates to be added for the different ships in switch case
             int[] coordinates;
@@ -224,7 +270,6 @@ public class Human extends Player {
                 case SUBMARINE:
                     // Print map with added coordinates
                     map.printPlayerMapShips(playerMap, submarineSize, submarine);
-
                     break;
 
                 case DESTROYER:
@@ -257,53 +302,8 @@ public class Human extends Player {
                     break;
             }
         }
-
     }
-
-    public void testPrintSize(String shipName, int xInput, int yInput, int size){
-        for (int i = 0; i < size; i++) {
-            for (int y1 = yInput; y1 <= yInput; y1++) {
-                y1 += i;
-                for (int x1 = xInput; x1 <= xInput; x1++)
-
-
-                {}}}
-    }
-
-
-    // Add X and Y coordinates through user input
-    public int[] userInputCoordinates(String shipType, int size){
-
-        // How to implement maz size?
-
-        /*for (int i = 0; i < size; i++) {
-            for (int y = yInput; y <= yInput; y++) {
-                y += i;
-                for (int x = xInput; x <= xInput; x++) {}}}*/
-
-
-        System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
-        int xInput = input.nextInt();
-
-        System.out.println("Add Y-coordinate for your " + shipType + " with size " + size);
-        int yInput = input.nextInt();
-
-        while (xInput < 0 || xInput > 10) {
-            System.out.println("Please Enter Valid Coordinate");
-            xInput = input.nextInt();
-        }
-
-        while (yInput < 0 || yInput > 10) {
-            System.out.println("Please Enter Valid Coordinate");
-            yInput = input.nextInt();
-        }
-
-
-        return new int [] {xInput, yInput};
-
-    }
-
-    }
+}
 
 
 

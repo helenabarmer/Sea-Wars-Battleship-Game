@@ -33,7 +33,7 @@ public class Computer extends Player {
 
     public void shootAI(String[][] playerOneMap, String[][] computerMap, String player1, String AI) {
 
-        System.out.println(player1 +  "Get ready to battle! ");
+        System.out.println(player1 +  " get ready to battle! ");
         map.printEmptyMap(emptyMap);
 
         String hitBarPlayer1 = "";

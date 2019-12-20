@@ -6,11 +6,10 @@ import java.util.Scanner;
 
 public class Map {
     // User input
-    Scanner input = new Scanner(System.in);
-
+    private Scanner input = new Scanner(System.in);
 
     // ArrayList Ship
-    ArrayList<Ship> ships = new ArrayList<>();
+    private ArrayList<Ship> ships = new ArrayList<>();
 
     // Colours for background
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
@@ -31,19 +30,13 @@ public class Map {
     // Reset colour
     public static final String ANSI_RESET = "\u001B[0m";
 
-    //Constant size for the map
-    public final static int MAP_SIZE = 11;
-
-    // Map template with grid size from variables (could be user input later on)
-    //String[][] map = new String[MAP_SIZE][MAP_SIZE];
-
     // Constructor
     public Map() {
     }
 
 
     // Printing map with empty squares [ ]
-    public void printEmptyMap(String map[][]) {
+    public void printEmptyMap(String[][] map) {
 
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
@@ -105,36 +98,40 @@ public class Map {
     // Adding AI:s coordinates to the map
     private void AIRandomCoordinatesToMap(String map[][], int size, ShipType shipType) {
 
+        // Object of random to use for AI
         Random random = new Random();
 
         try {
-
+            // X and Y to be withing range of 1-10 (same as grid)
             int randomX = random.nextInt(10 - 1) + 1;
             int randomY = random.nextInt(10 - 1) + 1;
 
-            System.out.println("Random X" + randomX);
-            System.out.println("Random Y" + randomY);
-
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (randomY < 1 || randomY > 8 && shipType.equals(ShipType.SUBMARINE)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (randomY < 1 || randomY > 9 && shipType.equals(ShipType.DESTROYER)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (randomY < 1 || randomY > 7 && shipType.equals(ShipType.CRUISER)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (randomY < 1 || randomY > 6 && shipType.equals(ShipType.BATTLESHIP)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (randomY < 1 || randomY > 8 && shipType.equals(ShipType.CARRIER1)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (randomY < 1 || randomY > 8 && shipType.equals(ShipType.CARRIER2)) {
                 randomY = random.nextInt(10 - 1) + 1;
             }
@@ -156,6 +153,7 @@ public class Map {
                 }
             }
 
+            // Loop through the size and place it on the grid
             for (int i = 0; i < size; i++) {
                 for (int y = randomY; y <= randomY; y++) {
                     y += i;
@@ -164,44 +162,57 @@ public class Map {
                         switch (shipType) {
                             case SUBMARINE:
                                 map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.SUBMARINE.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Submarine submarine = new Submarine(x, y);
+                                ships.add(submarine);
                                 break;
 
                             case DESTROYER:
                                 map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.DESTROYER.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Destroyer destroyer = new Destroyer(x, y);
+                                ships.add(destroyer);
                                 break;
 
                             case CRUISER:
                                 map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + ShipType.CRUISER.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Cruiser cruiser = new Cruiser(x, y);
+                                ships.add(cruiser);
                                 break;
 
                             case BATTLESHIP:
                                 map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.BATTLESHIP.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                BattleShip battleShip = new BattleShip(x, y);
+                                ships.add(battleShip);
                                 break;
 
                             case CARRIER1:
                                 map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.CARRIER1.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Carrier carrier1 = new Carrier(x, y);
+                                ships.add(carrier1);
                                 break;
 
                             case CARRIER2:
                                 map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.CARRIER2.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Carrier carrier2 = new Carrier(x, y);
+                                ships.add(carrier2);
                                 break;
 
                             default:
-                                System.out.println("Invalid");
+                                System.out.println("Invalid choice");
                                 break;
                         }
                     }
                 }
             }
+
         }
         catch(Exception e){
-            System.out.println("EXCEPTION");
+            System.out.println("Sorry something went wrong. ");
         }
     }
 
 
-    // Add coordinates and ships to map
-    public void addCoordinateToMap(String map[][], int size, ShipType shipType) {
+    // Add coordinates and ships to map for players
+    private void addCoordinateToMap(String map[][], int size, ShipType shipType) {
 
         try {
             System.out.println("Add X-coordinate for your " + shipType + " with size " + size);
@@ -217,32 +228,38 @@ public class Map {
                 xInput = input.nextInt();
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (yInput < 1 || yInput > 8 && shipType.equals(ShipType.SUBMARINE)) {
                 System.out.println("Please Enter Valid Y-Coordinate");
                 yInput = input.nextInt();
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (yInput < 1 || yInput > 9 && shipType.equals(ShipType.DESTROYER)) {
                 System.out.println("Please Enter Valid Y-Coordinate");
                 yInput = input.nextInt();
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (yInput < 1 || yInput > 7 && shipType.equals(ShipType.CRUISER)) {
                 System.out.println("Please Enter Valid Y-Coordinate");
                 yInput = input.nextInt();
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (yInput < 1 || yInput > 6 && shipType.equals(ShipType.BATTLESHIP)) {
                 System.out.println("Please Enter Valid Y-Coordinate");
                 yInput = input.nextInt();
             }
 
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (yInput < 1 || yInput > 8 && shipType.equals(ShipType.CARRIER1)) {
                 System.out.println("Please Enter Valid Y-Coordinate");
                 yInput = input.nextInt();
             }
 
+            // To make sure the ship is not placed outside of the grid (calculated on its length)
             while (yInput < 1 || yInput > 8 && shipType.equals(ShipType.CARRIER2)) {
                 System.out.println("Please Enter Valid Y-Coordinate");
                 yInput = input.nextInt();
@@ -269,7 +286,7 @@ public class Map {
                 }
             }
 
-
+            // Loop through ship size and place it on the grid
             for (int i = 0; i < size; i++) {
                 for (int y = yInput; y <= yInput; y++) {
                     y += i;
@@ -278,26 +295,56 @@ public class Map {
                         switch (shipType) {
                             case SUBMARINE:
                                 map[x][y] = YELLOW_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.SUBMARINE.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Submarine submarinePlayer = new Submarine(x, y);
+                                ships.add(submarinePlayer);
+                                if(i==1){
+                                    System.out.println(submarinePlayer.toString());
+                                }
                                 break;
 
                             case DESTROYER:
-                                map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + "D" + ANSI_RESET + ANSI_BLUE;
+                                map[x][y] = BLACK_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.DESTROYER.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Destroyer destroyerPlayer = new Destroyer(x, y);
+                                ships.add(destroyerPlayer);
+                                if(i==1){
+                                    System.out.println(destroyerPlayer.toString());
+                                }
                                 break;
 
                             case CRUISER:
-                                map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + "C" + ANSI_RESET + ANSI_BLUE;
+                                map[x][y] = GREEN_BACKGROUND_BRIGHT + BLACK_BOLD + ShipType.CRUISER.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Cruiser cruiserPlayer = new Cruiser(x, y);
+                                ships.add(cruiserPlayer);
+                                if(i==1){
+                                    System.out.println(cruiserPlayer.toString());
+                                }
                                 break;
 
                             case BATTLESHIP:
-                                map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + "B" + ANSI_RESET + ANSI_BLUE;
+                                map[x][y] = PURPLE_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.BATTLESHIP.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                BattleShip battleShipPlayer = new BattleShip(x, y);
+                                ships.add(battleShipPlayer);
+                                if(i==1){
+                                    System.out.println(battleShipPlayer.toString());
+                                }
                                 break;
 
                             case CARRIER1:
-                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.CARRIER1.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Carrier carrier1Player = new Carrier(x, y);
+                                ships.add(carrier1Player);
+                                if(i==1){
+                                    System.out.println(carrier1Player.toString());
+                                }
                                 break;
 
                             case CARRIER2:
-                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + "c" + ANSI_RESET + ANSI_BLUE;
+                                map[x][y] = CYAN_BACKGROUND_BRIGHT + WHITE_BOLD + ShipType.CARRIER2.getShipType() + ANSI_RESET + ANSI_BLUE;
+                                Carrier carrier2Player = new Carrier(x, y);
+                                ships.add(carrier2Player);
+                                if(i==1){
+                                    System.out.println(carrier2Player.toString());
+                                }
                                 break;
 
                             default:
@@ -311,7 +358,6 @@ public class Map {
             e.getMessage();
         }
     }
-
 
 
     public void printPlayerMapShips (String[][] map, int size, ShipType shipType){
@@ -428,7 +474,8 @@ public class Map {
     }
 
 
-    public void printBattle (String map[][],int x, int y, String battle){
+    public void printBattle (String[][] map, int x, int y, String battle){
+
         // Prints the text and the line underneath the text
         System.out.println(ANSI_BLUE_BACKGROUND + ANSI_BLACK +
                 "                      OCEAN MAP                      " + ANSI_RESET);

@@ -27,10 +27,6 @@ public class Menu {
                 ImagePixel logo = new ImagePixel();
                 logo.menuLogo();
 
-
-                // TEST TO DRAW SHIP
-
-
                 System.out.println("Welcome to Sea Wars! Please select mode using key 1, 2 or 3. Press <ENTER>");
                 System.out.println("1. Player VS Player (PvP)");
                 System.out.println("2. Player VS Computer (PvE)");
@@ -39,7 +35,6 @@ public class Menu {
 
 
                 Scanner inputFromUser = new Scanner(System.in);
-
 
                 switch (userChoice) {
                     case 1:
